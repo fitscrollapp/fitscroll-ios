@@ -1,0 +1,18 @@
+appId: com.fitscroll.app
+name: "Exercise Selection and Camera Session"
+---
+- launchApp
+- runFlow: onboarding_flow.yaml
+- tapOn: "Unlock with Exercise"
+- assertVisible: "Squat"
+- tapOn: "Squat"
+# Camera workout screen should appear
+- assertVisible: "Reps"
+- assertVisible: "Minutes Earned"
+# In simulator mode, we should see controls
+- assertVisible:
+    text: "Pause"
+    optional: true
+- assertVisible:
+    text: "Finish"
+    optional: true

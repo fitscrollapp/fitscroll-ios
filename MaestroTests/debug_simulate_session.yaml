@@ -1,0 +1,21 @@
+appId: com.fitscroll.app
+name: "Debug Mode - Simulate Session"
+---
+- launchApp
+- runFlow: onboarding_flow.yaml
+# Go to Settings and enable debug mode
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Debug Mode"
+    direction: DOWN
+- tapOn:
+    id: "Debug Mode"
+    retryTapIfNoChange: true
+# Use simulate reps feature
+- scrollUntilVisible:
+    element: "Simulate Reps"
+    direction: DOWN
+- tapOn: "Simulate Reps"
+# Go back to dashboard to verify
+- tapOn: "Dashboard"
+# Should see recent session

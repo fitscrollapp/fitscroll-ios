@@ -1,0 +1,193 @@
+/* App */
+"app.name" = "FitScroll";
+"app.tagline" = "Move to Unlock";
+
+/* Onboarding */
+"onboarding.welcome.title" = "Welcome to FitScroll";
+"onboarding.welcome.subtitle" = "Take control of your screen time through physical activity";
+"onboarding.step1.title" = "Select Apps";
+"onboarding.step1.description" = "Choose which apps you want to limit";
+"onboarding.step2.title" = "Set Limits";
+"onboarding.step2.description" = "Define daily usage limits for selected apps";
+"onboarding.step3.title" = "Exercise to Unlock";
+"onboarding.step3.description" = "Do exercises to earn extra screen time";
+"onboarding.get_started" = "Get Started";
+"onboarding.next" = "Next";
+"onboarding.skip" = "Skip";
+"onboarding.back" = "Back";
+"onboarding.continue" = "Continue";
+
+/* Onboarding — Hook */
+"onboarding.hook.title" = "Move to Unlock";
+"onboarding.hook.subtitle" = "Turn scrolling time into fitness time. Every rep earns you minutes back.";
+
+/* Onboarding — Transformation (Before/After) */
+"onboarding.transform.title" = "Take Back Control";
+"onboarding.transform.before" = "Right Now";
+"onboarding.transform.after" = "With FitScroll";
+"onboarding.transform.before1" = "Endless scrolling";
+"onboarding.transform.before2" = "Lost hours";
+"onboarding.transform.before3" = "No control";
+"onboarding.transform.after1" = "Apps auto-lock";
+"onboarding.transform.after2" = "Exercise earns time";
+"onboarding.transform.after3" = "You're in charge";
+
+/* Onboarding — Privacy framing */
+"onboarding.privacy.title" = "Private by Design";
+"onboarding.privacy.subtitle" = "Before we ask for permissions, here's exactly what we use them for.";
+"onboarding.privacy.screen_time.title" = "Screen Time";
+"onboarding.privacy.screen_time.body" = "Used to lock and unlock the apps you pick. We never see what you do inside them.";
+"onboarding.privacy.camera.title" = "Camera";
+"onboarding.privacy.camera.body" = "Used only to count reps. All processing happens on your device. No video is recorded.";
+
+/* Onboarding — Permissions */
+"onboarding.screen_time.title" = "Allow Screen Time";
+"onboarding.screen_time.body" = "FitScroll needs this to lock your apps and unlock them after you exercise.";
+"onboarding.screen_time.cta" = "Allow Screen Time";
+"onboarding.screen_time.later" = "I'll do this later";
+
+"onboarding.camera.title" = "Allow Camera";
+"onboarding.camera.body" = "FitScroll uses the camera to count your reps. All on-device, nothing recorded.";
+"onboarding.camera.cta" = "Allow Camera";
+"onboarding.camera.later" = "I'll do this later";
+
+"onboarding.finish" = "Start Using FitScroll";
+
+/* Permissions */
+"permissions.screen_time.title" = "Screen Time Access";
+"permissions.screen_time.description" = "FitScroll needs Screen Time access to manage app limits";
+"permissions.camera.title" = "Camera Access";
+"permissions.camera.description" = "FitScroll uses your camera to track exercises. All processing happens on-device.";
+"permissions.grant_access" = "Grant Access";
+"permissions.open_settings" = "Open Settings";
+
+/* Dashboard */
+"dashboard.title" = "Dashboard";
+"dashboard.active_limits" = "Active Limits";
+"dashboard.today_earned" = "Today's Earned Time";
+"dashboard.locked_apps" = "Locked Apps";
+"dashboard.recent_sessions" = "Recent Sessions";
+"dashboard.unlock_now" = "Unlock with Exercise";
+"dashboard.no_limits_set" = "No limits set yet";
+"dashboard.no_sessions_yet" = "No sessions yet. Start exercising!";
+"dashboard.status.unrestricted_message" = "All apps are accessible";
+"dashboard.status.restricted_message" = "Selected apps are locked";
+"dashboard.status.temporarily_unlocked_message" = "Apps temporarily unlocked";
+
+/* App Selection */
+"app_selection.title" = "Select Apps to Restrict";
+"app_selection.subtitle" = "Choose apps you want to limit";
+"app_selection.done" = "Done";
+"app_selection.no_apps_selected" = "No apps selected";
+"app_selection.select_apps" = "Select Apps";
+"app_selection.apps" = "Apps";
+"app_selection.categories" = "Categories";
+
+/* Limits */
+"limits.title" = "Set Usage Limits";
+"limits.daily_limit" = "Daily Limit";
+"limits.minutes" = "minutes";
+"limits.save" = "Save";
+"limits.done" = "Done";
+
+/* Unlock */
+"unlock.title" = "Unlock with Exercise";
+"unlock.subtitle" = "Choose an exercise to earn screen time";
+"unlock.minutes_per_rep_format" = "%.1f min/rep";
+"unlock.stable_label" = "Reliable";
+"unlock.experimental_label" = "Beta";
+"unlock.start_session" = "Start Session";
+"unlock.section_stable" = "Stable Exercises";
+"unlock.section_experimental" = "Experimental";
+"unlock.close" = "Close";
+
+/* Workout */
+"workout.reps" = "Reps";
+"workout.minutes" = "Minutes Earned";
+"workout.start" = "Start";
+"workout.pause" = "Pause";
+"workout.resume" = "Resume";
+"workout.finish" = "Finish";
+"workout.adjust_position" = "Adjust your position to be fully visible";
+"workout.move_better_light" = "Move to a better lit area";
+"workout.great_form" = "Great form! Keep going!";
+"workout.more_reps_format" = "%d more reps, earn %d more minutes";
+"workout.preparing" = "Preparing camera...";
+"workout.simulator_mode" = "Simulator Mode";
+
+/* Summary */
+"summary.title" = "Session Complete!";
+"summary.total_reps" = "Total Reps";
+"summary.earned_minutes" = "Minutes Earned";
+"summary.avg_confidence" = "Average Accuracy";
+"summary.duration" = "Duration";
+"summary.unlock_message_format" = "Great job! You earned %d minutes of screen time!";
+"summary.apply_unlock" = "Unlock Apps";
+"summary.back_to_dashboard" = "Back to Dashboard";
+
+/* History */
+"history.title" = "Workout History";
+"history.no_sessions" = "No workout sessions yet";
+"history.total_all_time" = "All-Time Stats";
+"history.sessions" = "Sessions";
+"history.reps" = "Reps";
+"history.minutes" = "Minutes";
+"history.section_sessions" = "Sessions";
+"history.cancelled" = "Cancelled";
+
+/* Settings */
+"settings.title" = "Settings";
+"settings.exercise_rewards" = "Exercise Rewards";
+"settings.minutes_per_rep_label" = "Minutes per rep";
+"settings.daily_max_unlock" = "Daily Max Unlock";
+"settings.default_limit" = "Default Daily Limit";
+"settings.haptic_feedback" = "Haptic Feedback";
+"settings.debug_mode" = "Debug Mode";
+"settings.debug_section" = "Debug Tools";
+"settings.simulate_reps" = "Simulate Reps";
+"settings.fake_unlock" = "Test Unlock";
+"settings.reset_all" = "Reset All Data";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.privacy_note" = "All exercise data is processed on-device. No video is recorded or transmitted.";
+"settings.preferences" = "Preferences";
+"settings.character_style" = "Character";
+"character.woman" = "Woman";
+"character.man" = "Man";
+"settings.reset_confirm_title" = "Are you sure?";
+"settings.reset_confirm_message" = "This will delete all workout sessions, settings, and unlock history.";
+"settings.reset_confirm_button" = "Reset All Data";
+
+/* Errors */
+"errors.camera_permission_denied" = "Camera access is required to track exercises";
+"errors.camera_recovery" = "Go to Settings > FitScroll > Camera to enable access";
+"errors.screen_time_permission_denied" = "Screen Time access is required to manage app limits";
+"errors.screen_time_recovery" = "Go to Settings > Screen Time to enable access";
+"errors.no_apps_selected" = "Please select at least one app to restrict";
+"errors.pose_not_detected" = "Unable to detect your body position";
+"errors.pose_recovery" = "Make sure your full body is visible to the camera";
+"errors.low_light" = "Lighting conditions are too low";
+"errors.light_recovery" = "Move to a brighter area for better detection";
+"errors.out_of_frame" = "You are not fully visible in the camera";
+"errors.incomplete_motion" = "The motion was not completed";
+"errors.generic" = "Something went wrong";
+"errors.try_again" = "Try Again";
+"errors.camera_denied_full" = "Camera permission denied. Enable in Settings > FitScroll.";
+"errors.camera_denied_restricted" = "Camera access denied. Enable in Settings > FitScroll.";
+
+/* Exercise: Squat */
+"exercise.squat.name" = "Squat";
+"exercise.squat.description" = "Stand with feet shoulder-width apart, lower your body by bending knees";
+
+/* Exercise: Push-up */
+"exercise.push_up.name" = "Push-up";
+"exercise.push_up.description" = "Start in plank position, lower chest to ground and push back up";
+
+/* Notifications */
+"notifications.one_minute_warning.title" = "1 minute left";
+"notifications.one_minute_warning.body_singular" = "Your unlocked app locks in 60 seconds. Earn more time?";
+"notifications.one_minute_warning.body_plural_format" = "%d unlocked apps lock in 60 seconds. Earn more time?";
+"notifications.locked_again.title_singular" = "App locked again";
+"notifications.locked_again.title_plural_format" = "%d apps locked again";
+"notifications.locked_again.body_singular" = "Tap to earn more screen time with a quick workout.";
+"notifications.locked_again.body_plural_format" = "%d apps are restricted again. Tap to earn more time.";

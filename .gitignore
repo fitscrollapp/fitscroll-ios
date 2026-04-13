@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# Xcode
+.build/
+build/
+DerivedData/
+**/xcuserdata/
+**/*.xcuserstate
+**/project.xcworkspace/xcuserdata/
+*.xcscmblueprint
+
+# Secrets
+*.env
+.env.local
+GoogleService-Info-Production.plist
+
+# ASC tooling
+appstore/__pycache__/
+appstore/**/*.pyc
+appstore/.venv/
+
+# Screenshots generator
+appstore/screenshots-generator/node_modules/
+appstore/screenshots-generator/.next/
+appstore/screenshots-generator/.env

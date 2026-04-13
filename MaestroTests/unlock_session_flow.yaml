@@ -1,0 +1,10 @@
+appId: com.fitscroll.app
+name: "Unlock Session Flow"
+---
+- launchApp
+- runFlow: onboarding_flow.yaml
+- tapOn: "Unlock with Exercise"
+- assertVisible: "Choose an exercise to earn screen time"
+- assertVisible: "Squat"
+- assertVisible: "Push-up"
+- assertVisible: "Dumbbell Curl"

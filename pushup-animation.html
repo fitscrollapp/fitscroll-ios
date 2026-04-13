@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FitScroll — Push-up Detection (Front View)</title>
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: radial-gradient(circle at 50% 40%, #1e3a8a 0%, #0b1020 70%);
+    color: #e0e7ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  h1 { font-size: 20px; margin-bottom: 8px; color: #00e5d1; }
+  .subtitle {
+    color: #94a3b8;
+    font-size: 13px;
+    margin-bottom: 24px;
+    text-align: center;
+    max-width: 560px;
+    line-height: 1.5;
+  }
+  .phone {
+    background: #000;
+    border-radius: 32px;
+    padding: 8px;
+    border: 2px solid #334155;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .screen {
+    width: 280px;
+    height: 540px;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    background: radial-gradient(circle at 50% 60%, #1e40af 0%, #0c1220 80%);
+  }
+  svg { display: block; }
+  .hud {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 10px;
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 10px;
+  }
+  .pill {
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(10px);
+    padding: 4px 8px;
+    border-radius: 6px;
+    min-width: 62px;
+    text-align: center;
+    color: #fff;
+  }
+  .pill .lbl { font-size: 8px; color: #94a3b8; display: block; }
+  .pill .val { font-size: 12px; font-weight: bold; display: block; margin-top: 1px; }
+  .angle .val { color: #00e5d1; }
+  .phase .val { color: #fbbf24; }
+  .reps .val { color: #4ade80; }
+  .counter {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00d4ff, #0066cc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 0 30px rgba(0,212,255,0.6);
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+  .controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  button {
+    background: #2563eb;
+    color: white;
+    border: 0;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { background: #1d4ed8; }
+  .legend {
+    margin-top: 20px;
+    font-size: 11px;
+    color: #94a3b8;
+    max-width: 560px;
+    line-height: 1.6;
+    text-align: center;
+  }
+  .legend b { color: #e0e7ff; }
+</style>
+</head>
+<body>
+
+<h1>Push-up Detection — Front View</h1>
+<p class="subtitle">
+  User faces the camera (phone in front, on a stand or propped). FitScroll tracks the
+  <b>shoulder–elbow–wrist angle</b> on both arms, weighted by detection confidence.
+  This is what the detector "sees".
+</p>
+
+<div class="phone">
+  <div class="screen">
+    <svg width="280" height="540" viewBox="0 0 280 540">
+      <defs>
+        <radialGradient id="bg" cx="50%" cy="55%" r="60%">
+          <stop offset="0%" stop-color="#1e40af" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#0c1220" stop-opacity="1"/>
+        </radialGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="1.5" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <rect width="280" height="540" fill="url(#bg)"/>
+
+      <!-- Floor reflection suggestion -->
+      <ellipse cx="140" cy="490" rx="110" ry="12" fill="#000" opacity="0.4"/>
+
+      <!-- Body silhouette (simplified head + torso shape) -->
+      <g id="body">
+        <!-- Head (face oval) -->
+        <ellipse id="head" cx="140" cy="180" rx="32" ry="42" fill="#2d3748" stroke="#4a5568" stroke-width="1"/>
+        <!-- hair suggestion -->
+        <path id="hair" d="M 108 158 Q 140 130 172 158 Q 172 146 140 138 Q 108 146 108 158 Z" fill="#1a202c"/>
+        <!-- Neck/body hint (triangle behind going away) -->
+        <path id="torso" d="M 115 210 L 165 210 L 195 470 L 85 470 Z" fill="#2d3748" opacity="0.6"/>
+      </g>
+
+      <!-- Skeleton overlay (drawn by JS) -->
+      <g id="skeleton" stroke="#00e5d1" stroke-width="3" stroke-linecap="round" fill="none" filter="url(#glow)">
+        <line id="shoulderLine"/>
+        <line id="leftUpperArm"/>
+        <line id="leftForearm"/>
+        <line id="rightUpperArm"/>
+        <line id="rightForearm"/>
+        <line id="torsoLine"/>
+        <line id="leftLeg"/>
+        <line id="rightLeg"/>
+      </g>
+
+      <g id="joints" fill="#ffffff" stroke="#00e5d1" stroke-width="1.5" filter="url(#glow)">
+        <circle id="jLShoulder" r="4"/>
+        <circle id="jRShoulder" r="4"/>
+        <circle id="jLElbow" r="4"/>
+        <circle id="jRElbow" r="4"/>
+        <circle id="jLWrist" r="4"/>
+        <circle id="jRWrist" r="4"/>
+        <circle id="jHip" r="4"/>
+        <circle id="jLAnkle" r="4"/>
+        <circle id="jRAnkle" r="4"/>
+      </g>
+
+      <!-- Angle arc label -->
+      <text id="angleLabel" x="0" y="0" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold"></text>
+    </svg>
+
+    <div class="hud">
+      <div class="pill angle"><span class="lbl">ANGLE</span><span class="val" id="mAngle">—</span></div>
+      <div class="pill phase"><span class="lbl">PHASE</span><span class="val" id="mPhase">—</span></div>
+      <div class="pill reps"><span class="lbl">REPS</span><span class="val" id="mReps">0</span></div>
+    </div>
+
+    <div class="counter" id="counter">0</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="toggleBtn">Pause</button>
+  <button id="resetBtn">Reset</button>
+</div>
+
+<div class="legend">
+  User faces the camera in plank. Going <b>DOWN</b>: head+shoulders come toward camera,
+  elbows flare out, arms bend (angle drops).
+  Going <b>UP</b>: shoulders rise, arms straighten (angle rises).
+  A rep counts when the angle cycles from <b>&gt;145°</b> down to <b>&lt;115°</b> and back up.
+</div>
+
+<script>
+// Front-view push-up kinematics.
+// When user is fully UP: body is pushed away from camera → appears smaller, shoulders high
+// When user is DOWN: body is close to camera → appears larger, shoulders low, elbows flared
+//
+// We simulate this by:
+// - scaling the whole figure up/down (1.0 = up, 1.2 = down-ish)
+// - moving the head+shoulders down
+// - flaring the elbows out to the sides
+
+const UP_ANGLE = 165;
+const DOWN_ANGLE = 70;  // deeper bend — elbows more acute
+const period = 2.8;     // slightly slower so the depth is visible
+
+let t = 0;
+let running = true;
+let lastFrame = performance.now();
+let repCount = 0;
+let lastPhase = "up";
+let crossedDown = false;
+
+const mAngle = document.getElementById("mAngle");
+const mPhase = document.getElementById("mPhase");
+const mReps  = document.getElementById("mReps");
+const counterEl = document.getElementById("counter");
+const toggleBtn = document.getElementById("toggleBtn");
+const resetBtn  = document.getElementById("resetBtn");
+
+toggleBtn.onclick = () => {
+  running = !running;
+  toggleBtn.textContent = running ? "Pause" : "Play";
+  if (running) { lastFrame = performance.now(); requestAnimationFrame(tick); }
+};
+resetBtn.onclick = () => {
+  t = 0; repCount = 0; lastPhase = "up"; crossedDown = false;
+  mReps.textContent = "0"; counterEl.textContent = "0";
+};
+
+function setLine(id, x1, y1, x2, y2) {
+  const el = document.getElementById(id);
+  el.setAttribute("x1", x1); el.setAttribute("y1", y1);
+  el.setAttribute("x2", x2); el.setAttribute("y2", y2);
+}
+function setCircle(id, cx, cy) {
+  const el = document.getElementById(id);
+  el.setAttribute("cx", cx); el.setAttribute("cy", cy);
+}
+function setPath(id, d) {
+  document.getElementById(id).setAttribute("d", d);
+}
+function setEllipse(id, cx, cy) {
+  document.getElementById(id).setAttribute("cx", cx);
+  document.getElementById(id).setAttribute("cy", cy);
+}
+
+function render(phase01) {
+  // phase01 ∈ [0, 1]; 0 = up (beginning), 0.5 = down, 1 = back up
+  // Use cosine to interpolate
+  const t = (1 - Math.cos(phase01 * 2 * Math.PI)) / 2;  // 0 → 1 → 0
+  // t = 0 → up state, t = 1 → down state
+
+  // === Geometric transformation ===
+  // Center of motion
+  const cx = 140;
+
+  // Vertical offset of body (shoulders go down as they come toward camera)
+  const bodyDropY = 80 * t;  // deeper drop: 0 at up, 80px at down
+
+  // Head Y
+  const headCy = 180 + bodyDropY;
+  // Head size (grows as person gets closer)
+  const headRx = 32 + 6 * t;
+  const headRy = 42 + 7 * t;
+
+  // Shoulders
+  const shoulderY = 224 + bodyDropY;
+  const shoulderOffsetX = 28 + 4 * t;  // shoulder width, slightly wider at down
+  const lShoulderX = cx - shoulderOffsetX;
+  const rShoulderX = cx + shoulderOffsetX;
+
+  // Wrists (fixed on ground — hands don't move)
+  const wristBaseSpread = 60;
+  const wristY = 470;
+  const lWristX = cx - wristBaseSpread;
+  const rWristX = cx + wristBaseSpread;
+
+  // Elbows: flare out aggressively at down state.
+  // When down, elbow sits well outside the shoulder–wrist line (big flare).
+  // When up, elbow sits close to the shoulder–wrist line.
+  const elbowY = shoulderY + (wristY - shoulderY) * 0.45;
+  const elbowFlare = 5 + 85 * t;  // much bigger flare on down
+  const lElbowX = lShoulderX - elbowFlare;
+  const rElbowX = rShoulderX + elbowFlare;
+
+  // Hip (implied, behind body — static)
+  const hipX = cx;
+  const hipY = shoulderY + 100;
+
+  // Ankles (feet far from camera, small)
+  const ankleY = 480;
+  const lAnkleX = cx - 18;
+  const rAnkleX = cx + 18;
+
+  // === Draw body silhouette ===
+  setEllipse("head", cx, headCy);
+  document.getElementById("head").setAttribute("rx", headRx);
+  document.getElementById("head").setAttribute("ry", headRy);
+  setPath("hair", `M ${cx - 32 - 2*t} ${headCy - 22} Q ${cx} ${headCy - 50} ${cx + 32 + 2*t} ${headCy - 22} Q ${cx + 32} ${headCy - 34} ${cx} ${headCy - 42} Q ${cx - 32} ${headCy - 34} ${cx - 32 - 2*t} ${headCy - 22} Z`);
+
+  // Body triangle (wider when closer)
+  const bodyWidth = 50 + 20 * t;
+  setPath("torso",
+    `M ${cx - bodyWidth/2} ${shoulderY + 10}
+     L ${cx + bodyWidth/2} ${shoulderY + 10}
+     L ${cx + bodyWidth * 0.7} ${hipY}
+     L ${cx - bodyWidth * 0.7} ${hipY} Z`);
+
+  // === Draw skeleton ===
+  setLine("shoulderLine", lShoulderX, shoulderY, rShoulderX, shoulderY);
+  setLine("leftUpperArm", lShoulderX, shoulderY, lElbowX, elbowY);
+  setLine("leftForearm",  lElbowX, elbowY, lWristX, wristY);
+  setLine("rightUpperArm", rShoulderX, shoulderY, rElbowX, elbowY);
+  setLine("rightForearm",  rElbowX, elbowY, rWristX, wristY);
+  setLine("torsoLine", cx, shoulderY, cx, hipY);
+  setLine("leftLeg",  cx - 10, hipY, lAnkleX, ankleY);
+  setLine("rightLeg", cx + 10, hipY, rAnkleX, ankleY);
+
+  // Joints
+  setCircle("jLShoulder", lShoulderX, shoulderY);
+  setCircle("jRShoulder", rShoulderX, shoulderY);
+  setCircle("jLElbow", lElbowX, elbowY);
+  setCircle("jRElbow", rElbowX, elbowY);
+  setCircle("jLWrist", lWristX, wristY);
+  setCircle("jRWrist", rWristX, wristY);
+  setCircle("jHip", cx, hipY);
+  setCircle("jLAnkle", lAnkleX, ankleY);
+  setCircle("jRAnkle", rAnkleX, ankleY);
+
+  // === Compute displayed elbow angle (use right arm) ===
+  const a = { x: rShoulderX - rElbowX, y: shoulderY - elbowY };
+  const b = { x: rWristX - rElbowX, y: wristY - elbowY };
+  const dot = a.x * b.x + a.y * b.y;
+  const magA = Math.sqrt(a.x*a.x + a.y*a.y);
+  const magB = Math.sqrt(b.x*b.x + b.y*b.y);
+  const cos = dot / (magA * magB);
+  const angleDeg = Math.acos(Math.max(-1, Math.min(1, cos))) * 180 / Math.PI;
+
+  // Angle label near right elbow
+  document.getElementById("angleLabel").textContent = `${Math.round(angleDeg)}°`;
+  document.getElementById("angleLabel").setAttribute("x", rElbowX + 10);
+  document.getElementById("angleLabel").setAttribute("y", elbowY + 4);
+
+  return angleDeg;
+}
+
+function phaseFor(angle) {
+  if (angle >= 145) return "up";
+  if (angle <= 115) return "down";
+  return lastPhase === "down" || lastPhase === "goingUp" ? "goingUp" : "goingDown";
+}
+
+function tick(now) {
+  if (!running) return;
+  const dt = (now - lastFrame) / 1000;
+  lastFrame = now;
+  t += dt;
+
+  const phase01 = (t % period) / period;
+  const angle = render(phase01);
+
+  const phase = phaseFor(angle);
+  if (phase === "down") crossedDown = true;
+  if (phase === "up" && crossedDown && lastPhase !== "up") {
+    repCount++;
+    mReps.textContent = repCount;
+    counterEl.textContent = repCount;
+    counterEl.style.transform = "translateX(-50%) scale(1.15)";
+    setTimeout(() => counterEl.style.transform = "translateX(-50%) scale(1)", 200);
+    crossedDown = false;
+  }
+  lastPhase = phase;
+
+  mAngle.textContent = `${Math.round(angle)}°`;
+  mPhase.textContent = phase.toUpperCase();
+
+  requestAnimationFrame(tick);
+}
+
+render(0);
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+appId: com.fitscroll.app
+name: "Session Summary after Workout"
+---
+- launchApp
+- runFlow: onboarding_flow.yaml
+# Enable debug mode first for simulated reps
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Debug Mode"
+    direction: DOWN
+- tapOn:
+    id: "Debug Mode"
+    retryTapIfNoChange: true
+- tapOn: "Simulate Reps"
+# Go to history to see the session
+- tapOn: "Workout History"
+- assertVisible: "All-Time Stats"

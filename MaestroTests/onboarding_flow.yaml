@@ -1,0 +1,14 @@
+appId: com.fitscroll.app
+name: "Onboarding Flow"
+---
+- launchApp:
+    clearState: true
+- assertVisible: "Welcome to FitScroll"
+- tapOn: "Next"
+- assertVisible: "Select Apps"
+- tapOn: "Next"
+- assertVisible: "Set Limits"
+- tapOn: "Next"
+- assertVisible: "Exercise to Unlock"
+- tapOn: "Get Started"
+- assertVisible: "Dashboard"

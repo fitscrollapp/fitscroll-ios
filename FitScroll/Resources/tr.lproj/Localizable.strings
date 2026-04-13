@@ -1,0 +1,193 @@
+/* App */
+"app.name" = "FitScroll";
+"app.tagline" = "Hareket Et, Kilidi Aç";
+
+/* Onboarding */
+"onboarding.welcome.title" = "FitScroll'a Hoş Geldin";
+"onboarding.welcome.subtitle" = "Fiziksel aktiviteyle ekran süreni kontrol altına al";
+"onboarding.step1.title" = "Uygulamaları Seç";
+"onboarding.step1.description" = "Sınırlamak istediğin uygulamaları seç";
+"onboarding.step2.title" = "Limit Belirle";
+"onboarding.step2.description" = "Seçili uygulamalar için günlük kullanım limiti tanımla";
+"onboarding.step3.title" = "Egzersizle Kilidi Aç";
+"onboarding.step3.description" = "Egzersiz yaparak ekstra ekran süresi kazan";
+"onboarding.get_started" = "Başla";
+"onboarding.next" = "İleri";
+"onboarding.skip" = "Atla";
+"onboarding.back" = "Geri";
+"onboarding.continue" = "Devam";
+
+/* Onboarding — Hook */
+"onboarding.hook.title" = "Kilidi Harekete Bağla";
+"onboarding.hook.subtitle" = "Scroll süreni fitness süresine çevir. Her tekrar sana dakika kazandırır.";
+
+/* Onboarding — Transformation (Before/After) */
+"onboarding.transform.title" = "Kontrolü Ele Al";
+"onboarding.transform.before" = "Şu An";
+"onboarding.transform.after" = "FitScroll ile";
+"onboarding.transform.before1" = "Bitmeyen scroll";
+"onboarding.transform.before2" = "Kaybolan saatler";
+"onboarding.transform.before3" = "Kontrol yok";
+"onboarding.transform.after1" = "Uygulamalar otomatik kilitli";
+"onboarding.transform.after2" = "Egzersiz = süre";
+"onboarding.transform.after3" = "Kontrol sende";
+
+/* Onboarding — Privacy framing */
+"onboarding.privacy.title" = "Tasarımda Gizlilik";
+"onboarding.privacy.subtitle" = "İzin istemeden önce — neyi, neden kullandığımızı net söyleyelim.";
+"onboarding.privacy.screen_time.title" = "Ekran Süresi";
+"onboarding.privacy.screen_time.body" = "Seçtiğin uygulamaları kilitleyip açmak için. İçlerinde ne yaptığını göremeyiz.";
+"onboarding.privacy.camera.title" = "Kamera";
+"onboarding.privacy.camera.body" = "Sadece tekrar saymak için. Tüm işlem cihazında. Video kaydı yok.";
+
+/* Onboarding — Permissions */
+"onboarding.screen_time.title" = "Ekran Süresi İzni";
+"onboarding.screen_time.body" = "FitScroll uygulamaları kilitlemek ve egzersiz sonrası açmak için bu izne ihtiyaç duyar.";
+"onboarding.screen_time.cta" = "Ekran Süresi'ne İzin Ver";
+"onboarding.screen_time.later" = "Sonra hallederim";
+
+"onboarding.camera.title" = "Kamera İzni";
+"onboarding.camera.body" = "FitScroll tekrarlarını saymak için kamerayı kullanır. Cihazda işlenir, kayıt yok.";
+"onboarding.camera.cta" = "Kamera'ya İzin Ver";
+"onboarding.camera.later" = "Sonra hallederim";
+
+"onboarding.finish" = "FitScroll'u Kullanmaya Başla";
+
+/* Permissions */
+"permissions.screen_time.title" = "Ekran Süresi İzni";
+"permissions.screen_time.description" = "FitScroll'un uygulama limitlerini yönetmesi için Ekran Süresi iznine ihtiyacı var";
+"permissions.camera.title" = "Kamera İzni";
+"permissions.camera.description" = "FitScroll egzersizlerini takip etmek için kameranı kullanır. Tüm işlem cihazında gerçekleşir.";
+"permissions.grant_access" = "İzin Ver";
+"permissions.open_settings" = "Ayarları Aç";
+
+/* Dashboard */
+"dashboard.title" = "Ana Sayfa";
+"dashboard.active_limits" = "Aktif Limitler";
+"dashboard.today_earned" = "Bugün Kazanılan Süre";
+"dashboard.locked_apps" = "Kilitli Uygulamalar";
+"dashboard.recent_sessions" = "Son Oturumlar";
+"dashboard.unlock_now" = "Egzersizle Kilidi Aç";
+"dashboard.no_limits_set" = "Henüz limit belirlenmedi";
+"dashboard.no_sessions_yet" = "Henüz oturum yok. Egzersize başla!";
+"dashboard.status.unrestricted_message" = "Tüm uygulamalar erişilebilir";
+"dashboard.status.restricted_message" = "Seçili uygulamalar kilitli";
+"dashboard.status.temporarily_unlocked_message" = "Uygulamalar geçici olarak açık";
+
+/* App Selection */
+"app_selection.title" = "Kısıtlanacak Uygulamaları Seç";
+"app_selection.subtitle" = "Sınırlamak istediğin uygulamaları seç";
+"app_selection.done" = "Tamam";
+"app_selection.no_apps_selected" = "Uygulama seçilmedi";
+"app_selection.select_apps" = "Uygulama Seç";
+"app_selection.apps" = "Uygulama";
+"app_selection.categories" = "Kategori";
+
+/* Limits */
+"limits.title" = "Kullanım Limiti Belirle";
+"limits.daily_limit" = "Günlük Limit";
+"limits.minutes" = "dakika";
+"limits.save" = "Kaydet";
+"limits.done" = "Tamam";
+
+/* Unlock */
+"unlock.title" = "Egzersizle Kilidi Aç";
+"unlock.subtitle" = "Ekran süresi kazanmak için bir egzersiz seç";
+"unlock.minutes_per_rep_format" = "%.1f dk/tekrar";
+"unlock.stable_label" = "Güvenilir";
+"unlock.experimental_label" = "Beta";
+"unlock.start_session" = "Oturumu Başlat";
+"unlock.section_stable" = "Stabil Egzersizler";
+"unlock.section_experimental" = "Deneysel";
+"unlock.close" = "Kapat";
+
+/* Workout */
+"workout.reps" = "Tekrar";
+"workout.minutes" = "Kazanılan Dakika";
+"workout.start" = "Başlat";
+"workout.pause" = "Duraklat";
+"workout.resume" = "Devam Et";
+"workout.finish" = "Bitir";
+"workout.adjust_position" = "Tüm vücudun görünecek şekilde pozisyonunu ayarla";
+"workout.move_better_light" = "Daha aydınlık bir yere geç";
+"workout.great_form" = "Harika! Devam et!";
+"workout.more_reps_format" = "%d tekrar daha, %d dakika daha kazan";
+"workout.preparing" = "Kamera hazırlanıyor...";
+"workout.simulator_mode" = "Simülatör Modu";
+
+/* Summary */
+"summary.title" = "Oturum Tamamlandı!";
+"summary.total_reps" = "Toplam Tekrar";
+"summary.earned_minutes" = "Kazanılan Dakika";
+"summary.avg_confidence" = "Ortalama Doğruluk";
+"summary.duration" = "Süre";
+"summary.unlock_message_format" = "Harika iş! %d dakika ekran süresi kazandın!";
+"summary.apply_unlock" = "Uygulamaları Aç";
+"summary.back_to_dashboard" = "Ana Sayfaya Dön";
+
+/* History */
+"history.title" = "Egzersiz Geçmişi";
+"history.no_sessions" = "Henüz egzersiz oturumu yok";
+"history.total_all_time" = "Tüm Zamanlar";
+"history.sessions" = "Oturum";
+"history.reps" = "Tekrar";
+"history.minutes" = "Dakika";
+"history.section_sessions" = "Oturumlar";
+"history.cancelled" = "İptal Edildi";
+
+/* Settings */
+"settings.title" = "Ayarlar";
+"settings.exercise_rewards" = "Egzersiz Ödülleri";
+"settings.minutes_per_rep_label" = "Tekrar başına dakika";
+"settings.daily_max_unlock" = "Günlük Maksimum Açılım";
+"settings.default_limit" = "Varsayılan Günlük Limit";
+"settings.haptic_feedback" = "Titreşim Geri Bildirimi";
+"settings.debug_mode" = "Debug Modu";
+"settings.debug_section" = "Debug Araçları";
+"settings.simulate_reps" = "Tekrar Simüle Et";
+"settings.fake_unlock" = "Test Açılımı";
+"settings.reset_all" = "Tüm Verileri Sıfırla";
+"settings.about" = "Hakkında";
+"settings.version" = "Sürüm";
+"settings.privacy_note" = "Tüm egzersiz verileri cihazında işlenir. Video kaydı yapılmaz veya paylaşılmaz.";
+"settings.preferences" = "Tercihler";
+"settings.character_style" = "Karakter";
+"character.woman" = "Kadın";
+"character.man" = "Erkek";
+"settings.reset_confirm_title" = "Emin misin?";
+"settings.reset_confirm_message" = "Bu işlem tüm egzersiz oturumlarını, ayarları ve açılım geçmişini silecek.";
+"settings.reset_confirm_button" = "Tüm Verileri Sıfırla";
+
+/* Errors */
+"errors.camera_permission_denied" = "Egzersizleri takip etmek için kamera erişimi gereklidir";
+"errors.camera_recovery" = "Ayarlar > FitScroll > Kamera üzerinden izin ver";
+"errors.screen_time_permission_denied" = "Uygulama limitlerini yönetmek için Ekran Süresi izni gereklidir";
+"errors.screen_time_recovery" = "Ayarlar > Ekran Süresi üzerinden izin ver";
+"errors.no_apps_selected" = "Lütfen en az bir uygulama seç";
+"errors.pose_not_detected" = "Vücut pozisyonun algılanamıyor";
+"errors.pose_recovery" = "Tüm vücudunun kameraya göründüğünden emin ol";
+"errors.low_light" = "Ortam çok karanlık";
+"errors.light_recovery" = "Daha iyi algılama için aydınlık bir yere geç";
+"errors.out_of_frame" = "Kamerada tam görünmüyorsun";
+"errors.incomplete_motion" = "Hareket tamamlanmadı";
+"errors.generic" = "Bir şeyler ters gitti";
+"errors.try_again" = "Tekrar Dene";
+"errors.camera_denied_full" = "Kamera izni reddedildi. Ayarlar > FitScroll'dan etkinleştir.";
+"errors.camera_denied_restricted" = "Kamera erişimi reddedildi. Ayarlar > FitScroll'dan etkinleştir.";
+
+/* Exercise: Squat */
+"exercise.squat.name" = "Squat";
+"exercise.squat.description" = "Ayaklarını omuz genişliğinde aç, dizlerini bükerek çök";
+
+/* Exercise: Push-up / Şınav */
+"exercise.push_up.name" = "Şınav";
+"exercise.push_up.description" = "Plank pozisyonundan başla, göğsünü yere indir ve tekrar yukarı it";
+
+/* Notifications */
+"notifications.one_minute_warning.title" = "Son 1 dakika";
+"notifications.one_minute_warning.body_singular" = "Açtığın uygulama 60 saniye içinde kilitleniyor. Daha fazla süre kazan?";
+"notifications.one_minute_warning.body_plural_format" = "Açtığın %d uygulama 60 saniye içinde kilitleniyor. Daha fazla süre kazan?";
+"notifications.locked_again.title_singular" = "Uygulama tekrar kilitli";
+"notifications.locked_again.title_plural_format" = "%d uygulama tekrar kilitli";
+"notifications.locked_again.body_singular" = "Hızlı bir egzersizle daha fazla süre kazanmak için dokun.";
+"notifications.locked_again.body_plural_format" = "%d uygulama tekrar kısıtlandı. Daha fazla süre kazanmak için dokun.";

@@ -1,0 +1,12 @@
+appId: com.fitscroll.app
+name: "Dashboard Navigation"
+---
+- launchApp
+- runFlow: onboarding_flow.yaml
+- assertVisible: "Dashboard"
+- assertVisible: "Unlock with Exercise"
+- tapOn: "Workout History"
+- assertVisible: "No workout sessions yet"
+- tapOn: "Settings"
+- assertVisible: "Exercise Rewards"
+- tapOn: "Dashboard"
