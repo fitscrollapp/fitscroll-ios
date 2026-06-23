@@ -89,12 +89,18 @@ final class WorkoutSessionCoordinator: ObservableObject {
         timerTask?.cancel()
         await poseProvider.stopProviding()
 
+        // Back-date startedAt by elapsedSeconds so finishedAt - startedAt
+        // equals the active exercise time (minus pauses). WorkoutSession's
+        // default initializer otherwise stamps startedAt = now = finishedAt,
+        // which produced 00:00 duration in the summary.
+        let now = Date()
         let session = WorkoutSession(
             exerciseType: exerciseType,
             repCount: repCounter.acceptedReps,
             earnedMinutes: calculateEarnedMinutes(),
             averageConfidence: repCounter.averageConfidence,
-            finishedAt: Date(),
+            startedAt: now.addingTimeInterval(-elapsedSeconds),
+            finishedAt: now,
             status: .completed
         )
 
@@ -106,12 +112,14 @@ final class WorkoutSessionCoordinator: ObservableObject {
         timerTask?.cancel()
         await poseProvider.stopProviding()
 
+        let now = Date()
         return WorkoutSession(
             exerciseType: exerciseType,
             repCount: repCounter.acceptedReps,
             earnedMinutes: calculateEarnedMinutes(),
             averageConfidence: repCounter.averageConfidence,
-            finishedAt: Date(),
+            startedAt: now.addingTimeInterval(-elapsedSeconds),
+            finishedAt: now,
             status: .cancelled
         )
     }

@@ -1,12 +1,6 @@
 import SwiftUI
 import SwiftData
 
-// TEMP (screenshot capture): reset onboarding exactly once per cold launch
-// so the flow can be re-screenshotted. Remove once captures are done.
-private enum ScreenshotCaptureState {
-    static var didResetOnboardingThisLaunch = false
-}
-
 struct RootView: View {
     @Query private var settings: [UserSettings]
     @Environment(\.modelContext) private var modelContext
@@ -28,23 +22,13 @@ struct RootView: View {
                 MainTabView(showUnlock: $deepLinkUnlock)
             }
         }
+        .tint(DS.Colors.neon)
+        .preferredColorScheme(.dark)
         .onOpenURL { url in
             handleDeepLink(url)
         }
         .onReceive(NotificationCenter.default.publisher(for: .fitscrollOpenUnlock)) { _ in
             deepLinkUnlock = true
-        }
-        .task {
-            // TEMP (screenshot capture): force onboarding on each fresh
-            // launch, but only once — so the user can still progress past
-            // it when Start Using FitScroll is tapped.
-            if !ScreenshotCaptureState.didResetOnboardingThisLaunch {
-                ScreenshotCaptureState.didResetOnboardingThisLaunch = true
-                if let existing = userSettings, existing.hasCompletedOnboarding {
-                    existing.hasCompletedOnboarding = false
-                    try? modelContext.save()
-                }
-            }
         }
     }
 
@@ -65,6 +49,11 @@ struct MainTabView: View {
             DashboardView(showUnlockSession: $showUnlock)
                 .tabItem {
                     Label(Strings.Dashboard.title, systemImage: "house.fill")
+                }
+
+            JourneyView()
+                .tabItem {
+                    Label("Journey", systemImage: "map.fill")
                 }
 
             HistoryView()

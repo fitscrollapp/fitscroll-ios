@@ -17,6 +17,12 @@ struct ExerciseIconView: View {
             case .squat:
                 SquatIconShape()
                     .fill(color)
+            case .jumpingJacks:
+                JumpingJackIconShape()
+                    .fill(color)
+            case .lunge:
+                LungeIconShape()
+                    .fill(color)
             }
         }
         .frame(width: size, height: size)
@@ -184,6 +190,155 @@ struct SquatIconShape: Shape {
     }
 }
 
+/// Stick-figure jumping jack: standing front-view figure with arms raised
+/// overhead and legs spread into an "X" shape (the UP position).
+struct JumpingJackIconShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+
+        let w = rect.width
+        let h = rect.height
+        func p(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
+            CGPoint(x: rect.minX + x * w / 100, y: rect.minY + y * h / 100)
+        }
+
+        // Ground line
+        path.addRect(CGRect(x: rect.minX, y: rect.minY + h * 0.92, width: w, height: h * 0.05))
+
+        // Head
+        let headRadius = h * 0.09
+        let headCenter = p(50, 20)
+        path.addEllipse(in: CGRect(
+            x: headCenter.x - headRadius,
+            y: headCenter.y - headRadius,
+            width: headRadius * 2,
+            height: headRadius * 2
+        ))
+
+        // Body skeleton — arms overhead in a wide V, legs spread wide.
+        let shoulder = p(50, 34)
+        let hip = p(50, 60)
+        let leftHand = p(18, 12)
+        let rightHand = p(82, 12)
+        let leftAnkle = p(22, 90)
+        let rightAnkle = p(78, 90)
+
+        let thickness: CGFloat = h * 0.055
+
+        func thickLine(from a: CGPoint, to b: CGPoint, thickness: CGFloat, into path: inout Path) {
+            let dx = b.x - a.x
+            let dy = b.y - a.y
+            let length = sqrt(dx * dx + dy * dy)
+            guard length > 0 else { return }
+            let nx = -dy / length * thickness / 2
+            let ny = dx / length * thickness / 2
+
+            var segment = Path()
+            segment.move(to: CGPoint(x: a.x + nx, y: a.y + ny))
+            segment.addLine(to: CGPoint(x: b.x + nx, y: b.y + ny))
+            segment.addLine(to: CGPoint(x: b.x - nx, y: b.y - ny))
+            segment.addLine(to: CGPoint(x: a.x - nx, y: a.y - ny))
+            segment.closeSubpath()
+            path.addPath(segment)
+        }
+
+        // Torso
+        thickLine(from: shoulder, to: hip, thickness: thickness, into: &path)
+        // Arms — raised in a V
+        thickLine(from: shoulder, to: leftHand, thickness: thickness, into: &path)
+        thickLine(from: shoulder, to: rightHand, thickness: thickness, into: &path)
+        // Legs — spread wide
+        thickLine(from: hip, to: leftAnkle, thickness: thickness, into: &path)
+        thickLine(from: hip, to: rightAnkle, thickness: thickness, into: &path)
+
+        // Joint caps
+        let jointR: CGFloat = thickness / 2
+        for point in [shoulder, hip, leftHand, rightHand, leftAnkle, rightAnkle] {
+            path.addEllipse(in: CGRect(
+                x: point.x - jointR, y: point.y - jointR,
+                width: jointR * 2, height: jointR * 2
+            ))
+        }
+
+        return path
+    }
+}
+
+/// Stick-figure lunge: side-view standing figure with one leg stepped
+/// forward and front knee bent to ~90°, back leg extended with slight
+/// bend. Head on top, arms hanging at sides.
+struct LungeIconShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+
+        let w = rect.width
+        let h = rect.height
+        func p(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
+            CGPoint(x: rect.minX + x * w / 100, y: rect.minY + y * h / 100)
+        }
+
+        path.addRect(CGRect(x: rect.minX, y: rect.minY + h * 0.92, width: w, height: h * 0.05))
+
+        let headRadius = h * 0.09
+        let headCenter = p(50, 18)
+        path.addEllipse(in: CGRect(
+            x: headCenter.x - headRadius,
+            y: headCenter.y - headRadius,
+            width: headRadius * 2,
+            height: headRadius * 2
+        ))
+
+        let shoulder = p(50, 32)
+        let hip = p(50, 58)
+        // Front leg: steps forward-right, knee bent at ~90°
+        let frontKnee = p(72, 78)
+        let frontAnkle = p(72, 90)
+        // Back leg: extends behind-left with slight bend
+        let backKnee = p(35, 82)
+        let backAnkle = p(22, 90)
+        // Arms hanging at sides
+        let leftHand = p(42, 60)
+        let rightHand = p(58, 60)
+
+        let thickness: CGFloat = h * 0.055
+
+        func thickLine(from a: CGPoint, to b: CGPoint, thickness: CGFloat, into path: inout Path) {
+            let dx = b.x - a.x
+            let dy = b.y - a.y
+            let length = sqrt(dx * dx + dy * dy)
+            guard length > 0 else { return }
+            let nx = -dy / length * thickness / 2
+            let ny = dx / length * thickness / 2
+
+            var segment = Path()
+            segment.move(to: CGPoint(x: a.x + nx, y: a.y + ny))
+            segment.addLine(to: CGPoint(x: b.x + nx, y: b.y + ny))
+            segment.addLine(to: CGPoint(x: b.x - nx, y: b.y - ny))
+            segment.addLine(to: CGPoint(x: a.x - nx, y: a.y - ny))
+            segment.closeSubpath()
+            path.addPath(segment)
+        }
+
+        thickLine(from: shoulder, to: hip, thickness: thickness, into: &path)
+        thickLine(from: hip, to: frontKnee, thickness: thickness, into: &path)
+        thickLine(from: frontKnee, to: frontAnkle, thickness: thickness, into: &path)
+        thickLine(from: hip, to: backKnee, thickness: thickness, into: &path)
+        thickLine(from: backKnee, to: backAnkle, thickness: thickness, into: &path)
+        thickLine(from: shoulder, to: leftHand, thickness: thickness, into: &path)
+        thickLine(from: shoulder, to: rightHand, thickness: thickness, into: &path)
+
+        let jointR: CGFloat = thickness / 2
+        for point in [shoulder, hip, frontKnee, frontAnkle, backKnee, backAnkle] {
+            path.addEllipse(in: CGRect(
+                x: point.x - jointR, y: point.y - jointR,
+                width: jointR * 2, height: jointR * 2
+            ))
+        }
+
+        return path
+    }
+}
+
 #Preview {
     HStack(spacing: 40) {
         VStack {
@@ -193,6 +348,14 @@ struct SquatIconShape: Shape {
         VStack {
             ExerciseIconView(exerciseType: .squat, size: 80, color: .primary)
             Text("Squat")
+        }
+        VStack {
+            ExerciseIconView(exerciseType: .jumpingJacks, size: 80, color: .primary)
+            Text("Jumping Jacks")
+        }
+        VStack {
+            ExerciseIconView(exerciseType: .lunge, size: 80, color: .primary)
+            Text("Lunge")
         }
     }
     .padding()

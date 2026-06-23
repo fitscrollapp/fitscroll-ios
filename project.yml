@@ -37,6 +37,7 @@ targets:
     dependencies:
       - target: FitScrollShieldConfiguration
       - target: FitScrollShieldAction
+      - target: FitScrollDeviceActivityMonitor
       - package: Firebase
         product: FirebaseAnalytics
       - package: Firebase
@@ -47,8 +48,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScroll/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll
-        MARKETING_VERSION: "1.0.0"
-        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0.2"
+        CURRENT_PROJECT_VERSION: "19"
         TARGETED_DEVICE_FAMILY: "1"
         GENERATE_INFOPLIST_FILE: false
         DEVELOPMENT_TEAM: MHJ33CJD79
@@ -61,8 +62,8 @@ targets:
       properties:
         CFBundleName: FitScroll
         CFBundleDisplayName: FitScroll
-        CFBundleShortVersionString: "1.0.0"
-        CFBundleVersion: "1"
+        CFBundleShortVersionString: "1.0.2"
+        CFBundleVersion: "19"
         CFBundlePackageType: APPL
         CFBundleExecutable: FitScroll
         CFBundleIdentifier: com.huseyinbabal.fitscroll
@@ -94,8 +95,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScrollShieldConfiguration/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll.ShieldConfiguration
-        MARKETING_VERSION: "1.0.0"
-        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0.2"
+        CURRENT_PROJECT_VERSION: "19"
         DEVELOPMENT_TEAM: MHJ33CJD79
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: FitScrollShieldConfiguration/ShieldConfiguration.entitlements
@@ -105,8 +106,8 @@ targets:
       properties:
         CFBundleDisplayName: "Shield Configuration"
         CFBundleName: FitScrollShieldConfiguration
-        CFBundleShortVersionString: "1.0.0"
-        CFBundleVersion: "1"
+        CFBundleShortVersionString: "1.0.2"
+        CFBundleVersion: "19"
         CFBundlePackageType: XPC!
         CFBundleExecutable: $(EXECUTABLE_NAME)
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
@@ -126,8 +127,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScrollShieldAction/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll.ShieldAction
-        MARKETING_VERSION: "1.0.0"
-        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0.2"
+        CURRENT_PROJECT_VERSION: "19"
         DEVELOPMENT_TEAM: MHJ33CJD79
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: FitScrollShieldAction/ShieldAction.entitlements
@@ -137,15 +138,48 @@ targets:
       properties:
         CFBundleDisplayName: "Shield Action"
         CFBundleName: FitScrollShieldAction
-        CFBundleShortVersionString: "1.0.0"
-        CFBundleVersion: "1"
+        CFBundleShortVersionString: "1.0.2"
+        CFBundleVersion: "19"
         CFBundlePackageType: XPC!
         CFBundleExecutable: $(EXECUTABLE_NAME)
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
         NSExtension:
           NSExtensionAttributes: {}
-          NSExtensionPointIdentifier: com.apple.ManagedSettingsUI.shield-action-service
+          NSExtensionPointIdentifier: com.apple.ManagedSettings.shield-action-service
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShieldActionExtension
+
+  FitScrollDeviceActivityMonitor:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: FitScrollDeviceActivityMonitor
+        excludes:
+          - "*.entitlements"
+      - path: FitScroll/Infrastructure/Logging/SharedDebugLog.swift
+    settings:
+      base:
+        INFOPLIST_FILE: FitScrollDeviceActivityMonitor/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll.DeviceActivityMonitor
+        MARKETING_VERSION: "1.0.2"
+        CURRENT_PROJECT_VERSION: "19"
+        DEVELOPMENT_TEAM: MHJ33CJD79
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: FitScrollDeviceActivityMonitor/DeviceActivityMonitor.entitlements
+        GENERATE_INFOPLIST_FILE: false
+    info:
+      path: FitScrollDeviceActivityMonitor/Info.plist
+      properties:
+        CFBundleDisplayName: "Device Activity Monitor"
+        CFBundleName: FitScrollDeviceActivityMonitor
+        CFBundleShortVersionString: "1.0.2"
+        CFBundleVersion: "19"
+        CFBundlePackageType: XPC!
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        NSExtension:
+          NSExtensionAttributes: {}
+          NSExtensionPointIdentifier: com.apple.deviceactivity.monitor-extension
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).DeviceActivityMonitorExtension
 
   FitScrollTests:
     type: bundle.unit-test

@@ -52,6 +52,8 @@ struct FitScrollApp: App {
             ExerciseRewardRule.self,
             UsageLimitRule.self,
             UserSettings.self,
+            UserJourneyProgress.self,
+            EarnedBadge.self,
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema,

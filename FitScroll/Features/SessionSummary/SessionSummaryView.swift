@@ -1,8 +1,15 @@
 import SwiftUI
+import SwiftData
 
 struct SessionSummaryView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
     @EnvironmentObject private var screenTimeService: ScreenTimeService
+    @Query private var journeyProgress: [UserJourneyProgress]
+    @Query private var earnedBadges: [EarnedBadge]
+    @Query(sort: \WorkoutSession.startedAt, order: .reverse)
+    private var allSessions: [WorkoutSession]
+
     let session: WorkoutSession
     /// Called when the user taps "Apply Unlock" or "Back to Dashboard".
     /// The parent (CameraWorkoutView) uses this to also dismiss itself so
@@ -10,6 +17,8 @@ struct SessionSummaryView: View {
     /// stranded on the camera view under a dismissed summary sheet.
     var onFinish: () -> Void = {}
     @State private var animateStats = false
+    @State private var completedLevel: JourneyLevel?
+    @State private var awardedBadge: Badge?
 
     private var didEarnReps: Bool { session.repCount > 0 }
 
@@ -116,8 +125,56 @@ struct SessionSummaryView: View {
                 }
                 if didEarnReps {
                     SoundManager.sessionVictory()
+                    checkJourneyProgress()
                 }
             }
+            .sheet(item: $completedLevel) { level in
+                JourneyCompletionSheet(
+                    level: level,
+                    badge: awardedBadge
+                )
+            }
+    }
+
+    /// Called after the session lands. If the user's current Journey
+    /// level is satisfied by this session, mark it complete + award the
+    /// bonus, then show a celebration sheet on top of the summary.
+    private func checkJourneyProgress() {
+        let progress: UserJourneyProgress
+        if let existing = journeyProgress.first {
+            progress = existing
+        } else {
+            progress = UserJourneyProgress()
+            modelContext.insert(progress)
+        }
+
+        guard let currentLevel = JourneyService.currentLevel(progress: progress) else {
+            return
+        }
+        // Include this session in the lookup set so mixed / session
+        // challenges see it (SwiftData may not have published the
+        // insert into `allSessions` yet at the moment onAppear fires).
+        var sessionsForEval = allSessions
+        if !sessionsForEval.contains(where: { $0.id == session.id }) {
+            sessionsForEval.insert(session, at: 0)
+        }
+        let satisfied = JourneyService.evaluate(
+            challenge: currentLevel.challenge,
+            session: session,
+            allSessions: sessionsForEval
+        )
+        guard satisfied else { return }
+
+        let result = JourneyService.completeLevel(
+            currentLevel,
+            progress: progress,
+            earnedBadges: earnedBadges,
+            modelContext: modelContext
+        )
+        completedLevel = result.levelCompleted
+        if let badgeId = result.newlyAwardedBadgeId {
+            awardedBadge = JourneyContent.badge(id: badgeId)
+        }
     }
 
     private var durationText: String {

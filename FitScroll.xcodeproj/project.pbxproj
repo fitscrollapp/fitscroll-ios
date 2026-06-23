@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		007EC38979C1B8155196A4D9 /* LimitConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894709EC1B85495D3878D4FC /* LimitConfigView.swift */; };
 		0149126BF6E65B6FE7FFEE81 /* WorkoutSessionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA75054E6854718856A28642 /* WorkoutSessionCoordinator.swift */; };
 		048A55ED221F917E21C92350 /* SessionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F47EAEA2189F0C2987FBD9 /* SessionSummaryView.swift */; };
 		0907E22D3B97B04976B5DE7E /* AppAccessState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9737BAC868492A2C013F96 /* AppAccessState.swift */; };
+		0E64EC2CF988E5CE35015CD4 /* UserJourneyProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDC574D62B8C4A8D600DFDC /* UserJourneyProgress.swift */; };
 		0E8ED619B0282DA03E71A4FA /* PoseFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A157470BA38B2C30F3228 /* PoseFrame.swift */; };
 		0F8957D661DC2FCF9C57EC04 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B32D037A4FD9A7631AD5CE /* Strings.swift */; };
 		126BC868ABC9E90EEEA8C8EB /* FitScrollApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1837D7BA1CC75C05BC55B0A4 /* FitScrollApp.swift */; };
@@ -21,6 +21,7 @@
 		2D064FBB21147EB37CF5E2A6 /* FitScrollShieldAction.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 38B0816308BA0559358F778A /* FitScrollShieldAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3651C5A47A53E08CB527CFB6 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9908F1E3B7B255FEA1F568 /* NotificationManager.swift */; };
 		370C95B532EF8603C617376B /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C8782E74A0EECEE6E0B17 /* ConfettiView.swift */; };
+		38DAD3810BCDE726B604C788 /* JourneyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84B2AD91C4FE01E1F458C67 /* JourneyService.swift */; };
 		3F1689362113976257969F82 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26714C550A623989A35FC08B /* CameraService.swift */; };
 		44A33C24304D1D70F6EC19E8 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D92829FDED34DF25FBADE6 /* TimeFormatter.swift */; };
 		47D439435F759BEFCF9EF3E5 /* MockScreenTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5375B7E3DD6EB85AC22D76C9 /* MockScreenTimeService.swift */; };
@@ -43,6 +44,9 @@
 		84CD7554E52B59AE34746AAA /* ShieldActionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4ECF52E6452EE3CC450E0F /* ShieldActionExtension.swift */; };
 		8706E86FA0D537DEEDFBF3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F3D54C1753F573FBD081D04 /* Assets.xcassets */; };
 		88D3E7F64B91C18A4C22B781 /* PurchasesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E18250A10C9077FA7B131DB /* PurchasesService.swift */; };
+		8C9D747ECF2A274F9AEE6D71 /* JourneyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A3513C9EC7F0DFBB480C0 /* JourneyContent.swift */; };
+		8E10ED9CC137D78BBCC70E7A /* FitScrollDeviceActivityMonitor.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D064BDB1EA6DE0919641CCC2 /* FitScrollDeviceActivityMonitor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		915C848F0E6D3A248ECCED0B /* SharedDebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D71741CCECB8529FCFB6DC /* SharedDebugLog.swift */; };
 		9317680582D236D2991AAD82 /* FitScrollShieldConfiguration.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6783B27B55029C3D6EC5E4FC /* FitScrollShieldConfiguration.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9484CEA9DEFCD44F64806319 /* CalculateRewardUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF96066E301E8FBF67F8AB9E /* CalculateRewardUseCaseTests.swift */; };
 		9C2CDC8641930D9446002D79 /* PoseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D783638F4BD48FE01FDB11 /* PoseProvider.swift */; };
@@ -55,9 +59,12 @@
 		AEB33B93B28C2FD68081EFFA /* UnlockCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D26F8166F7FEBA9A2FD58B0 /* UnlockCredit.swift */; };
 		AEDE99FF993B64569368720A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B2B17212BCA339CD0CE2FF6B /* FirebaseCrashlytics */; };
 		AEDF08C0DC9E03752D3E890E /* UnlockWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FECAF02FD390D32D5C1B /* UnlockWindow.swift */; };
+		B6BC39D095150773B0BA63F4 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF87DF30914BCC8184AD85 /* JourneyView.swift */; };
 		B9FB0A766DA59A447FE0F106 /* UnlockSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839671547E23D991C10DFED8 /* UnlockSessionView.swift */; };
+		BA30DACB6F1EFF7DCF7AAFF0 /* DeviceActivityMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697B567894A6DF27C45F1A05 /* DeviceActivityMonitorExtension.swift */; };
 		BEEEF234758F33F12266021F /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 320227A2488B09036A5D8DD4 /* coin.wav */; };
 		C4C3BA85609CD7F3A8F757D8 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83A2CE270196404BF8BB948 /* DesignSystem.swift */; };
+		C686B2E29E3FAFFADC936273 /* RepBurstEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286745A398A36030B7410343 /* RepBurstEffect.swift */; };
 		C8897ECED58E3D4D92F069A5 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119EB947257FD1594A1BB615 /* HapticManager.swift */; };
 		C972A7563C5AC662922225C1 /* ShieldConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8C1E12A1F2EDE86D70D379 /* ShieldConfigurationExtension.swift */; };
 		CA41F0B7A599B13FC5E11D74 /* WorkoutRepEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E289F4CCA82B2A0D993CF089 /* WorkoutRepEvent.swift */; };
@@ -68,8 +75,10 @@
 		DCB648B3329031470E9EB091 /* FitScrollUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F2282A20848C09762DF918 /* FitScrollUITests.swift */; };
 		DDF7DE9A73969049D4928ECB /* VisionPoseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7D613F93B2C191026114C9 /* VisionPoseProvider.swift */; };
 		DE3297730F50BEE331DE755C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A974EE87D47E18AE2C80821D /* GoogleService-Info.plist */; };
+		DE4FAC5E110AE9203DC3D930 /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A919D4A4F8C6BE4AE11C251 /* Journey.swift */; };
 		E80C782BE1344BAF8232C0F0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 989DD5B7FBDA83FEE0AB889E /* FirebaseAnalytics */; };
 		E89ADB34E400036ED6CE6D71 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42218B1B3D7F1F0F1FFF379B /* DashboardView.swift */; };
+		ECD0082F06E7ADDA87655F9E /* SharedDebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D71741CCECB8529FCFB6DC /* SharedDebugLog.swift */; };
 		F09E9DE3BFA9F67DBFBFDF4E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F9BF6C96A5CDB7324AA675B /* Localizable.strings */; };
 		F0FACBE3C4F12676A340F229 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3378E13B1EAE6923AEF7F491 /* HistoryView.swift */; };
 		F4EC5F59F3BE0B20D57A4E57 /* ManageUnlockUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C905A705FB883D4F9306D2EB /* ManageUnlockUseCaseTests.swift */; };
@@ -100,6 +109,13 @@
 			remoteGlobalIDString = 40258C81A60E45887E7448BF;
 			remoteInfo = FitScroll;
 		};
+		4F9E032ED6AEC448FC78AA7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 442C93D318F00DFF0D609A27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F106D12103128B3B09FEE134;
+			remoteInfo = FitScrollDeviceActivityMonitor;
+		};
 		88F9ACCBBAFFA43FA534F073 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 442C93D318F00DFF0D609A27 /* Project object */;
@@ -118,6 +134,7 @@
 			files = (
 				9317680582D236D2991AAD82 /* FitScrollShieldConfiguration.appex in Embed Foundation Extensions */,
 				2D064FBB21147EB37CF5E2A6 /* FitScrollShieldAction.appex in Embed Foundation Extensions */,
+				8E10ED9CC137D78BBCC70E7A /* FitScrollDeviceActivityMonitor.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,8 +147,10 @@
 		119EB947257FD1594A1BB615 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		1837D7BA1CC75C05BC55B0A4 /* FitScrollApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitScrollApp.swift; sourceTree = "<group>"; };
 		18CDAA738181950516C0D0B3 /* RepDetectionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepDetectionEngine.swift; sourceTree = "<group>"; };
+		1A919D4A4F8C6BE4AE11C251 /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
 		1BB5F6B92A16E74294891BF0 /* FitScrollError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitScrollError.swift; sourceTree = "<group>"; };
 		26714C550A623989A35FC08B /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
+		286745A398A36030B7410343 /* RepBurstEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepBurstEffect.swift; sourceTree = "<group>"; };
 		2D9737BAC868492A2C013F96 /* AppAccessState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAccessState.swift; sourceTree = "<group>"; };
 		2F3D54C1753F573FBD081D04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3075CCBACE59D3618009ADDC /* AnimatedExerciseIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedExerciseIcon.swift; sourceTree = "<group>"; };
@@ -143,12 +162,16 @@
 		42218B1B3D7F1F0F1FFF379B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		45738B4E6C8BBC3337B525FE /* ManageUnlockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUnlockUseCase.swift; sourceTree = "<group>"; };
 		4D7D613F93B2C191026114C9 /* VisionPoseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionPoseProvider.swift; sourceTree = "<group>"; };
+		51AF87DF30914BCC8184AD85 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
 		5375B7E3DD6EB85AC22D76C9 /* MockScreenTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockScreenTimeService.swift; sourceTree = "<group>"; };
 		5B29FECAF02FD390D32D5C1B /* UnlockWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWindow.swift; sourceTree = "<group>"; };
 		61486D9AAD9FFD5B28F885B0 /* WorkoutCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCharacterView.swift; sourceTree = "<group>"; };
+		644E557F4A5EA8FECAA68C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6783B27B55029C3D6EC5E4FC /* FitScrollShieldConfiguration.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FitScrollShieldConfiguration.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		697B567894A6DF27C45F1A05 /* DeviceActivityMonitorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActivityMonitorExtension.swift; sourceTree = "<group>"; };
 		6B3A08D33AECE3FD2F8074FE /* ScreenTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeService.swift; sourceTree = "<group>"; };
 		6E18250A10C9077FA7B131DB /* PurchasesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesService.swift; sourceTree = "<group>"; };
+		6EDC574D62B8C4A8D600DFDC /* UserJourneyProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJourneyProgress.swift; sourceTree = "<group>"; };
 		6F0A157470BA38B2C30F3228 /* PoseFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseFrame.swift; sourceTree = "<group>"; };
 		70B73204404B8439BF06B826 /* PersistenceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceConfiguration.swift; sourceTree = "<group>"; };
 		72BB88E0E407718D05AC3741 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -158,9 +181,9 @@
 		7F9908F1E3B7B255FEA1F568 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		839671547E23D991C10DFED8 /* UnlockSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockSessionView.swift; sourceTree = "<group>"; };
 		84378AA5307601A36F8AB281 /* FitScrollLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FitScrollLogo.png; sourceTree = "<group>"; };
-		894709EC1B85495D3878D4FC /* LimitConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitConfigView.swift; sourceTree = "<group>"; };
 		89C56908A2A49B607C3002BD /* JointAngleCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointAngleCalculator.swift; sourceTree = "<group>"; };
 		8C1887CE416CA8C9F7D8E831 /* ExerciseRewardRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRewardRule.swift; sourceTree = "<group>"; };
+		903A3513C9EC7F0DFBB480C0 /* JourneyContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyContent.swift; sourceTree = "<group>"; };
 		91C0C82AF4FE61FE333B4D8A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		94B32D037A4FD9A7631AD5CE /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		950B11CC42985D459457E567 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -186,11 +209,14 @@
 		C8E9AF2A8CEE87977317A015 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		C8F293004D25A341E69D66C8 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		C905A705FB883D4F9306D2EB /* ManageUnlockUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageUnlockUseCaseTests.swift; sourceTree = "<group>"; };
+		C9D71741CCECB8529FCFB6DC /* SharedDebugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDebugLog.swift; sourceTree = "<group>"; };
 		CA75054E6854718856A28642 /* WorkoutSessionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionCoordinator.swift; sourceTree = "<group>"; };
 		CF96066E301E8FBF67F8AB9E /* CalculateRewardUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateRewardUseCaseTests.swift; sourceTree = "<group>"; };
+		D064BDB1EA6DE0919641CCC2 /* FitScrollDeviceActivityMonitor.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FitScrollDeviceActivityMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6906F8A47D5525B2DC56D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D6D92829FDED34DF25FBADE6 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		D83A2CE270196404BF8BB948 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		D84B2AD91C4FE01E1F458C67 /* JourneyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyService.swift; sourceTree = "<group>"; };
 		D8D783638F4BD48FE01FDB11 /* PoseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseProvider.swift; sourceTree = "<group>"; };
 		E289F4CCA82B2A0D993CF089 /* WorkoutRepEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRepEvent.swift; sourceTree = "<group>"; };
 		F0E2D402A7EFC575A4D662D1 /* RepDetectionEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepDetectionEngineTests.swift; sourceTree = "<group>"; };
@@ -229,9 +255,18 @@
 			children = (
 				BC449E09B2BD6940DB104F15 /* CameraWorkoutView.swift */,
 				AF9F5D7A84AE3D2D9E6DFDF4 /* PoseOverlayView.swift */,
+				286745A398A36030B7410343 /* RepBurstEffect.swift */,
 				61486D9AAD9FFD5B28F885B0 /* WorkoutCharacterView.swift */,
 			);
 			path = CameraWorkout;
+			sourceTree = "<group>";
+		};
+		0A0D593E5D4E0874B1254A1F /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				D84B2AD91C4FE01E1F458C67 /* JourneyService.swift */,
+			);
+			path = Journey;
 			sourceTree = "<group>";
 		};
 		0C40E5EE844C3E53DFD20F19 /* Features */ = {
@@ -241,7 +276,7 @@
 				08B52952F6997CEE8D1CE7E1 /* CameraWorkout */,
 				7D4007F556ECEA501D689D39 /* Dashboard */,
 				31FF37FAB0E1C2AAAB898026 /* History */,
-				388CBDE64F1816A718B4324F /* Limits */,
+				4373EB4366D07AA2CD92690C /* Journey */,
 				24BCE227F87DA52BECC25DC5 /* Onboarding */,
 				3CC72F0DF8F7CC9E14E1BAFF /* Paywall */,
 				31EBFC9668CD478B5F7B67DC /* Permissions */,
@@ -256,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				A239E0CCA4C25B765CB59580 /* FitScroll.app */,
+				D064BDB1EA6DE0919641CCC2 /* FitScrollDeviceActivityMonitor.appex */,
 				38B0816308BA0559358F778A /* FitScrollShieldAction.appex */,
 				6783B27B55029C3D6EC5E4FC /* FitScrollShieldConfiguration.appex */,
 				3E6D6866B75080F4E09718B3 /* FitScrollTests.xctest */,
@@ -325,20 +361,20 @@
 			path = Integration;
 			sourceTree = "<group>";
 		};
-		388CBDE64F1816A718B4324F /* Limits */ = {
-			isa = PBXGroup;
-			children = (
-				894709EC1B85495D3878D4FC /* LimitConfigView.swift */,
-			);
-			path = Limits;
-			sourceTree = "<group>";
-		};
 		3CC72F0DF8F7CC9E14E1BAFF /* Paywall */ = {
 			isa = PBXGroup;
 			children = (
 				0BFED65903140C490BF8E28E /* PaywallView.swift */,
 			);
 			path = Paywall;
+			sourceTree = "<group>";
+		};
+		4373EB4366D07AA2CD92690C /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				51AF87DF30914BCC8184AD85 /* JourneyView.swift */,
+			);
+			path = Journey;
 			sourceTree = "<group>";
 		};
 		49A8CABCE2A28DCED131EE99 /* Errors */ = {
@@ -353,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				B8E4F7AD694B48AE9D21B802 /* Logger.swift */,
+				C9D71741CCECB8529FCFB6DC /* SharedDebugLog.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -383,10 +420,20 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
+		602BE8F8F88BE3D5CC731D60 /* FitScrollDeviceActivityMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				697B567894A6DF27C45F1A05 /* DeviceActivityMonitorExtension.swift */,
+				644E557F4A5EA8FECAA68C27 /* Info.plist */,
+			);
+			path = FitScrollDeviceActivityMonitor;
+			sourceTree = "<group>";
+		};
 		664E29D87D9F9D30248E3D81 = {
 			isa = PBXGroup;
 			children = (
 				A62421324589E0876AA24F48 /* FitScroll */,
+				602BE8F8F88BE3D5CC731D60 /* FitScrollDeviceActivityMonitor */,
 				D4418EAAE0A268571640BEA3 /* FitScrollShieldAction */,
 				52D9116CA62DFF382F227CB7 /* FitScrollShieldConfiguration */,
 				D4CE424197FDFEAB40A20C91 /* FitScrollTests */,
@@ -449,6 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				50B04AF05983624059E18B1F /* Camera */,
+				0A0D593E5D4E0874B1254A1F /* Journey */,
 				4CF77CE5215659D27E5AEE71 /* Logging */,
 				AD732B0F953794092AA5C19E /* Notifications */,
 				8690B7EF1F932B242A750B1E /* PoseDetection */,
@@ -495,10 +543,12 @@
 				2D9737BAC868492A2C013F96 /* AppAccessState.swift */,
 				8C1887CE416CA8C9F7D8E831 /* ExerciseRewardRule.swift */,
 				F940973BB7A87090E1D0860C /* ExerciseType.swift */,
+				1A919D4A4F8C6BE4AE11C251 /* Journey.swift */,
 				6F0A157470BA38B2C30F3228 /* PoseFrame.swift */,
 				7D26F8166F7FEBA9A2FD58B0 /* UnlockCredit.swift */,
 				5B29FECAF02FD390D32D5C1B /* UnlockWindow.swift */,
 				73C1C62D27B4D6DC0F4AB533 /* UsageLimitRule.swift */,
+				6EDC574D62B8C4A8D600DFDC /* UserJourneyProgress.swift */,
 				99A507DC38561C1D13EBE1A6 /* UserSettings.swift */,
 				E289F4CCA82B2A0D993CF089 /* WorkoutRepEvent.swift */,
 				7953189B4B6A9AF20279E778 /* WorkoutSession.swift */,
@@ -600,6 +650,7 @@
 			isa = PBXGroup;
 			children = (
 				C4FA7C064DC546CD0614E28D /* CalculateRewardUseCase.swift */,
+				903A3513C9EC7F0DFBB480C0 /* JourneyContent.swift */,
 				45738B4E6C8BBC3337B525FE /* ManageUnlockUseCase.swift */,
 			);
 			path = UseCases;
@@ -673,6 +724,7 @@
 			dependencies = (
 				CF8237AE77990F3C1571F7DA /* PBXTargetDependency */,
 				F124DC7A1C3911B07456C3C8 /* PBXTargetDependency */,
+				07596AEF4D7B9C5D2371403C /* PBXTargetDependency */,
 			);
 			name = FitScroll;
 			packageProductDependencies = (
@@ -737,6 +789,23 @@
 			productReference = 38B0816308BA0559358F778A /* FitScrollShieldAction.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		F106D12103128B3B09FEE134 /* FitScrollDeviceActivityMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F2CEE84E1038A37D2F4BF6E /* Build configuration list for PBXNativeTarget "FitScrollDeviceActivityMonitor" */;
+			buildPhases = (
+				C7270AE1110DA811EEB35CB9 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FitScrollDeviceActivityMonitor;
+			packageProductDependencies = (
+			);
+			productName = FitScrollDeviceActivityMonitor;
+			productReference = D064BDB1EA6DE0919641CCC2 /* FitScrollDeviceActivityMonitor.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -758,6 +827,10 @@
 						TestTargetID = 40258C81A60E45887E7448BF;
 					};
 					EBAC50CC51D1C86E15CE72B5 = {
+						DevelopmentTeam = MHJ33CJD79;
+						ProvisioningStyle = Automatic;
+					};
+					F106D12103128B3B09FEE134 = {
 						DevelopmentTeam = MHJ33CJD79;
 						ProvisioningStyle = Automatic;
 					};
@@ -783,6 +856,7 @@
 			projectRoot = "";
 			targets = (
 				40258C81A60E45887E7448BF /* FitScroll */,
+				F106D12103128B3B09FEE134 /* FitScrollDeviceActivityMonitor */,
 				EBAC50CC51D1C86E15CE72B5 /* FitScrollShieldAction */,
 				7E9DBCAC3C037115A160862C /* FitScrollShieldConfiguration */,
 				1E51F75E47B01FC22322FE3E /* FitScrollTests */,
@@ -867,7 +941,10 @@
 				C8897ECED58E3D4D92F069A5 /* HapticManager.swift in Sources */,
 				F0FACBE3C4F12676A340F229 /* HistoryView.swift in Sources */,
 				54AEE1C9424D2FAB1BA51C8B /* JointAngleCalculator.swift in Sources */,
-				007EC38979C1B8155196A4D9 /* LimitConfigView.swift in Sources */,
+				DE4FAC5E110AE9203DC3D930 /* Journey.swift in Sources */,
+				8C9D747ECF2A274F9AEE6D71 /* JourneyContent.swift in Sources */,
+				38DAD3810BCDE726B604C788 /* JourneyService.swift in Sources */,
+				B6BC39D095150773B0BA63F4 /* JourneyView.swift in Sources */,
 				D7CA36E134B30D0962C6B1EF /* Logger.swift in Sources */,
 				A1D667675866D108F7994FD5 /* ManageUnlockUseCase.swift in Sources */,
 				3651C5A47A53E08CB527CFB6 /* NotificationManager.swift in Sources */,
@@ -879,11 +956,13 @@
 				D0437693BBA31A4212CB5985 /* PoseOverlayView.swift in Sources */,
 				9C2CDC8641930D9446002D79 /* PoseProvider.swift in Sources */,
 				88D3E7F64B91C18A4C22B781 /* PurchasesService.swift in Sources */,
+				C686B2E29E3FAFFADC936273 /* RepBurstEffect.swift in Sources */,
 				5D2148C01373D94A2F5CAE87 /* RepDetectionEngine.swift in Sources */,
 				746FEC4D1083D51A9ECD5284 /* RootView.swift in Sources */,
 				9E80CED81A881477742695C7 /* ScreenTimeService.swift in Sources */,
 				048A55ED221F917E21C92350 /* SessionSummaryView.swift in Sources */,
 				1CB9629286085E387F329E95 /* SettingsView.swift in Sources */,
+				915C848F0E6D3A248ECCED0B /* SharedDebugLog.swift in Sources */,
 				7A3DC311A18B20C7883E2465 /* SoundManager.swift in Sources */,
 				0F8957D661DC2FCF9C57EC04 /* Strings.swift in Sources */,
 				44A33C24304D1D70F6EC19E8 /* TimeFormatter.swift in Sources */,
@@ -891,12 +970,22 @@
 				B9FB0A766DA59A447FE0F106 /* UnlockSessionView.swift in Sources */,
 				AEDF08C0DC9E03752D3E890E /* UnlockWindow.swift in Sources */,
 				4DC92782569A1E377AC50C75 /* UsageLimitRule.swift in Sources */,
+				0E64EC2CF988E5CE35015CD4 /* UserJourneyProgress.swift in Sources */,
 				711BCEFF6BAFB77522FCB1A4 /* UserSettings.swift in Sources */,
 				DDF7DE9A73969049D4928ECB /* VisionPoseProvider.swift in Sources */,
 				CD2C3BB5A70004513B77263E /* WorkoutCharacterView.swift in Sources */,
 				CA41F0B7A599B13FC5E11D74 /* WorkoutRepEvent.swift in Sources */,
 				7F51B0F196EF88FB1105DA5A /* WorkoutSession.swift in Sources */,
 				0149126BF6E65B6FE7FFEE81 /* WorkoutSessionCoordinator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7270AE1110DA811EEB35CB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA30DACB6F1EFF7DCF7AAFF0 /* DeviceActivityMonitorExtension.swift in Sources */,
+				ECD0082F06E7ADDA87655F9E /* SharedDebugLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,6 +1000,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		07596AEF4D7B9C5D2371403C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F106D12103128B3B09FEE134 /* FitScrollDeviceActivityMonitor */;
+			targetProxy = 4F9E032ED6AEC448FC78AA7B /* PBXContainerItemProxy */;
+		};
 		779BB07B937F7E88E56F0405 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 40258C81A60E45887E7448BF /* FitScroll */;
@@ -946,12 +1040,33 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		245A6AEC830CF54E8814F3F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FitScrollDeviceActivityMonitor/DeviceActivityMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				DEVELOPMENT_TEAM = MHJ33CJD79;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FitScrollDeviceActivityMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.DeviceActivityMonitor;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		419946C43FF0B09181D2530B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldConfiguration/ShieldConfiguration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldConfiguration/Info.plist;
@@ -960,7 +1075,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.ShieldConfiguration;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1064,7 +1179,7 @@
 				CODE_SIGN_ENTITLEMENTS = FitScroll/Resources/FitScroll.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScroll/Info.plist;
@@ -1072,7 +1187,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1119,7 +1234,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldAction/ShieldAction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldAction/Info.plist;
@@ -1128,19 +1243,40 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.ShieldAction;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
+		CB73DFD7207643A606E8561D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FitScrollDeviceActivityMonitor/DeviceActivityMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 19;
+				DEVELOPMENT_TEAM = MHJ33CJD79;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FitScrollDeviceActivityMonitor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.DeviceActivityMonitor;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		DA2101A8101A693F700CEC6C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldAction/ShieldAction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldAction/Info.plist;
@@ -1149,7 +1285,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.ShieldAction;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1161,7 +1297,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldConfiguration/ShieldConfiguration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldConfiguration/Info.plist;
@@ -1170,7 +1306,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.ShieldConfiguration;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1247,7 +1383,7 @@
 				CODE_SIGN_ENTITLEMENTS = FitScroll/Resources/FitScroll.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScroll/Info.plist;
@@ -1255,7 +1391,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1298,6 +1434,15 @@
 			buildConfigurations = (
 				91A3673E3E43D9BB348DD6BC /* Debug */,
 				787D8580311E116B357AD52E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9F2CEE84E1038A37D2F4BF6E /* Build configuration list for PBXNativeTarget "FitScrollDeviceActivityMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				245A6AEC830CF54E8814F3F5 /* Debug */,
+				CB73DFD7207643A606E8561D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

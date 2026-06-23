@@ -5,13 +5,8 @@ import FamilyControls
 struct AppSelectionView: View {
     @EnvironmentObject private var screenTimeService: ScreenTimeService
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
-    @Query private var limits: [UsageLimitRule]
     @State private var showPicker = false
     @State private var authError: String?
-    @State private var dailyLimitMinutes: Int = 30
-
-    private var currentLimit: UsageLimitRule? { limits.first }
 
     var body: some View {
         NavigationStack {
@@ -29,7 +24,7 @@ struct AppSelectionView: View {
                 }
 
                 selectionSummary
-                dailyLimitCard
+                lockExplainerCard
 
                 Spacer()
 
@@ -38,9 +33,6 @@ struct AppSelectionView: View {
                 }
                 .padding(.horizontal, DS.Spacing.lg)
                 .padding(.bottom, DS.Spacing.lg)
-            }
-            .onAppear {
-                dailyLimitMinutes = currentLimit?.dailyLimitMinutes ?? 30
             }
             .navigationTitle(Strings.AppSelection.title)
             .navigationBarTitleDisplayMode(.inline)
@@ -54,10 +46,6 @@ struct AppSelectionView: View {
     private func openPicker() async {
         authError = nil
 
-        // Try to request Screen Time authorization if not already granted.
-        // We swallow errors and always attempt to open the picker afterward —
-        // FamilyActivityPicker handles its own empty state when permission is
-        // still missing.
         if AuthorizationCenter.shared.authorizationStatus != .approved {
             try? await AuthorizationCenter.shared.requestAuthorization(for: .individual)
         }
@@ -65,33 +53,23 @@ struct AppSelectionView: View {
         showPicker = true
     }
 
-    private var dailyLimitCard: some View {
+    /// Static explainer card. Replaces the old "Daily Limit" slider — the
+    /// usage-based lock flow is not implemented and was confusing: apps were
+    /// locked immediately on save regardless of the slider value.
+    private var lockExplainerCard: some View {
         VStack(alignment: .leading, spacing: DS.Spacing.sm) {
-            HStack {
-                Image(systemName: "timer")
+            HStack(spacing: DS.Spacing.sm) {
+                Image(systemName: "lock.fill")
                     .foregroundColor(DS.Colors.accent)
-                Text("Daily Limit")
+                Text("Locked right away")
                     .font(.headline)
                 Spacer()
-                Text("\(dailyLimitMinutes) min")
-                    .font(.headline)
-                    .foregroundColor(DS.Colors.accent)
-                    .monospacedDigit()
             }
 
-            Text("Apps will be locked after reaching this usage today.")
+            Text("The apps you pick are locked as soon as you hit Save. Unlock them temporarily by finishing a workout — every rep earns minutes of screen time.")
                 .font(.caption)
                 .foregroundColor(.secondary)
-
-            Slider(
-                value: Binding(
-                    get: { Double(dailyLimitMinutes) },
-                    set: { dailyLimitMinutes = Int($0) }
-                ),
-                in: 5...240,
-                step: 5
-            )
-            .tint(DS.Colors.accent)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .padding(DS.Spacing.md)
         .background(DS.Colors.cardBackground)
@@ -100,23 +78,9 @@ struct AppSelectionView: View {
     }
 
     private func saveAndDismiss() {
-        // Persist the daily limit rule
-        if let limit = currentLimit {
-            limit.dailyLimitMinutes = dailyLimitMinutes
-            limit.updatedAt = Date()
-        } else {
-            let rule = UsageLimitRule(dailyLimitMinutes: dailyLimitMinutes)
-            modelContext.insert(rule)
-        }
-        try? modelContext.save()
-
-        // Kick off Device Activity monitoring with the chosen threshold
-        // and immediately apply restrictions to the selected apps.
-        screenTimeService.scheduleDeviceActivityMonitoring(limitMinutes: dailyLimitMinutes)
         Task {
             await screenTimeService.applyRestrictions()
         }
-
         dismiss()
     }
 

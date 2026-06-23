@@ -17,19 +17,27 @@ enum CharacterStyle: String, Codable, CaseIterable, Sendable, Identifiable {
     /// Asset catalog image names used by WorkoutCharacterView.
     func upImageName(for exercise: ExerciseType) -> String {
         switch (self, exercise) {
-        case (.woman, .squat):  return "SquatUp"
-        case (.man,   .squat):  return "SquatUpMan"
-        case (.woman, .pushUp): return "PushUpUp"
-        case (.man,   .pushUp): return "PushUpUpMan"
+        case (.woman, .squat):        return "SquatUp"
+        case (.man,   .squat):        return "SquatUpMan"
+        case (.woman, .pushUp):       return "PushUpUp"
+        case (.man,   .pushUp):       return "PushUpUpMan"
+        case (.woman, .jumpingJacks): return "JumpingJackUp"
+        case (.man,   .jumpingJacks): return "JumpingJackUpMan"
+        case (.woman, .lunge):        return "LungeUp"
+        case (.man,   .lunge):        return "LungeUpMan"
         }
     }
 
     func downImageName(for exercise: ExerciseType) -> String {
         switch (self, exercise) {
-        case (.woman, .squat):  return "SquatDown"
-        case (.man,   .squat):  return "SquatDownMan"
-        case (.woman, .pushUp): return "PushUpDown"
-        case (.man,   .pushUp): return "PushUpDownMan"
+        case (.woman, .squat):        return "SquatDown"
+        case (.man,   .squat):        return "SquatDownMan"
+        case (.woman, .pushUp):       return "PushUpDown"
+        case (.man,   .pushUp):       return "PushUpDownMan"
+        case (.woman, .jumpingJacks): return "JumpingJackDown"
+        case (.man,   .jumpingJacks): return "JumpingJackDownMan"
+        case (.woman, .lunge):        return "LungeDown"
+        case (.man,   .lunge):        return "LungeDownMan"
         }
     }
 }

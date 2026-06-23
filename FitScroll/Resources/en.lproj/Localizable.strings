@@ -65,7 +65,7 @@
 "dashboard.title" = "Dashboard";
 "dashboard.active_limits" = "Active Limits";
 "dashboard.today_earned" = "Today's Earned Time";
-"dashboard.locked_apps" = "Locked Apps";
+"dashboard.locked_apps" = "Protected Apps";
 "dashboard.recent_sessions" = "Recent Sessions";
 "dashboard.unlock_now" = "Unlock with Exercise";
 "dashboard.no_limits_set" = "No limits set yet";
@@ -191,3 +191,11 @@
 "notifications.locked_again.title_plural_format" = "%d apps locked again";
 "notifications.locked_again.body_singular" = "Tap to earn more screen time with a quick workout.";
 "notifications.locked_again.body_plural_format" = "%d apps are restricted again. Tap to earn more time.";
+
+/* Exercise: Jumping Jacks */
+"exercise.jumping_jacks.name" = "Jumping Jacks";
+"exercise.jumping_jacks.description" = "Jump feet out wide while raising arms overhead, then jump back to start";
+
+/* Exercise: Lunge */
+"exercise.lunge.name" = "Lunges";
+"exercise.lunge.description" = "Step one foot forward, bend both knees until the back knee almost touches the floor, then push back up";

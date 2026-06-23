@@ -1,4 +1,10 @@
 import Foundation
+import os
+
+private let repLog = os.Logger(
+    subsystem: "com.fitscroll",
+    category: "rep"
+)
 
 struct ExerciseThresholds: Sendable {
     let upAngle: Double
@@ -21,10 +27,31 @@ struct ExerciseThresholds: Sendable {
         debounceInterval: 0.4, minimumRepDuration: 0.4
     )
 
+    // Hip-shoulder-wrist angle. Arms at sides ~15°, arms out horizontal
+    // ~90°, arms overhead ~170°. We count a rep when the user goes from
+    // arms-down to arms-overhead — ignoring the legs for now because
+    // Vision's ankle detection is too noisy from a front-facing camera.
+    static let jumpingJacks = ExerciseThresholds(
+        upAngle: 140, downAngle: 40, minimumConfidence: 0.25,
+        debounceInterval: 0.25, minimumRepDuration: 0.25
+    )
+
+    // Averaged knee angle. Standing upright ~175°; lunge pose has one
+    // knee bent to ~90° while the back leg stays relatively straight
+    // (~160°), averaging around 125° for a deep rep. In practice the
+    // front camera averages in noise from the occluded back leg, so
+    // mid-depth lunges only dip to ~140°. Threshold widened accordingly.
+    static let lunge = ExerciseThresholds(
+        upAngle: 165, downAngle: 145, minimumConfidence: 0.3,
+        debounceInterval: 0.35, minimumRepDuration: 0.3
+    )
+
     static func thresholds(for exerciseType: ExerciseType) -> ExerciseThresholds {
         switch exerciseType {
         case .squat: return .squat
         case .pushUp: return .pushUp
+        case .jumpingJacks: return .jumpingJacks
+        case .lunge: return .lunge
         }
     }
 }
@@ -66,6 +93,11 @@ final class RepDetectionEngine: @unchecked Sendable {
     func processFrame(_ frame: PoseFrame) -> WorkoutRepEvent? {
         guard frame.confidence >= thresholds.minimumConfidence else {
             emitDebug(angle: lastAngle, confidence: frame.confidence, rejected: true, reason: "Low confidence")
+            if exerciseType == .lunge {
+                repLog.notice(
+                    "lunge skip conf=\(frame.confidence, privacy: .public) < \(self.thresholds.minimumConfidence, privacy: .public)"
+                )
+            }
             return nil
         }
 
@@ -79,12 +111,42 @@ final class RepDetectionEngine: @unchecked Sendable {
         let angle = calculatePrimaryAngle(from: frame)
         guard angle > 0 else {
             emitDebug(angle: 0, confidence: frame.confidence, rejected: true, reason: "Cannot calculate angle")
+            if exerciseType == .lunge {
+                repLog.notice("lunge no-angle (both sides dropped)")
+            }
             return nil
         }
 
+        let previousPhase = currentPhase
         lastAngle = angle
         let result = updatePhase(angle: angle, confidence: frame.confidence, timestamp: frame.timestamp)
         emitDebug(angle: angle, confidence: frame.confidence, rejected: result == nil, reason: nil)
+
+        // Per-frame logging for lunge tuning. We only log when exercise
+        // type is lunge so squat/push-up workouts don't flood the log.
+        if exerciseType == .lunge {
+            let roundedAngle = (angle * 10).rounded() / 10
+            let roundedConf = (Double(frame.confidence) * 100).rounded() / 100
+            let phaseChanged = previousPhase != currentPhase
+            let phaseStr = "\(previousPhase.rawValue)→\(currentPhase.rawValue)"
+            if phaseChanged {
+                repLog.notice(
+                    "lunge angle=\(roundedAngle, privacy: .public) conf=\(roundedConf, privacy: .public) \(phaseStr, privacy: .public) reps=\(self.repCount, privacy: .public)"
+                )
+            } else {
+                repLog.notice(
+                    "lunge angle=\(roundedAngle, privacy: .public) phase=\(self.currentPhase.rawValue, privacy: .public)"
+                )
+            }
+            if let result = result {
+                let verdict = result.wasAccepted ? "ACCEPTED" : "rejected"
+                let reasonStr = result.rejectionReason?.rawValue ?? "-"
+                repLog.notice(
+                    "lunge rep \(verdict, privacy: .public) #\(result.repNumber, privacy: .public) reason=\(reasonStr, privacy: .public)"
+                )
+            }
+        }
+
         return result
     }
 
@@ -105,6 +167,12 @@ final class RepDetectionEngine: @unchecked Sendable {
             return kneeAngle(from: frame)
         case .pushUp:
             return elbowAngle(from: frame)
+        case .jumpingJacks:
+            return armRaiseAngle(from: frame)
+        case .lunge:
+            // Lunges use the same hip-knee-ankle angle as squats — the
+            // averaged knee angle drops as the front knee bends.
+            return kneeAngle(from: frame)
         }
     }
 
@@ -187,6 +255,20 @@ final class RepDetectionEngine: @unchecked Sendable {
             frame,
             (.leftShoulder, .rightShoulder),
             (.leftElbow, .rightElbow),
+            (.leftWrist, .rightWrist)
+        )
+    }
+
+    /// Hip-Shoulder-Wrist angle — tracks how raised the arms are for
+    /// jumping jacks. Arms at sides ~15°, arms horizontal ~90°, arms
+    /// overhead ~160-170°. We intentionally ignore leg position here: the
+    /// arm swing is the more reliable signal from a front camera because
+    /// Vision's ankle detection drops confidence fast during jumps.
+    private func armRaiseAngle(from frame: PoseFrame) -> Double {
+        bothSideWeightedAngle(
+            frame,
+            (.leftHip, .rightHip),
+            (.leftShoulder, .rightShoulder),
             (.leftWrist, .rightWrist)
         )
     }

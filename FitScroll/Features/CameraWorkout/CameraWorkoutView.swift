@@ -36,10 +36,10 @@ struct CameraWorkoutView: View {
             VStack {
                 topBar
 
-                // Compact rep + character pill (top-left)
+                // Compact rep + character pill (top-right, matching design)
                 HStack {
-                    repCharacterPill
                     Spacer()
+                    repCharacterPill
                 }
                 .padding(.horizontal, DS.Spacing.lg)
                 .padding(.top, DS.Spacing.sm)
@@ -214,29 +214,60 @@ struct CameraWorkoutView: View {
     }
 
     private var circularRepCounter: some View {
-        ZStack {
-            Circle()
-                .fill(
-                    LinearGradient(
-                        colors: counterGradientColors,
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
+        VStack(spacing: DS.Spacing.xs) {
+            ZStack {
+                // Electric + ember burst sits behind the counter; it's
+                // triggered by each new rep via onChange inside the view
+                // itself.
+                RepBurstEffect(
+                    repCount: coordinator.repCounter.acceptedReps,
+                    baseSize: 96
                 )
-                .frame(width: 96, height: 96)
-                .shadow(color: counterShadowColor, radius: 24)
 
-            Circle()
-                .stroke(Color.white.opacity(0.45), lineWidth: 3)
-                .frame(width: 96, height: 96)
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: counterGradientColors,
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 96, height: 96)
+                    .shadow(color: counterShadowColor, radius: 24)
 
-            Text("\(coordinator.repCounter.acceptedReps)")
-                .font(.system(size: 42, weight: .bold, design: .rounded))
-                .foregroundColor(.white)
-                .contentTransition(.numericText(value: Double(coordinator.repCounter.acceptedReps)))
+                Circle()
+                    .stroke(Color.white.opacity(0.45), lineWidth: 3)
+                    .frame(width: 96, height: 96)
+
+                Text("\(coordinator.repCounter.acceptedReps)")
+                    .font(.system(size: 42, weight: .bold, design: .rounded))
+                    .foregroundColor(.white)
+                    .contentTransition(.numericText(value: Double(coordinator.repCounter.acceptedReps)))
+            }
+            .scaleEffect(counterPulse)
+
+            // Live "earned minutes" pill so the user sees the conversion as
+            // reps land. Uses the same minutes-per-rep rule the session
+            // coordinator applies on finish.
+            let earned = Double(coordinator.repCounter.acceptedReps)
+                * exerciseType.defaultMinutesPerRep
+            Text("+\(formattedEarned(earned)) min earned")
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .foregroundColor(DS.Colors.accent)
+                .padding(.horizontal, DS.Spacing.md)
+                .padding(.vertical, 6)
+                .background(.ultraThinMaterial)
+                .cornerRadius(DS.Corner.large)
         }
-        .scaleEffect(counterPulse)
         .padding(.bottom, DS.Spacing.md)
+    }
+
+    private func formattedEarned(_ minutes: Double) -> String {
+        if minutes == minutes.rounded() {
+            return String(Int(minutes))
+        }
+        return String(format: "%.1f", minutes)
     }
 
     private var feedbackBanner: some View {
