@@ -1,16 +1,42 @@
 import SwiftUI
 
 enum DS {
+    /// Dark "neon" palette matching the FitScroll UI design system:
+    /// near-black surfaces, neon green primary, electric blue accent.
     enum Colors {
-        static let primary = Color.blue
-        static let secondary = Color.indigo
-        static let accent = Color.orange
-        static let success = Color.green
-        static let warning = Color.yellow
-        static let error = Color.red
-        static let background = Color(.systemBackground)
-        static let secondaryBackground = Color(.secondarySystemBackground)
-        static let cardBackground = Color(.tertiarySystemBackground)
+        // Brand / accents
+        static let neon = Color(red: 0.133, green: 0.957, blue: 0.659)      // #22F4A8
+        static let primary = Color(red: 0.231, green: 0.510, blue: 0.965)   // #3B82F6 electric blue
+        static let secondary = Color(red: 0.376, green: 0.647, blue: 0.980) // #60A5FA accent blue
+        static let accent = Color(red: 1.0, green: 0.690, blue: 0.125)      // #FFB020 warning orange
+        static let success = Color(red: 0.133, green: 0.957, blue: 0.659)   // #22F4A8
+        static let warning = Color(red: 1.0, green: 0.690, blue: 0.125)     // #FFB020
+        static let error = Color(red: 1.0, green: 0.353, blue: 0.373)       // #FF5A5F
+
+        // Surfaces
+        static let background = Color(red: 0.051, green: 0.067, blue: 0.090)        // #0D1117 Surface 1
+        static let cardBackground = Color(red: 0.086, green: 0.106, blue: 0.133)    // #161B22 Surface 2
+        static let secondaryBackground = Color(red: 0.122, green: 0.149, blue: 0.188) // #1F2630 Surface 3
+        static let border = Color(red: 0.165, green: 0.196, blue: 0.235)           // #2A323C
+
+        // Text
+        static let textPrimary = Color(red: 0.949, green: 0.957, blue: 0.973)   // #F2F4F8
+        static let textSecondary = Color(red: 0.596, green: 0.643, blue: 0.682) // #98A4AE
+    }
+
+    /// Standard reusable gradients pulled from the design system.
+    enum Gradients {
+        static let primaryButton = LinearGradient(
+            colors: [Colors.primary, Colors.secondary],
+            startPoint: .leading,
+            endPoint: .trailing
+        )
+
+        static let neonRing = LinearGradient(
+            colors: [Colors.neon, Colors.secondary],
+            startPoint: .top,
+            endPoint: .bottom
+        )
     }
 
     enum Spacing {
@@ -44,5 +70,19 @@ enum DS {
         static let standard = SwiftUI.Animation.easeInOut(duration: 0.35)
         static let slow = SwiftUI.Animation.easeInOut(duration: 0.5)
         static let spring = SwiftUI.Animation.spring(response: 0.4, dampingFraction: 0.7)
+    }
+}
+
+extension View {
+    /// Standard dark card surface used across the redesigned screens:
+    /// Surface 2 fill with a hairline Surface-border stroke.
+    func dsCard(cornerRadius: CGFloat = DS.Corner.large) -> some View {
+        self
+            .background(DS.Colors.cardBackground)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(DS.Colors.border, lineWidth: 1)
+            )
     }
 }

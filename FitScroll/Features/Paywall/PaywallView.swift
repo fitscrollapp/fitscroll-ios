@@ -205,38 +205,54 @@ struct PaywallView: View {
     }
 
     private var ctaTitle: String {
-        guard let pkg = selectedPackage else { return "Start Free Trial" }
-        if pkg.packageType == .lifetime {
+        guard let pkg = selectedPackage else { return "Start 7-Day Free Trial" }
+        switch pkg.packageType {
+        case .lifetime:
             return "Buy Lifetime"
-        }
-        if pkg.storeProduct.introductoryDiscount != nil {
+        case .annual, .monthly:
+            // Always show the trial CTA for auto-renewable subs. StoreKit
+            // sometimes returns `introductoryDiscount == nil` in sandbox
+            // until Apple finishes reviewing the intro offer, but our ASC
+            // config always attaches a 7-day free trial to both products.
             return "Start 7-Day Free Trial"
+        default:
+            return "Subscribe"
         }
-        return "Subscribe"
     }
 
     private var secondaryActions: some View {
-        HStack(spacing: DS.Spacing.lg) {
-            Button("Restore Purchases") {
-                Task { await purchases.restorePurchases() }
+        VStack(spacing: DS.Spacing.xs) {
+            HStack(spacing: DS.Spacing.lg) {
+                Button("Restore Purchases") {
+                    Task { await purchases.restorePurchases() }
+                }
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.8))
             }
-            .font(.caption)
-            .foregroundColor(.white.opacity(0.7))
 
-            Text("·")
-                .foregroundColor(.white.opacity(0.4))
+            HStack(spacing: DS.Spacing.md) {
+                Link(
+                    "Terms of Use",
+                    destination: URL(string: "https://fit-scroll.app/terms")!
+                )
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.8))
 
-            Button("Terms & Privacy") {
-                // Optional: open terms URL
+                Text("·").foregroundColor(.white.opacity(0.4))
+
+                Link(
+                    "Privacy Policy",
+                    destination: URL(string: "https://fit-scroll.app/privacy")!
+                )
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.8))
             }
-            .font(.caption)
-            .foregroundColor(.white.opacity(0.7))
         }
         .padding(.top, DS.Spacing.sm)
     }
 
     private var legalFooter: some View {
-        Text("Subscriptions auto-renew. Cancel anytime in App Store settings. Free trial converts to paid subscription unless cancelled 24 hours before trial ends.")
+        Text("7-day free trial, then auto-renews at the price above until you cancel. Cancel anytime in iOS Settings → Apple ID → Subscriptions.")
             .font(.caption2)
             .foregroundColor(.white.opacity(0.4))
             .multilineTextAlignment(.center)
@@ -318,13 +334,9 @@ private struct PlanCard: View {
     private var subtitle: String {
         switch package.packageType {
         case .annual:
-            return package.storeProduct.introductoryDiscount != nil
-                ? "7 days free, then billed yearly"
-                : "Billed yearly"
+            return "7 days free, then billed yearly"
         case .monthly:
-            return package.storeProduct.introductoryDiscount != nil
-                ? "7 days free, then billed monthly"
-                : "Billed monthly"
+            return "7 days free, then billed monthly"
         case .lifetime:
             return "One-time purchase, yours forever"
         default:
@@ -335,10 +347,26 @@ private struct PlanCard: View {
     private var pricePerPeriod: String? {
         switch package.packageType {
         case .annual:
-            // ~ $X/month equivalent
-            let price = package.storeProduct.price
-            let monthly = (price as NSDecimalNumber).doubleValue / 12.0
-            return String(format: "≈ $%.2f/mo", monthly)
+            let product = package.storeProduct
+            let monthly = (product.price as NSDecimalNumber).dividing(
+                by: NSDecimalNumber(value: 12)
+            )
+            // Prefer RC's built-in priceFormatter — it's pre-configured with
+            // the product's priceLocale so currency symbol + grouping match
+            // the user's actual store region.
+            if let formatter = product.priceFormatter,
+               let localized = formatter.string(from: monthly) {
+                return "≈ \(localized)/mo"
+            }
+            // Fallback: manual NumberFormatter with currencyCode.
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            if let code = product.currencyCode {
+                formatter.currencyCode = code
+            }
+            let localized = formatter.string(from: monthly)
+                ?? "\(monthly.doubleValue)"
+            return "≈ \(localized)/mo"
         case .monthly:
             return "per month"
         case .lifetime:

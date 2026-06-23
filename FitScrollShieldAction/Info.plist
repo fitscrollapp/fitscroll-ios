@@ -17,15 +17,15 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.0.2</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>19</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict/>
 		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.ManagedSettingsUI.shield-action-service</string>
+		<string>com.apple.ManagedSettings.shield-action-service</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).ShieldActionExtension</string>
 	</dict>

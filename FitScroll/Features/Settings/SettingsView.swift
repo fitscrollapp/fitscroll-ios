@@ -15,15 +15,54 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
+                headerSection
                 avatarSection
                 exerciseRewardsSection
+                    .listRowBackground(DS.Colors.cardBackground)
                 limitsSection
+                    .listRowBackground(DS.Colors.cardBackground)
                 preferencesSection
+                    .listRowBackground(DS.Colors.cardBackground)
                 aboutSection
+                    .listRowBackground(DS.Colors.cardBackground)
                 dangerSection
+                    .listRowBackground(DS.Colors.cardBackground)
             }
+            .scrollContentBackground(.hidden)
+            .background(DS.Colors.background.ignoresSafeArea())
             .navigationTitle(Strings.Settings.title)
+            .navigationBarTitleDisplayMode(.inline)
+            .onAppear { seedMissingRewardRules() }
         }
+    }
+
+    private var headerSection: some View {
+        Section {
+            VStack(alignment: .leading, spacing: DS.Spacing.xs) {
+                Text("Settings")
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .foregroundColor(DS.Colors.textPrimary)
+                Text("Customize your experience.")
+                    .font(.subheadline)
+                    .foregroundColor(DS.Colors.textSecondary)
+            }
+            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets(top: DS.Spacing.sm, leading: DS.Spacing.xs, bottom: DS.Spacing.sm, trailing: 0))
+        }
+    }
+
+    /// Ensure every currently-known ExerciseType has a reward rule in
+    /// the database. Existing installs from before new exercises were
+    /// added wouldn't otherwise see those exercises in the rewards
+    /// section — this backfills them using each type's default rate.
+    private func seedMissingRewardRules() {
+        let existingTypes = Set(rewardRules.compactMap { $0.exerciseType })
+        let missing = ExerciseType.allCases.filter { !existingTypes.contains($0) }
+        guard !missing.isEmpty else { return }
+        for type in missing {
+            modelContext.insert(ExerciseRewardRule(exerciseType: type))
+        }
+        try? modelContext.save()
     }
 
     private var avatarSection: some View {
@@ -50,7 +89,7 @@ struct SettingsView: View {
             ForEach(rewardRules, id: \.exerciseTypeRaw) { rule in
                 if let exercise = rule.exerciseType {
                     HStack {
-                        ExerciseIconView(exerciseType: exercise, size: 22, color: DS.Colors.primary)
+                        ExerciseIconView(exerciseType: exercise, size: 22, color: DS.Colors.neon)
                             .frame(width: 28)
 
                         Text(exercise.displayName)
@@ -192,8 +231,8 @@ private struct AvatarCard: View {
                     .frame(maxWidth: .infinity)
                     .padding(.top, DS.Spacing.sm)
 
-                Image(systemName: isSelected ? "largecircle.fill.circle" : "circle")
-                    .foregroundColor(isSelected ? DS.Colors.primary : .secondary.opacity(0.4))
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .foregroundColor(isSelected ? DS.Colors.primary : DS.Colors.textSecondary.opacity(0.5))
                     .font(.title3)
             }
             .padding(.vertical, DS.Spacing.sm)

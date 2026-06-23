@@ -65,7 +65,7 @@
 "dashboard.title" = "Ana Sayfa";
 "dashboard.active_limits" = "Aktif Limitler";
 "dashboard.today_earned" = "Bugün Kazanılan Süre";
-"dashboard.locked_apps" = "Kilitli Uygulamalar";
+"dashboard.locked_apps" = "Korunan Uygulamalar";
 "dashboard.recent_sessions" = "Son Oturumlar";
 "dashboard.unlock_now" = "Egzersizle Kilidi Aç";
 "dashboard.no_limits_set" = "Henüz limit belirlenmedi";
@@ -191,3 +191,11 @@
 "notifications.locked_again.title_plural_format" = "%d uygulama tekrar kilitli";
 "notifications.locked_again.body_singular" = "Hızlı bir egzersizle daha fazla süre kazanmak için dokun.";
 "notifications.locked_again.body_plural_format" = "%d uygulama tekrar kısıtlandı. Daha fazla süre kazanmak için dokun.";
+
+/* Exercise: Jumping Jacks */
+"exercise.jumping_jacks.name" = "Jumping Jack";
+"exercise.jumping_jacks.description" = "Zıplarken ayakları yana aç ve kolları başının üstüne kaldır, sonra başlangıç pozisyonuna dön";
+
+/* Exercise: Lunge */
+"exercise.lunge.name" = "Hamle";
+"exercise.lunge.description" = "Bir ayağını öne at, arka dizin yere değer gibi her iki dizini bük, sonra geri doğrul";

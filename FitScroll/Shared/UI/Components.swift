@@ -17,9 +17,10 @@ struct PrimaryButton: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, DS.Spacing.md)
-            .background(DS.Colors.primary)
+            .background(DS.Gradients.primaryButton)
             .foregroundColor(.white)
-            .cornerRadius(DS.Corner.medium)
+            .clipShape(RoundedRectangle(cornerRadius: DS.Corner.large, style: .continuous))
+            .shadow(color: DS.Colors.primary.opacity(0.35), radius: 12, y: 4)
         }
         .disabled(isLoading)
     }
@@ -39,14 +40,15 @@ struct StatCard: View {
             Text(value)
                 .font(.title2)
                 .fontWeight(.bold)
+                .foregroundColor(DS.Colors.textPrimary)
             Text(title)
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(DS.Colors.textSecondary)
+                .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
         .padding(DS.Spacing.md)
-        .background(DS.Colors.cardBackground)
-        .cornerRadius(DS.Corner.medium)
+        .dsCard(cornerRadius: DS.Corner.medium)
     }
 }
 
@@ -72,6 +74,7 @@ struct ExerciseRow: View {
                     HStack {
                         Text(exercise.displayName)
                             .font(.headline)
+                            .foregroundColor(DS.Colors.textPrimary)
                         if exercise.stability == .experimental {
                             Text(Strings.Unlock.experimentalLabel)
                                 .font(.caption2)

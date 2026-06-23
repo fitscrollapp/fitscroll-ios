@@ -234,7 +234,6 @@ struct OnboardingView: View {
             for exercise in ExerciseType.allCases {
                 modelContext.insert(ExerciseRewardRule(exerciseType: exercise))
             }
-            modelContext.insert(UsageLimitRule())
         } else if let existing = existingSettings?.first {
             existing.hasCompletedOnboarding = true
             existing.updatedAt = Date()

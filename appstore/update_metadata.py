@@ -18,13 +18,19 @@ APP_NAME = "FitScroll"
 BUNDLE_ID = "com.huseyinbabal.fitscroll"
 LOCALE = "en-US"
 
-SUBTITLE = "Exercise to Unlock Apps"
+# ASO-optimized name — puts the highest-volume category keyword ("Screen
+# Time") in the most heavily weighted search field.
+NAME = "FitScroll: Screen Time Fitness"
 
-DESCRIPTION = """Tired of doomscrolling until midnight? Losing hours to Instagram, TikTok, and X without remembering what you even saw? FitScroll turns your phone into a workout coach — lock the apps that fuel your doomscroll spiral, and earn screen time back by doing real exercises in front of your camera.
+SUBTITLE = "Lock Apps, Workout to Unlock"
+
+DESCRIPTION = """Tired of doomscrolling until midnight? Losing hours to the same three apps without remembering what you even saw? FitScroll locks the apps that steal your day — and makes you earn them back with real push-ups and squats, counted live by your camera.
+
+Break the dopamine loop. Take your attention back.
 
 HOW IT WORKS
 
-1. Pick the apps you want to limit — Instagram, TikTok, YouTube, X, or any other time-sink.
+1. Pick the apps you want to limit — any social, video, or time-sink app on your phone.
 2. Set a daily limit. When you hit it, the apps lock automatically.
 3. When you want more screen time, open FitScroll and start an exercise session.
 4. Your iPhone camera counts your reps in real time using on-device motion detection.
@@ -40,9 +46,9 @@ KEY FEATURES
 
 • Earnable Minutes — Customize how much screen time each rep is worth. Make it easy or brutal — it's up to you.
 
-• Woman & Man Avatars — Switch between animated characters that mirror your position live while you work out.
-
 • Workout History & Analytics — See your reps, minutes earned, and activity charts by day, week, or month.
+
+• Smart Unlock Alerts — Get a 1-minute warning before your apps re-lock, and a reminder the moment they do.
 
 • Private by Design — All pose detection happens on-device via Apple's Vision framework. No account, no cloud, no tracking.
 
@@ -50,17 +56,29 @@ KEY FEATURES
 
 Built for the person who knows doomscrolling is the problem but can't quite stop. Earn your scrolls with sweat. Break the dopamine loop. Take your attention back.
 
-7 days free, then subscribe monthly or yearly — or unlock everything forever with a one-time Lifetime purchase."""
+SUBSCRIPTIONS
 
-KEYWORDS = "doomscroll,screen time,pushup,squat,instagram,tiktok,fitness,workout,habit,focus,dopamine"
+• Monthly Premium — auto-renewable, billed monthly
+• Yearly Premium — auto-renewable, billed yearly (best value)
+• Lifetime — one-time purchase, unlocks everything forever
 
-PROMOTIONAL_TEXT = "Stop doomscrolling. Lock Instagram, TikTok & YouTube until you earn them with push-ups or squats. Live rep counting, 100% on-device. 7-day free trial."
+All auto-renewable subscriptions include a 7-day free trial. Subscriptions auto-renew at the price above until you cancel at least 24 hours before the current period ends. Manage or cancel anytime in iOS Settings → Apple ID → Subscriptions.
+
+Terms of Use (EULA): https://fit-scroll.app/terms
+Privacy Policy: https://fit-scroll.app/privacy"""
+
+# 96/100 chars, 14 indexable keywords. No brand names (competitor trademarks
+# violate App Store Review Guideline 2.3.10). Title already covers "screen",
+# "time", "fitness"; subtitle covers "lock", "apps", "workout", "unlock".
+KEYWORDS = "doomscroll,block,locker,pushup,squat,habit,focus,dopamine,detox,reel,mindful,limit,scroll,timer"
+
+PROMOTIONAL_TEXT = "Stop losing hours to your feed. Lock distracting apps and earn them back with real push-ups. Private on-device rep counting. 7-day free trial."
 
 # whatsNew is only editable for version updates (not initial 1.0 release).
 # We'll populate it on the next version.
 WHATS_NEW = None
 
-PRIVACY_POLICY_URL = "https://huseyinbabal.github.io/fitscroll/privacy"
+PRIVACY_POLICY_URL = "https://fit-scroll.app/privacy"
 
 
 def step(msg):
@@ -130,6 +148,7 @@ def main():
                 "type": "appInfoLocalizations",
                 "id": info_loc_id,
                 "attributes": {
+                    "name": NAME,
                     "subtitle": SUBTITLE,
                     "privacyPolicyUrl": PRIVACY_POLICY_URL,
                 },
