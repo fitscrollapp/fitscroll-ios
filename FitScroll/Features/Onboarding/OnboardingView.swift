@@ -100,7 +100,11 @@ struct OnboardingView: View {
                 isLoading: isRequestingPermission
             )
 
-            if stage != .hook {
+            // Guideline 5.1.1(iv): no "exit"/"Later" button on the message
+            // shown before the camera permission prompt — the user must always
+            // proceed to the system request. So hide the secondary button on
+            // the camera stage (as well as the first stage).
+            if stage != .hook && stage != .camera {
                 Button(backButtonTitle, action: back)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
@@ -117,7 +121,9 @@ struct OnboardingView: View {
         case .screenTime:
             return screenTimeGranted ? Strings.Onboarding.continue : Strings.Onboarding.ScreenTimeStage.cta
         case .camera:
-            return cameraGranted ? Strings.Onboarding.finish : Strings.Onboarding.CameraStage.cta
+            // Guideline 5.1.1(iv): the button before the system camera prompt
+            // must use neutral wording ("Continue"), never "Allow".
+            return cameraGranted ? Strings.Onboarding.finish : Strings.Onboarding.continue
         }
     }
 

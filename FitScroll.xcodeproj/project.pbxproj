@@ -1045,7 +1045,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollDeviceActivityMonitor/DeviceActivityMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollDeviceActivityMonitor/Info.plist;
@@ -1066,7 +1066,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldConfiguration/ShieldConfiguration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldConfiguration/Info.plist;
@@ -1179,7 +1179,7 @@
 				CODE_SIGN_ENTITLEMENTS = FitScroll/Resources/FitScroll.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScroll/Info.plist;
@@ -1234,7 +1234,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldAction/ShieldAction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldAction/Info.plist;
@@ -1255,7 +1255,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollDeviceActivityMonitor/DeviceActivityMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollDeviceActivityMonitor/Info.plist;
@@ -1276,7 +1276,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldAction/ShieldAction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldAction/Info.plist;
@@ -1297,7 +1297,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldConfiguration/ShieldConfiguration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldConfiguration/Info.plist;
@@ -1383,7 +1383,7 @@
 				CODE_SIGN_ENTITLEMENTS = FitScroll/Resources/FitScroll.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScroll/Info.plist;

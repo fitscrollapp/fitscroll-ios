@@ -46,7 +46,7 @@
 "onboarding.screen_time.cta" = "Allow Screen Time";
 "onboarding.screen_time.later" = "I'll do this later";
 
-"onboarding.camera.title" = "Allow Camera";
+"onboarding.camera.title" = "Camera Access";
 "onboarding.camera.body" = "FitScroll uses the camera to count your reps. All on-device, nothing recorded.";
 "onboarding.camera.cta" = "Allow Camera";
 "onboarding.camera.later" = "I'll do this later";
