@@ -59,10 +59,10 @@ struct OnboardingView: View {
                 Capsule()
                     .fill(
                         s.rawValue <= stage.rawValue
-                        ? DS.Colors.primary
-                        : DS.Colors.primary.opacity(0.15)
+                        ? DS.Colors.neon
+                        : DS.Colors.border
                     )
-                    .frame(height: 4)
+                    .frame(height: 10)
             }
         }
     }
@@ -246,6 +246,8 @@ struct OnboardingView: View {
         }
 
         try? modelContext.save()
+
+        AppsFlyerService.shared.logEvent("af_tutorial_completion", ["af_success": true])
     }
 }
 
@@ -346,10 +348,10 @@ private struct TransformColumn: View {
         .frame(maxWidth: .infinity, minHeight: 200, alignment: .topLeading)
         .background(tint.opacity(0.08))
         .overlay(
-            RoundedRectangle(cornerRadius: DS.Corner.medium)
-                .stroke(tint.opacity(0.25), lineWidth: 1)
+            RoundedRectangle(cornerRadius: DS.Corner.xl)
+                .stroke(tint.opacity(0.35), lineWidth: 2)
         )
-        .cornerRadius(DS.Corner.medium)
+        .cornerRadius(DS.Corner.xl)
     }
 }
 
@@ -360,9 +362,7 @@ private struct PrivacyStage: View {
         VStack(spacing: DS.Spacing.lg) {
             Spacer(minLength: DS.Spacing.lg)
 
-            Image(systemName: "lock.shield.fill")
-                .font(.system(size: 56))
-                .foregroundColor(DS.Colors.primary)
+            DuoIconBadge(systemName: "lock.shield.fill", color: DS.Colors.primary, size: 96)
 
             Text(Strings.Onboarding.Privacy.title)
                 .font(.system(size: 28, weight: .bold, design: .rounded))
@@ -404,16 +404,11 @@ private struct PrivacyCard: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: DS.Spacing.md) {
-            Image(systemName: icon)
-                .font(.title2)
-                .foregroundColor(.white)
-                .frame(width: 44, height: 44)
-                .background(tint)
-                .cornerRadius(DS.Corner.small)
+            DuoIconBadge(systemName: icon, color: tint, size: 44)
 
             VStack(alignment: .leading, spacing: DS.Spacing.xs) {
                 Text(title)
-                    .font(.headline)
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
                 Text(message)
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -438,9 +433,11 @@ private struct ScreenTimeStageView: View {
         VStack(spacing: DS.Spacing.lg) {
             Spacer()
 
-            Image(systemName: granted ? "checkmark.shield.fill" : "hourglass")
-                .font(.system(size: 72))
-                .foregroundColor(granted ? DS.Colors.success : DS.Colors.primary)
+            DuoIconBadge(
+                systemName: granted ? "checkmark.shield.fill" : "hourglass",
+                color: granted ? DS.Colors.success : DS.Colors.primary,
+                size: 110
+            )
 
             Text(Strings.Onboarding.ScreenTimeStage.title)
                 .font(.system(size: 28, weight: .bold, design: .rounded))
@@ -467,9 +464,11 @@ private struct CameraStageView: View {
         VStack(spacing: DS.Spacing.lg) {
             Spacer()
 
-            Image(systemName: granted ? "checkmark.circle.fill" : "camera.fill")
-                .font(.system(size: 72))
-                .foregroundColor(granted ? DS.Colors.success : DS.Colors.accent)
+            DuoIconBadge(
+                systemName: granted ? "checkmark.circle.fill" : "camera.fill",
+                color: granted ? DS.Colors.success : DS.Colors.accent,
+                size: 110
+            )
 
             Text(Strings.Onboarding.CameraStage.title)
                 .font(.system(size: 28, weight: .bold, design: .rounded))

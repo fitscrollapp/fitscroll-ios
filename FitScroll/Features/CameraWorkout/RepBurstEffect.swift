@@ -344,16 +344,8 @@ struct RepBurstEffect: View {
             }
         }
 
-        // Electric zap sound at milestones. Two variants so mega hits
-        // land with noticeably more weight than mid.
-        switch tier {
-        case .standard:
-            break
-        case .mid:
-            SoundManager.electricZap()
-        case .mega:
-            SoundManager.electricMegaZap()
-        }
+        // Sound moved to the milestone "Level Up" ladder in
+        // CameraWorkoutView — the visual burst stays, the synth zap is gone.
     }
 
     private func easeOut(_ t: Double) -> Double {

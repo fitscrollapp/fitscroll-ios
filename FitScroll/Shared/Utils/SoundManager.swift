@@ -20,12 +20,101 @@ final class SoundManager {
     private var zapBufferMid: AVAudioPCMBuffer?
     private var zapBufferMega: AVAudioPCMBuffer?
 
+    /// Preloaded players for the bundled Pixabay/Universfield effects.
+    /// One player per effect; retriggering resets `currentTime`.
+    private var sfxPlayers: [String: AVAudioPlayer] = [:]
+
+    /// User-facing "Sound Effects" toggle (Settings). Defaults to on.
+    static var isEnabled: Bool {
+        get { !UserDefaults.standard.bool(forKey: "fitscroll.sfx.disabled") }
+        set { UserDefaults.standard.set(!newValue, forKey: "fitscroll.sfx.disabled") }
+    }
+
     private init() {
         configureAudioSession()
         preloadCoin()
         prepareFanfare()
         prepareZap()
+        preloadSfx()
     }
+
+    /// Rep-milestone ladder: the Universfield "Level Up" series in order.
+    /// Milestones past the last entry replay the final (biggest) sound.
+    static let milestoneReps = [5, 10, 20, 30, 40, 50, 75]
+
+    private static let sfxNames = [
+        "sfx_click", "sfx_error", "sfx_badge", "sfx_workout_done",
+        "sfx_level_complete", "sfx_unlock_bonus", "sfx_goal_ring",
+        "sfx_streak", "sfx_rank_up", "sfx_podium", "sfx_purchase",
+        "sfx_levelup_1", "sfx_levelup_2", "sfx_levelup_3", "sfx_levelup_4",
+        "sfx_levelup_5", "sfx_levelup_6", "sfx_levelup_7",
+        "sfx_splash_impact",
+    ]
+
+    private func preloadSfx() {
+        for name in Self.sfxNames {
+            guard let url = Bundle.main.url(forResource: name, withExtension: "mp3") else {
+                Logger.log("\(name).mp3 not found in bundle", level: .warning)
+                continue
+            }
+            if let player = try? AVAudioPlayer(contentsOf: url) {
+                player.prepareToPlay()
+                sfxPlayers[name] = player
+            }
+        }
+    }
+
+    private func playSfx(_ name: String, volume: Float = 1.0) {
+        guard Self.isEnabled, let player = sfxPlayers[name] else { return }
+        player.volume = volume
+        player.currentTime = 0
+        player.play()
+    }
+
+    // MARK: - Bundled effect API (Pixabay / Universfield)
+
+    /// Single soft UI click used for ALL taps (tabs, candy buttons, pills).
+    static func click() { shared.playSfx("sfx_click", volume: 0.55) }
+
+    /// Comic "ooh" for errors / form-feedback moments.
+    static func errorTone() { shared.playSfx("sfx_error", volume: 0.8) }
+
+    /// Rep-milestone level-up ladder. `milestoneIndex` is 0-based; indexes
+    /// past the end replay the final (biggest) sound.
+    static func levelUp(_ milestoneIndex: Int) {
+        let capped = min(milestoneIndex, 6)
+        shared.playSfx("sfx_levelup_\(capped + 1)")
+    }
+
+    /// "Achievement Unlock" — badge earned.
+    static func badgeEarned() { shared.playSfx("sfx_badge") }
+
+    /// "Level Passed" — workout finished with reps.
+    static func workoutDone() { shared.playSfx("sfx_workout_done") }
+
+    /// "Game Level Complete" — journey level completion sheet.
+    static func levelComplete() { shared.playSfx("sfx_level_complete") }
+
+    /// "Video Game Bonus" — screen-time unlock applied.
+    static func unlockBonus() { shared.playSfx("sfx_unlock_bonus") }
+
+    /// "Game Bonus" — daily goal ring reaches 100%.
+    static func goalRing() { shared.playSfx("sfx_goal_ring") }
+
+    /// "Open New Level" — streak day earned.
+    static func streakEarned() { shared.playSfx("sfx_streak") }
+
+    /// "Going To The Next Level" — leaderboard rank up.
+    static func rankUp() { shared.playSfx("sfx_rank_up") }
+
+    /// "New Level (musical)" — entering the weekly Top 3.
+    static func podium() { shared.playSfx("sfx_podium") }
+
+    /// Warm piano logo — successful subscription purchase.
+    static func purchaseSuccess() { shared.playSfx("sfx_purchase") }
+
+    /// Heavy thud — the splash logo slamming into the ground.
+    static func splashImpact() { shared.playSfx("sfx_splash_impact") }
 
     /// Configures playback so our short sound effects mix with other audio
     /// and still play even when the phone is on silent.

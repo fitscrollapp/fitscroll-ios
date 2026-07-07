@@ -2,6 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
+import { CAPTIONS, LOCALES, resolveLocale, type Captions, type Locale, type TwoLine } from "./captions";
+
+// Human-readable language names for the toolbar locale picker.
+const LOCALE_LABELS: Record<Locale, string> = {
+  en: "🇺🇸 English",
+  tr: "🇹🇷 Türkçe",
+  "pt-BR": "🇧🇷 Português (BR)",
+  es: "🇪🇸 Español",
+  fr: "🇫🇷 Français",
+  de: "🇩🇪 Deutsch",
+  it: "🇮🇹 Italiano",
+  ja: "🇯🇵 日本語",
+  ko: "🇰🇷 한국어",
+  "zh-Hans": "🇨🇳 简体中文",
+  ru: "🇷🇺 Русский",
+};
 
 // =============================================================================
 // Constants — canvas dimensions, export sizes, frame ratios
@@ -9,6 +25,11 @@ import { toPng } from "html-to-image";
 
 const W = 1320; // iPhone 6.9" — design canvas width (largest required)
 const H = 2868;
+
+// Android / Google Play — frameless variant (?android=1). MUST be exactly
+// 1080×2160: Play rejects phone screenshots taller than a 2:1 ratio.
+const AW = 1080;
+const AH = 2160;
 
 const IPHONE_SIZES = [
   { label: '6.9"', w: 1320, h: 2868 },
@@ -327,7 +348,7 @@ function StarField({ cW, cH }: { cW: number; cH: number }) {
 // Slide components — 6 slides for FitScroll
 // =============================================================================
 
-type SlideProps = { cW: number; cH: number };
+type SlideProps = { cW: number; cH: number; c: Captions };
 type SlideDef = { id: string; component: (p: SlideProps) => React.ReactElement };
 
 // -----------------------------------------------------------------------------
@@ -336,7 +357,7 @@ type SlideDef = { id: string; component: (p: SlideProps) => React.ReactElement }
 
 const slide1: SlideDef = {
   id: "hero",
-  component: ({ cW, cH }) => {
+  component: ({ cW, cH, c }) => {
     const fw = phoneW(cW, cH) * 100;
     return (
       <div
@@ -400,7 +421,7 @@ const slide1: SlideDef = {
               textShadow: "0 2px 14px rgba(0,0,0,0.8)",
             }}
           >
-            FITSCROLL
+            {c.hero.brand}
           </span>
         </div>
 
@@ -426,9 +447,9 @@ const slide1: SlideDef = {
                 "0 6px 28px rgba(0,0,0,0.85), 0 2px 8px rgba(0,0,0,0.9)",
             }}
           >
-            Move to
+            {c.hero.head.l1}
             <br />
-            unlock.
+            {c.hero.head.l2}
           </div>
         </div>
 
@@ -453,9 +474,9 @@ const slide1: SlideDef = {
               textShadow: "0 3px 16px rgba(0,0,0,0.85)",
             }}
           >
-            Turn doomscrolling into push-ups.
+            {c.hero.sub.l1}
             <br />
-            Every rep earns minutes back.
+            {c.hero.sub.l2}
           </div>
         </div>
 
@@ -481,7 +502,7 @@ const slide1: SlideDef = {
 
 const slide2: SlideDef = {
   id: "camera-counts-reps",
-  component: ({ cW, cH }) => {
+  component: ({ cW, cH, c }) => {
     const fw = phoneW(cW, cH) * 100;
     return (
       <div
@@ -511,13 +532,13 @@ const slide2: SlideDef = {
 
         <Caption
           cW={cW}
-          label="LIVE POSE DETECTION"
+          label={c.camera.label}
           labelColor={FS.cyan}
           headline={
             <>
-              Your camera
+              {c.camera.head.l1}
               <br />
-              counts every rep.
+              {c.camera.head.l2}
             </>
           }
         />
@@ -569,7 +590,7 @@ const slide2: SlideDef = {
 
 const slide3: SlideDef = {
   id: "lock-apps",
-  component: ({ cW, cH }) => {
+  component: ({ cW, cH, c }) => {
     const fw = phoneW(cW, cH) * 100;
     return (
       <div
@@ -597,13 +618,13 @@ const slide3: SlideDef = {
 
         <Caption
           cW={cW}
-          label="SCREEN TIME LOCK"
+          label={c.lock.label}
           labelColor={FS.amber}
           headline={
             <>
-              Lock the apps
+              {c.lock.head.l1}
               <br />
-              that steal hours.
+              {c.lock.head.l2}
             </>
           }
         />
@@ -627,9 +648,9 @@ const slide3: SlideDef = {
               fontWeight: 500,
             }}
           >
-            Instagram. TikTok. YouTube. X.
+            {c.lock.sub.l1}
             <br />
-            Whatever keeps you scrolling.
+            {c.lock.sub.l2}
           </div>
         </div>
 
@@ -642,7 +663,7 @@ const slide3: SlideDef = {
             width: `${fw}%`,
           }}
         >
-          <ShieldScreenMock cW={cW} />
+          <ShieldScreenMock cW={cW} c={c} />
         </PhoneComposed>
       </div>
     );
@@ -655,7 +676,7 @@ const slide3: SlideDef = {
 
 const slide4: SlideDef = {
   id: "earn-minutes",
-  component: ({ cW, cH }) => {
+  component: ({ cW, cH, c }) => {
     const fw = phoneW(cW, cH) * 100;
     return (
       <div
@@ -685,13 +706,13 @@ const slide4: SlideDef = {
 
         <Caption
           cW={cW}
-          label="COIN THE TIME"
+          label={c.earn.label}
           labelColor={FS.amber}
           headline={
             <>
-              Every rep earns
+              {c.earn.head.l1}
               <br />
-              minutes back.
+              {c.earn.head.l2}
             </>
           }
         />
@@ -715,9 +736,9 @@ const slide4: SlideDef = {
               fontWeight: 500,
             }}
           >
-            Push-up or squat your way back
+            {c.earn.sub.l1}
             <br />
-            to your feed. Your choice, your grind.
+            {c.earn.sub.l2}
           </div>
         </div>
 
@@ -743,7 +764,7 @@ const slide4: SlideDef = {
 
 const slide4b: SlideDef = {
   id: "squat-down",
-  component: ({ cW, cH }) => {
+  component: ({ cW, cH, c }) => {
     const fw = phoneW(cW, cH) * 100;
     return (
       <div
@@ -773,13 +794,13 @@ const slide4b: SlideDef = {
 
         <Caption
           cW={cW}
-          label="GO LOWER"
+          label={c.lower.label}
           labelColor={FS.amber}
           headline={
             <>
-              Push deeper,
+              {c.lower.head.l1}
               <br />
-              earn faster.
+              {c.lower.head.l2}
             </>
           }
         />
@@ -803,9 +824,9 @@ const slide4b: SlideDef = {
               fontWeight: 500,
             }}
           >
-            Full range counts.
+            {c.lower.sub.l1}
             <br />
-            Half reps don't.
+            {c.lower.sub.l2}
           </div>
         </div>
 
@@ -831,7 +852,7 @@ const slide4b: SlideDef = {
 
 const slide5: SlideDef = {
   id: "analytics",
-  component: ({ cW, cH }) => {
+  component: ({ cW, cH, c }) => {
     const fw = phoneW(cW, cH) * 100;
     return (
       <div
@@ -860,13 +881,13 @@ const slide5: SlideDef = {
 
         <Caption
           cW={cW}
-          label="TRACK THE STREAK"
+          label={c.analytics.label}
           labelColor={FS.cyan}
           headline={
             <>
-              Watch the
+              {c.analytics.head.l1}
               <br />
-              streak grow.
+              {c.analytics.head.l2}
             </>
           }
         />
@@ -890,9 +911,9 @@ const slide5: SlideDef = {
               fontWeight: 500,
             }}
           >
-            Your reps and minutes, day by day.
+            {c.analytics.sub.l1}
             <br />
-            See the loop you're breaking.
+            {c.analytics.sub.l2}
           </div>
         </div>
 
@@ -918,17 +939,8 @@ const slide5: SlideDef = {
 
 const slide6: SlideDef = {
   id: "more",
-  component: ({ cW, cH }) => {
-    const pills = [
-      "On-device pose detection",
-      "Live skeleton overlay",
-      "Earn screen time",
-      "Block distracting apps",
-      "Daily usage limits",
-      "History & analytics",
-      "Smart unlock alerts",
-      "100% private",
-    ];
+  component: ({ cW, cH, c }) => {
+    const pills = c.more.pills;
     return (
       <div
         style={{
@@ -987,9 +999,9 @@ const slide6: SlideDef = {
               letterSpacing: -cW * 0.0018,
             }}
           >
-            Break the
+            {c.more.head.l1}
             <br />
-            dopamine loop.
+            {c.more.head.l2}
           </div>
           <div
             style={{
@@ -1000,9 +1012,9 @@ const slide6: SlideDef = {
               lineHeight: 1.4,
             }}
           >
-            Try free for 7 days.
+            {c.more.sub.l1}
             <br />
-            Take your time back.
+            {c.more.sub.l2}
           </div>
         </div>
 
@@ -1057,6 +1069,535 @@ const slide6: SlideDef = {
 };
 
 const SLIDES: SlideDef[] = [slide1, slide2, slide3, slide4, slide4b, slide5, slide6];
+
+// =============================================================================
+// Android / Google Play — FRAMELESS variant (?android=1)
+//
+// Same brand look (fonts, colors, gradients, decorative glows) and the SAME
+// localized eyebrow/headline/subtitle text from captions.ts, but:
+//   • canvas is 1080×2160 (Play phone ratio — never taller than 2:1),
+//   • the app screenshot is rendered FRAMELESS (no iPhone mockup): a large
+//     rounded-corner card with a subtle shadow, scaled to width, top-aligned
+//     so it bleeds cleanly off the bottom edge.
+// The iOS path above (framed, 1320×2868) is left completely untouched.
+// =============================================================================
+
+/** Frameless app screenshot (or a composed React mock) sitting in the lower
+ *  portion of an Android card: ~40px rounded corners, soft shadow, scaled to
+ *  width, top-aligned. The parent card clips whatever bleeds off the bottom. */
+function AndroidScreen({
+  src,
+  alt,
+  node,
+}: {
+  src?: string;
+  alt?: string;
+  node?: React.ReactNode;
+}) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: "31%",
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "78%",
+        borderRadius: 40,
+        overflow: "hidden",
+        boxShadow:
+          "0 30px 90px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06)",
+        zIndex: 4,
+        // Composed mocks have no intrinsic size — give them a phone-screen ratio.
+        ...(node ? { aspectRatio: "9 / 19.5" } : {}),
+      }}
+    >
+      {src ? (
+        <img
+          src={src}
+          alt={alt || ""}
+          style={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+            objectFit: "cover",
+            objectPosition: "top",
+          }}
+          draggable={false}
+        />
+      ) : (
+        node
+      )}
+    </div>
+  );
+}
+
+/** Top text block for an Android card: optional brand/eyebrow label, headline
+ *  (two lines), subtitle (two lines). Mirrors the iOS Caption styling. */
+function AndroidText({
+  cW,
+  brand,
+  brandColor = FS.amber,
+  label,
+  labelColor = FS.orange,
+  head,
+  sub,
+  headScale = 0.082,
+}: {
+  cW: number;
+  brand?: string;
+  brandColor?: string;
+  label?: string;
+  labelColor?: string;
+  head: TwoLine;
+  sub: TwoLine;
+  headScale?: number;
+}) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: "6.5%",
+        left: "5%",
+        right: "5%",
+        textAlign: "center",
+        zIndex: 6,
+      }}
+    >
+      {brand && (
+        <div
+          style={{
+            fontSize: cW * 0.032,
+            fontWeight: 800,
+            letterSpacing: cW * 0.003,
+            color: brandColor,
+            textTransform: "uppercase",
+            marginBottom: cW * 0.02,
+            textShadow: "0 2px 14px rgba(0,0,0,0.7)",
+          }}
+        >
+          {brand}
+        </div>
+      )}
+      {label && (
+        <div
+          style={{
+            fontSize: cW * 0.03,
+            fontWeight: 800,
+            letterSpacing: cW * 0.0025,
+            color: labelColor,
+            textTransform: "uppercase",
+            marginBottom: cW * 0.022,
+          }}
+        >
+          {label}
+        </div>
+      )}
+      <div
+        style={{
+          fontSize: cW * headScale,
+          fontWeight: 900,
+          lineHeight: 0.95,
+          color: FS.white,
+          letterSpacing: -cW * 0.002,
+          textShadow: "0 4px 20px rgba(0,0,0,0.6)",
+        }}
+      >
+        {head.l1}
+        <br />
+        {head.l2}
+      </div>
+      <div
+        style={{
+          marginTop: cW * 0.028,
+          fontSize: cW * 0.032,
+          color: "rgba(255,255,255,0.82)",
+          fontWeight: 600,
+          lineHeight: 1.35,
+          textShadow: "0 2px 12px rgba(0,0,0,0.6)",
+        }}
+      >
+        {sub.l1}
+        <br />
+        {sub.l2}
+      </div>
+    </div>
+  );
+}
+
+/** Root of an Android card: gradient background, clipping, decorative layer. */
+function AndroidBase({
+  background,
+  decor,
+  children,
+}: {
+  background: string;
+  decor?: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "relative",
+        background,
+        overflow: "hidden",
+      }}
+    >
+      {decor}
+      {children}
+    </div>
+  );
+}
+
+/** A soft radial glow blob, positioned by the caller. */
+function Glow({
+  cW,
+  color,
+  size = 0.9,
+  blur = 170,
+  opacity = 0.4,
+  style,
+}: {
+  cW: number;
+  color: string;
+  size?: number;
+  blur?: number;
+  opacity?: number;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        width: cW * size,
+        height: cW * size,
+        borderRadius: "50%",
+        background: color,
+        filter: `blur(${blur}px)`,
+        opacity,
+        pointerEvents: "none",
+        ...style,
+      }}
+    />
+  );
+}
+
+const androidHero: SlideDef = {
+  id: "hero",
+  component: ({ cW, cH, c }) => (
+    <AndroidBase
+      background={`linear-gradient(180deg, ${FS.navyDeep} 0%, ${FS.navy} 26%, ${FS.orangeDark} 80%, ${FS.orange} 100%)`}
+      decor={
+        <>
+          <StarField cW={cW} cH={cH} />
+          <Glow
+            cW={cW}
+            color={FS.amber}
+            size={1.3}
+            blur={170}
+            opacity={0.5}
+            style={{ bottom: "-12%", left: "50%", transform: "translateX(-50%)", height: cW * 0.8 }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "40%",
+              background:
+                "linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.32) 60%, rgba(0,0,0,0) 100%)",
+              pointerEvents: "none",
+            }}
+          />
+        </>
+      }
+    >
+      <AndroidText
+        cW={cW}
+        brand={c.hero.brand}
+        head={c.hero.head}
+        sub={c.hero.sub}
+        headScale={0.11}
+      />
+      <AndroidScreen src={img("/screenshots/en/move-to-unlock.png")} alt="Onboarding" />
+    </AndroidBase>
+  ),
+};
+
+const androidCamera: SlideDef = {
+  id: "camera-counts-reps",
+  component: ({ cW, cH, c }) => (
+    <AndroidBase
+      background={`linear-gradient(180deg, ${FS.navyDeep} 0%, ${FS.navy} 70%, ${FS.navyLight} 100%)`}
+      decor={
+        <>
+          <StarField cW={cW} cH={cH} />
+          <Glow
+            cW={cW}
+            color={FS.cyan}
+            size={0.9}
+            blur={170}
+            opacity={0.28}
+            style={{ top: "20%", left: "50%", transform: "translate(-50%, -50%)" }}
+          />
+        </>
+      }
+    >
+      <AndroidText
+        cW={cW}
+        label={c.camera.label}
+        labelColor={FS.cyan}
+        head={c.camera.head}
+        sub={c.camera.sub}
+      />
+      <AndroidScreen src={img("/screenshots/en/pushup-sample.png")} alt="Pose detection" />
+    </AndroidBase>
+  ),
+};
+
+const androidLock: SlideDef = {
+  id: "lock-apps",
+  component: ({ cW, cH, c }) => (
+    <AndroidBase
+      background={`linear-gradient(165deg, #150308 0%, #4B0B0B 40%, ${FS.orange} 100%)`}
+      decor={
+        <Glow
+          cW={cW}
+          color={FS.orange}
+          size={1.2}
+          blur={180}
+          opacity={0.55}
+          style={{ bottom: "-6%", left: "-10%", height: cW * 0.7 }}
+        />
+      }
+    >
+      <AndroidText
+        cW={cW}
+        label={c.lock.label}
+        labelColor={FS.amber}
+        head={c.lock.head}
+        sub={c.lock.sub}
+      />
+      <AndroidScreen node={<ShieldScreenMock cW={cW} c={c} />} />
+    </AndroidBase>
+  ),
+};
+
+const androidEarn: SlideDef = {
+  id: "earn-minutes",
+  component: ({ cW, cH, c }) => (
+    <AndroidBase
+      background={`linear-gradient(180deg, ${FS.navyDeep} 0%, ${FS.navy} 55%, ${FS.orangeDark} 100%)`}
+      decor={
+        <>
+          <StarField cW={cW} cH={cH} />
+          <Glow
+            cW={cW}
+            color={FS.amber}
+            size={0.95}
+            blur={170}
+            opacity={0.45}
+            style={{ top: "18%", left: "50%", transform: "translate(-50%, -50%)" }}
+          />
+        </>
+      }
+    >
+      <AndroidText
+        cW={cW}
+        label={c.earn.label}
+        labelColor={FS.amber}
+        head={c.earn.head}
+        sub={c.earn.sub}
+      />
+      <AndroidScreen src={img("/screenshots/en/pose-detection.png")} alt="Earn minutes" />
+    </AndroidBase>
+  ),
+};
+
+const androidLower: SlideDef = {
+  id: "squat-down",
+  component: ({ cW, cH, c }) => (
+    <AndroidBase
+      background={`linear-gradient(180deg, ${FS.orangeDark} 0%, ${FS.navy} 55%, ${FS.navyDeep} 100%)`}
+      decor={
+        <>
+          <StarField cW={cW} cH={cH} />
+          <Glow
+            cW={cW}
+            color={FS.orange}
+            size={0.95}
+            blur={170}
+            opacity={0.45}
+            style={{ top: "18%", left: "50%", transform: "translate(-50%, -50%)" }}
+          />
+        </>
+      }
+    >
+      <AndroidText
+        cW={cW}
+        label={c.lower.label}
+        labelColor={FS.amber}
+        head={c.lower.head}
+        sub={c.lower.sub}
+      />
+      <AndroidScreen src={img("/screenshots/en/rep-counter.png")} alt="Go lower" />
+    </AndroidBase>
+  ),
+};
+
+const androidAnalytics: SlideDef = {
+  id: "analytics",
+  component: ({ cW, cH, c }) => (
+    <AndroidBase
+      background={`linear-gradient(175deg, ${FS.navyDeep} 0%, ${FS.navyLight} 50%, ${FS.purple} 100%)`}
+      decor={
+        <>
+          <StarField cW={cW} cH={cH} />
+          <Glow
+            cW={cW}
+            color={FS.cyan}
+            size={0.85}
+            blur={180}
+            opacity={0.35}
+            style={{ bottom: "20%", right: "-20%" }}
+          />
+        </>
+      }
+    >
+      <AndroidText
+        cW={cW}
+        label={c.analytics.label}
+        labelColor={FS.cyan}
+        head={c.analytics.head}
+        sub={c.analytics.sub}
+      />
+      <AndroidScreen src={img("/screenshots/en/history.png")} alt="Workout history" />
+    </AndroidBase>
+  ),
+};
+
+const androidMore: SlideDef = {
+  id: "more",
+  component: ({ cW, cH, c }) => (
+    <AndroidBase
+      background={`radial-gradient(ellipse at 50% 18%, ${FS.navyLight} 0%, ${FS.navyDeep} 72%)`}
+      decor={
+        <>
+          <StarField cW={cW} cH={cH} />
+          <OrangeGlow cW={cW} cH={cH} />
+        </>
+      }
+    >
+      {/* App icon anchor */}
+      <div
+        style={{
+          position: "absolute",
+          top: "9%",
+          left: 0,
+          right: 0,
+          display: "flex",
+          justifyContent: "center",
+          zIndex: 5,
+        }}
+      >
+        <img
+          src={img("/app-icon.png")}
+          alt=""
+          style={{
+            width: cW * 0.34,
+            height: cW * 0.34,
+            borderRadius: cW * 0.08,
+            boxShadow: `0 ${cW * 0.025}px ${cW * 0.1}px ${FS.orange}88, 0 0 ${cW * 0.18}px ${FS.amber}55`,
+          }}
+          draggable={false}
+        />
+      </div>
+
+      {/* Headline + subtitle */}
+      <div
+        style={{
+          position: "absolute",
+          top: "34%",
+          left: 0,
+          right: 0,
+          textAlign: "center",
+          zIndex: 5,
+        }}
+      >
+        <div
+          style={{
+            fontSize: cW * 0.092,
+            fontWeight: 800,
+            color: FS.white,
+            lineHeight: 0.95,
+            letterSpacing: -cW * 0.0018,
+          }}
+        >
+          {c.more.head.l1}
+          <br />
+          {c.more.head.l2}
+        </div>
+        <div
+          style={{
+            marginTop: cW * 0.03,
+            fontSize: cW * 0.034,
+            color: "rgba(255,255,255,0.82)",
+            fontWeight: 500,
+            lineHeight: 1.4,
+          }}
+        >
+          {c.more.sub.l1}
+          <br />
+          {c.more.sub.l2}
+        </div>
+      </div>
+
+      {/* Feature pills */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "7%",
+          left: "7%",
+          right: "7%",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: cW * 0.02,
+          justifyContent: "center",
+          zIndex: 5,
+        }}
+      >
+        {c.more.pills.map((p) => (
+          <div
+            key={p}
+            style={{
+              padding: `${cW * 0.022}px ${cW * 0.04}px`,
+              borderRadius: cW * 0.05,
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              color: FS.white,
+              fontSize: cW * 0.028,
+              fontWeight: 600,
+            }}
+          >
+            {p}
+          </div>
+        ))}
+      </div>
+    </AndroidBase>
+  ),
+};
+
+const ANDROID_SLIDES: SlideDef[] = [
+  androidHero,
+  androidCamera,
+  androidLock,
+  androidEarn,
+  androidLower,
+  androidAnalytics,
+  androidMore,
+];
 
 // =============================================================================
 // Composed in-phone mocks — fake app screens rendered with React
@@ -1199,7 +1740,7 @@ function WorkoutScreenMock({ cW, kind }: { cW: number; kind: "pushup" | "squat" 
 }
 
 /** Mock shield (app locked) screen. */
-function ShieldScreenMock({ cW }: { cW: number }) {
+function ShieldScreenMock({ cW, c }: { cW: number; c: Captions }) {
   return (
     <div
       style={{
@@ -1235,7 +1776,7 @@ function ShieldScreenMock({ cW }: { cW: number }) {
             marginBottom: "2%",
           }}
         >
-          Time to Move 💪
+          {c.lock.mock.title}
         </div>
         <div
           style={{
@@ -1245,11 +1786,12 @@ function ShieldScreenMock({ cW }: { cW: number }) {
             lineHeight: 1.4,
           }}
         >
-          This app is locked.
-          <br />
-          Open FitScroll and finish an
-          <br />
-          exercise to earn screen time.
+          {c.lock.mock.body.map((line, i) => (
+            <span key={i}>
+              {line}
+              {i < c.lock.mock.body.length - 1 && <br />}
+            </span>
+          ))}
         </div>
       </div>
 
@@ -1266,7 +1808,7 @@ function ShieldScreenMock({ cW }: { cW: number }) {
           marginBottom: "4%",
         }}
       >
-        Close
+        {c.lock.mock.close}
       </div>
     </div>
   );
@@ -1520,13 +2062,17 @@ function HistoryScreenMock({ cW }: { cW: number }) {
 
 function ScreenshotPreview({
   slide,
+  index,
   cW,
   cH,
+  c,
   exportRef,
 }: {
   slide: SlideDef;
+  index: number;
   cW: number;
   cH: number;
+  c: Captions;
   exportRef: (el: HTMLDivElement | null) => void;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -1565,12 +2111,14 @@ function ScreenshotPreview({
           transformOrigin: "top left",
         }}
       >
-        <slide.component cW={cW} cH={cH} />
+        <slide.component cW={cW} cH={cH} c={c} />
       </div>
 
       {/* Offscreen hi-res copy for export */}
       <div
         ref={exportRef}
+        data-export-idx={index}
+        data-export-id={slide.id}
         style={{
           position: "absolute",
           left: "-9999px",
@@ -1580,7 +2128,7 @@ function ScreenshotPreview({
           background: "#000",
         }}
       >
-        <slide.component cW={cW} cH={cH} />
+        <slide.component cW={cW} cH={cH} c={c} />
       </div>
     </div>
   );
@@ -1594,11 +2142,21 @@ export default function ScreenshotsPage() {
   const [ready, setReady] = useState(false);
   const [sizeIdx, setSizeIdx] = useState(0);
   const [exporting, setExporting] = useState<string | null>(null);
+  const [locale, setLocale] = useState<Locale>("en");
+  const [android, setAndroid] = useState(false);
   const exportRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setLocale(resolveLocale(params.get("locale")));
+    setAndroid(params.get("android") === "1");
     preloadAllImages().then(() => setReady(true));
   }, []);
+
+  const c = CAPTIONS[locale];
+
+  // Active render set: frameless 1080×2160 Android cards, or framed iOS cards.
+  const activeSlides = android ? ANDROID_SLIDES : SLIDES;
 
   if (!ready) {
     return (
@@ -1617,9 +2175,32 @@ export default function ScreenshotsPage() {
     );
   }
 
-  const cW = W;
-  const cH = H;
-  const currentSize = IPHONE_SIZES[sizeIdx];
+  const cW = android ? AW : W;
+  const cH = android ? AH : H;
+  const currentSize = android
+    ? { label: "Android", w: AW, h: AH }
+    : IPHONE_SIZES[sizeIdx];
+
+  // Expose a headless render hook for the Playwright script. Returns the
+  // export DOM elements + a capture function so the script can drive the same
+  // reliable html-to-image path used by the in-UI "Export All" button.
+  if (typeof window !== "undefined") {
+    (window as unknown as Record<string, unknown>).__fitscroll = {
+      locale,
+      android,
+      slides: activeSlides.map((s) => s.id),
+      ready,
+      async captureCard(i: number, w: number, h: number): Promise<string> {
+        const el = exportRefs.current[i];
+        if (!el) throw new Error(`no export ref for card ${i}`);
+        return captureSlide(el, w, h);
+      },
+      headlineText(i: number): string {
+        const el = exportRefs.current[i];
+        return el ? (el.textContent || "").trim().slice(0, 120) : "";
+      },
+    };
+  }
 
   async function captureSlide(el: HTMLDivElement, w: number, h: number): Promise<string> {
     el.style.left = "0px";
@@ -1637,14 +2218,14 @@ export default function ScreenshotsPage() {
   }
 
   async function exportAll() {
-    for (let i = 0; i < SLIDES.length; i++) {
-      setExporting(`${i + 1}/${SLIDES.length}`);
+    for (let i = 0; i < activeSlides.length; i++) {
+      setExporting(`${i + 1}/${activeSlides.length}`);
       const el = exportRefs.current[i];
       if (!el) continue;
       const dataUrl = await captureSlide(el, currentSize.w, currentSize.h);
       const a = document.createElement("a");
       a.href = dataUrl;
-      a.download = `${String(i + 1).padStart(2, "0")}-${SLIDES[i].id}-${currentSize.w}x${currentSize.h}.png`;
+      a.download = `fitscroll-${String(i + 1).padStart(2, "0")}-${activeSlides[i].id}-${locale}-${currentSize.w}x${currentSize.h}.png`;
       a.click();
       await new Promise((r) => setTimeout(r, 300));
     }
@@ -1686,6 +2267,25 @@ export default function ScreenshotsPage() {
           <span style={{ fontWeight: 700, fontSize: 14, whiteSpace: "nowrap" }}>
             FitScroll · App Store Screenshots
           </span>
+
+          <select
+            value={locale}
+            onChange={(e) => setLocale(e.target.value as Locale)}
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              border: "2px solid #2563eb",
+              borderRadius: 6,
+              padding: "5px 10px",
+              cursor: "pointer",
+            }}
+          >
+            {LOCALES.map((l) => (
+              <option key={l} value={l}>
+                {LOCALE_LABELS[l] ?? l}
+              </option>
+            ))}
+          </select>
 
           <select
             value={sizeIdx}
@@ -1743,7 +2343,7 @@ export default function ScreenshotsPage() {
           margin: "0 auto",
         }}
       >
-        {SLIDES.map((slide, i) => (
+        {activeSlides.map((slide, i) => (
           <div key={slide.id}>
             <div
               style={{
@@ -1759,8 +2359,10 @@ export default function ScreenshotsPage() {
             </div>
             <ScreenshotPreview
               slide={slide}
+              index={i}
               cW={cW}
               cH={cH}
+              c={c}
               exportRef={(el) => {
                 exportRefs.current[i] = el;
               }}

@@ -81,11 +81,11 @@ struct CameraWorkoutView: View {
             }
         }
         .confirmationDialog(
-            "Quit this workout?",
+            Strings.Workout.quitTitle,
             isPresented: $showExitConfirm,
             titleVisibility: .visible
         ) {
-            Button("Quit & Discard", role: .destructive) {
+            Button(Strings.Workout.quitDiscard, role: .destructive) {
                 Task {
                     let session = await coordinator.cancel()
                     modelContext.insert(session)
@@ -93,16 +93,27 @@ struct CameraWorkoutView: View {
                     dismiss()
                 }
             }
-            Button("Keep Going", role: .cancel) {}
+            Button(Strings.Workout.keepGoing, role: .cancel) {}
         } message: {
-            Text("Your reps so far won't be saved and the camera will stop.")
+            Text(Strings.Workout.quitMessage)
         }
         .onChange(of: coordinator.repCounter.acceptedReps) { oldValue, newValue in
             guard newValue > oldValue else { return }
             if settings.first?.hapticFeedbackEnabled ?? true {
                 HapticManager.repCompleted()
             }
-            SoundManager.repEarned()
+            // Milestone ladder: escalating "Level Up" sounds at 5/10/20/30/...
+            // reps; past the ladder every 25th rep replays the biggest one.
+            // Non-milestone reps get the regular coin.
+            if let idx = SoundManager.milestoneReps.firstIndex(of: newValue) {
+                SoundManager.levelUp(idx)
+                HapticManager.sessionCompleted()
+            } else if newValue >= 100 && newValue % 25 == 0 {
+                SoundManager.levelUp(6)
+                HapticManager.sessionCompleted()
+            } else {
+                SoundManager.repEarned()
+            }
             // Pulse effect: grow big + turn green, then shrink + back to orange
             withAnimation(.spring(response: 0.22, dampingFraction: 0.45)) {
                 counterPulse = 1.7
@@ -128,7 +139,7 @@ struct CameraWorkoutView: View {
                 Image(systemName: "camera.fill")
                     .font(.system(size: 40))
                     .foregroundColor(.white.opacity(0.5))
-                Text("Simulator Mode")
+                Text(Strings.Workout.simulatorMode)
                     .foregroundColor(.white.opacity(0.5))
             }
         }
@@ -150,23 +161,26 @@ struct CameraWorkoutView: View {
             Spacer()
 
             Text(TimeFormatter.formatDuration(seconds: coordinator.elapsedSeconds))
-                .font(.headline)
+                .font(.system(size: 17, weight: .heavy, design: .rounded))
+                .monospacedDigit()
                 .foregroundColor(.white)
                 .padding(.horizontal, DS.Spacing.md)
                 .padding(.vertical, DS.Spacing.sm)
                 .background(.ultraThinMaterial)
-                .cornerRadius(DS.Corner.small)
+                .clipShape(Capsule())
 
             Spacer()
 
             Text(exerciseType.displayName)
-                .font(.subheadline)
-                .fontWeight(.medium)
+                .font(.system(size: 15, weight: .heavy, design: .rounded))
                 .foregroundColor(.white)
                 .padding(.horizontal, DS.Spacing.md)
                 .padding(.vertical, DS.Spacing.sm)
                 .background(.ultraThinMaterial)
-                .cornerRadius(DS.Corner.small)
+                .clipShape(Capsule())
+                .overlay(
+                    Capsule().stroke(Duo.color(for: exerciseType).opacity(0.8), lineWidth: 2)
+                )
         }
         .padding(.horizontal, DS.Spacing.lg)
         .padding(.top, DS.Spacing.xxl + DS.Spacing.lg)
@@ -240,7 +254,7 @@ struct CameraWorkoutView: View {
                     .frame(width: 96, height: 96)
 
                 Text("\(coordinator.repCounter.acceptedReps)")
-                    .font(.system(size: 42, weight: .bold, design: .rounded))
+                    .font(.system(size: 42, weight: .black, design: .rounded))
                     .foregroundColor(.white)
                     .contentTransition(.numericText(value: Double(coordinator.repCounter.acceptedReps)))
             }
@@ -251,14 +265,14 @@ struct CameraWorkoutView: View {
             // coordinator applies on finish.
             let earned = Double(coordinator.repCounter.acceptedReps)
                 * exerciseType.defaultMinutesPerRep
-            Text("+\(formattedEarned(earned)) min earned")
-                .font(.subheadline)
-                .fontWeight(.semibold)
+            Text(String(format: Strings.Workout.minutesEarnedFormat, formattedEarned(earned)))
+                .font(.system(size: 15, weight: .heavy, design: .rounded))
                 .foregroundColor(DS.Colors.accent)
                 .padding(.horizontal, DS.Spacing.md)
                 .padding(.vertical, 6)
                 .background(.ultraThinMaterial)
-                .cornerRadius(DS.Corner.large)
+                .clipShape(Capsule())
+                .overlay(Capsule().stroke(DS.Colors.accent.opacity(0.6), lineWidth: 1.5))
         }
         .padding(.bottom, DS.Spacing.md)
     }
@@ -272,11 +286,11 @@ struct CameraWorkoutView: View {
 
     private var feedbackBanner: some View {
         Text(coordinator.poseFeedback)
-            .font(.subheadline)
+            .font(.system(size: 15, weight: .bold, design: .rounded))
             .foregroundColor(.white)
             .padding(DS.Spacing.md)
-            .background(DS.Colors.warning.opacity(0.8))
-            .cornerRadius(DS.Corner.medium)
+            .background(DS.Colors.warning.opacity(0.85))
+            .cornerRadius(18)
             .padding(.horizontal, DS.Spacing.lg)
     }
 
@@ -343,8 +357,7 @@ struct CameraWorkoutView: View {
             }
 
             Text(title)
-                .font(.caption)
-                .fontWeight(.semibold)
+                .font(.system(size: 13, weight: .heavy, design: .rounded))
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.5), radius: 3)
         }
@@ -382,7 +395,7 @@ struct CameraWorkoutView: View {
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, DS.Spacing.lg)
-            Button("Open Settings") {
+            Button(Strings.Workout.openSettings) {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(url)
                 }
@@ -392,7 +405,7 @@ struct CameraWorkoutView: View {
             .background(DS.Colors.primary)
             .foregroundColor(.white)
             .cornerRadius(DS.Corner.medium)
-            Button("Close") {
+            Button(Strings.Workout.close) {
                 dismiss()
             }
             .foregroundColor(.white.opacity(0.8))
@@ -415,6 +428,15 @@ struct CameraWorkoutView: View {
         modelContext.insert(credit)
 
         try? modelContext.save()
+
+        // Push the result to the backend leaderboard (fire-and-forget;
+        // offline failures fall back to local ranking).
+        if let exercise = session.exerciseType {
+            let reps = session.repCount
+            Task.detached {
+                await FitScrollAPI.shared.submitWorkout(exercise: exercise, reps: reps)
+            }
+        }
 
         HapticManager.sessionCompleted()
         completedSession = session

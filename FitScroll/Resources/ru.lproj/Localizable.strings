@@ -1,0 +1,295 @@
+/* App */
+"app.name" = "FitScroll";
+"app.tagline" = "Двигайся, чтобы разблокировать";
+
+/* Onboarding */
+"onboarding.welcome.title" = "Добро пожаловать в FitScroll";
+"onboarding.welcome.subtitle" = "Контролируй экранное время с помощью физической активности";
+"onboarding.step1.title" = "Выбери приложения";
+"onboarding.step1.description" = "Выбери приложения, которые хочешь ограничить";
+"onboarding.step2.title" = "Задай лимиты";
+"onboarding.step2.description" = "Установи дневные лимиты для выбранных приложений";
+"onboarding.step3.title" = "Тренируйся, чтобы открыть";
+"onboarding.step3.description" = "Выполняй упражнения и зарабатывай экранное время";
+"onboarding.get_started" = "Начать";
+"onboarding.next" = "Далее";
+"onboarding.skip" = "Пропустить";
+"onboarding.back" = "Назад";
+"onboarding.continue" = "Продолжить";
+
+/* Onboarding — Hook */
+"onboarding.hook.title" = "Двигайся, чтобы разблокировать";
+"onboarding.hook.subtitle" = "Преврати время в ленте во время для спорта. Каждый повтор возвращает тебе минуты.";
+
+/* Onboarding — Transformation (Before/After) */
+"onboarding.transform.title" = "Верни себе контроль";
+"onboarding.transform.before" = "Сейчас";
+"onboarding.transform.after" = "С FitScroll";
+"onboarding.transform.before1" = "Бесконечная лента";
+"onboarding.transform.before2" = "Потерянные часы";
+"onboarding.transform.before3" = "Никакого контроля";
+"onboarding.transform.after1" = "Приложения блокируются сами";
+"onboarding.transform.after2" = "Спорт даёт время";
+"onboarding.transform.after3" = "Всё под контролем";
+
+/* Onboarding — Privacy framing */
+"onboarding.privacy.title" = "Приватность по умолчанию";
+"onboarding.privacy.subtitle" = "Прежде чем просить доступ, расскажем, зачем он нужен.";
+"onboarding.privacy.screen_time.title" = "Экранное время";
+"onboarding.privacy.screen_time.body" = "Нужно, чтобы блокировать и открывать выбранные приложения. Мы не видим, что ты в них делаешь.";
+"onboarding.privacy.camera.title" = "Камера";
+"onboarding.privacy.camera.body" = "Только для подсчёта повторов. Всё на устройстве. Видео не записывается.";
+
+/* Onboarding — Permissions */
+"onboarding.screen_time.title" = "Разрешить экранное время";
+"onboarding.screen_time.body" = "FitScroll нужен этот доступ, чтобы блокировать приложения и открывать их после тренировки.";
+"onboarding.screen_time.cta" = "Разрешить экранное время";
+"onboarding.screen_time.later" = "Сделаю позже";
+
+"onboarding.camera.title" = "Доступ к камере";
+"onboarding.camera.body" = "FitScroll использует камеру для подсчёта повторов. Всё на устройстве, ничего не записывается.";
+"onboarding.camera.cta" = "Разрешить камеру";
+"onboarding.camera.later" = "Сделаю позже";
+
+"onboarding.finish" = "Начать пользоваться FitScroll";
+
+/* Permissions */
+"permissions.screen_time.title" = "Доступ к экранному времени";
+"permissions.screen_time.description" = "FitScroll нужен доступ к экранному времени для управления лимитами приложений";
+"permissions.camera.title" = "Доступ к камере";
+"permissions.camera.description" = "FitScroll использует камеру для отслеживания упражнений. Вся обработка на устройстве.";
+"permissions.grant_access" = "Разрешить доступ";
+"permissions.open_settings" = "Открыть настройки";
+"permissions.title" = "Разрешения";
+"permissions.subtitle" = "Для работы FitScroll нужны эти разрешения";
+"permissions.continue" = "Продолжить";
+
+/* Dashboard */
+"dashboard.title" = "Главная";
+"dashboard.active_limits" = "Активные лимиты";
+"dashboard.today_earned" = "Заработано сегодня";
+"dashboard.locked_apps" = "Защищённые приложения";
+"dashboard.recent_sessions" = "Недавние сессии";
+"dashboard.unlock_now" = "Открыть тренировкой";
+"dashboard.no_limits_set" = "Лимиты ещё не заданы";
+"dashboard.no_sessions_yet" = "Сессий пока нет. Начни тренировку!";
+"dashboard.status.unrestricted_message" = "Все приложения доступны";
+"dashboard.status.restricted_message" = "Выбранные приложения заблокированы";
+"dashboard.status.temporarily_unlocked_message" = "Приложения временно открыты";
+"dashboard.hero.earn_time" = "Зарабатывай время.";
+"dashboard.hero.unlock_freedom" = "Открой свободу.";
+"dashboard.hero.subtitle" = "Двигай телом.\nОткрывай своё время.";
+"dashboard.ring.minutes_unit" = "мин";
+"dashboard.ring.earned_today" = "за сегодня";
+"dashboard.chip.day_streak" = "дней подряд";
+"dashboard.chip.apps_protected" = "приложений под защитой";
+"dashboard.chip.level_format" = "Уровень %d";
+"dashboard.unlock_screen_time" = "Открыть экранное время";
+"dashboard.see_all" = "Все";
+"dashboard.reps_format" = "%d повт.";
+
+/* App Selection */
+"app_selection.title" = "Выбери приложения для ограничения";
+"app_selection.subtitle" = "Выбери приложения, которые хочешь ограничить";
+"app_selection.done" = "Готово";
+"app_selection.no_apps_selected" = "Приложения не выбраны";
+"app_selection.select_apps" = "Выбрать приложения";
+"app_selection.apps" = "Приложения";
+"app_selection.categories" = "Категории";
+"app_selection.locked_right_away" = "Блокируются сразу";
+"app_selection.locked_right_away_body" = "Выбранные приложения блокируются, как только ты нажмёшь «Сохранить». Открывай их временно, завершив тренировку — каждый повтор приносит минуты экранного времени.";
+
+/* Limits */
+"limits.title" = "Задать лимиты использования";
+"limits.daily_limit" = "Дневной лимит";
+"limits.minutes" = "минут";
+"limits.save" = "Сохранить";
+"limits.done" = "Готово";
+
+/* Unlock */
+"unlock.title" = "Открыть тренировкой";
+"unlock.subtitle" = "Выбери упражнение, чтобы заработать экранное время";
+"unlock.minutes_per_rep_format" = "%.1f мин/повт.";
+"unlock.stable_label" = "Надёжно";
+"unlock.experimental_label" = "Бета";
+"unlock.start_session" = "Начать сессию";
+"unlock.section_stable" = "Стабильные упражнения";
+"unlock.section_experimental" = "Экспериментальные";
+"unlock.close" = "Закрыть";
+"unlock.header_title" = "Открыть тренировкой";
+"unlock.header_subtitle" = "Выбери тренировку и заработай экранное время.";
+"unlock.choose_exercise" = "Выбери упражнение";
+"unlock.reps_format" = "%d повт.";
+"unlock.minutes_format" = "%d мин";
+
+/* Workout */
+"workout.reps" = "Повторы";
+"workout.minutes" = "Заработано минут";
+"workout.start" = "Старт";
+"workout.pause" = "Пауза";
+"workout.resume" = "Продолжить";
+"workout.finish" = "Завершить";
+"workout.adjust_position" = "Встань так, чтобы быть полностью в кадре";
+"workout.move_better_light" = "Перейди в более освещённое место";
+"workout.great_form" = "Отличная техника! Продолжай!";
+"workout.more_reps_format" = "Ещё %d повт. — заработай ещё %d мин";
+"workout.preparing" = "Подготовка камеры...";
+"workout.simulator_mode" = "Режим симулятора";
+"workout.minutes_earned_format" = "+%@ мин заработано";
+"workout.open_settings" = "Открыть настройки";
+"workout.close" = "Закрыть";
+"workout.quit_title" = "Выйти из тренировки?";
+"workout.quit_discard" = "Выйти и сбросить";
+"workout.keep_going" = "Продолжить";
+"workout.quit_message" = "Сделанные повторы не сохранятся, а камера выключится.";
+
+/* Summary */
+"summary.title" = "Сессия завершена!";
+"summary.total_reps" = "Всего повторов";
+"summary.earned_minutes" = "Заработано минут";
+"summary.avg_confidence" = "Средняя точность";
+"summary.duration" = "Длительность";
+"summary.unlock_message_format" = "Отлично! Ты заработал %d минут экранного времени!";
+"summary.apply_unlock" = "Открыть приложения";
+"summary.back_to_dashboard" = "На главную";
+
+/* History */
+"history.title" = "История тренировок";
+"history.no_sessions" = "Тренировок пока нет";
+"history.total_all_time" = "За всё время";
+"history.sessions" = "Сессии";
+"history.reps" = "Повторы";
+"history.minutes" = "Минуты";
+"history.section_sessions" = "Сессии";
+"history.cancelled" = "Отменено";
+"history.header_title" = "История тренировок";
+"history.header_subtitle" = "Следи за своим прогрессом.";
+"history.recent_workouts" = "Недавние тренировки";
+"history.see_all" = "Все";
+"history.no_activity" = "В этом периоде пока нет активности";
+"history.reps_format" = "%d повт.";
+
+/* Settings */
+"settings.title" = "Настройки";
+"settings.exercise_rewards" = "Награды за упражнения";
+"settings.minutes_per_rep_label" = "Минут за повтор";
+"settings.daily_max_unlock" = "Макс. в день";
+"settings.default_limit" = "Лимит по умолчанию";
+"settings.haptic_feedback" = "Тактильный отклик";
+"settings.debug_mode" = "Режим отладки";
+"settings.debug_section" = "Инструменты отладки";
+"settings.simulate_reps" = "Симулировать повторы";
+"settings.fake_unlock" = "Тестовое открытие";
+"settings.reset_all" = "Сбросить все данные";
+"settings.about" = "О приложении";
+"settings.version" = "Версия";
+"settings.privacy_note" = "Все данные тренировок обрабатываются на устройстве. Видео не записывается и не передаётся.";
+"settings.preferences" = "Предпочтения";
+"settings.character_style" = "Персонаж";
+"character.woman" = "Женщина";
+"character.man" = "Мужчина";
+"settings.reset_confirm_title" = "Уверены?";
+"settings.reset_confirm_message" = "Это удалит все тренировки, настройки и историю открытий.";
+"settings.reset_confirm_button" = "Сбросить все данные";
+"settings.header_title" = "Настройки";
+"settings.header_subtitle" = "Настрой всё под себя.";
+"settings.minutes_per_rep_format" = "%.1f мин";
+"settings.minutes_value_format" = "%d мин";
+"settings.rate_app" = "Оценить FitScroll";
+
+/* Journey */
+"journey.title" = "Путь";
+"journey.header_title" = "Твой путь";
+"journey.header_subtitle" = "Каждый повтор приближает к цели.";
+"journey.stat.day_streak" = "дней подряд";
+"journey.stat.xp" = "XP";
+"journey.stat.level" = "Уровень";
+"journey.xp_progress_format" = "%d / %d XP";
+"journey.milestones" = "Этапы";
+"journey.state.completed" = "Пройдено";
+"journey.state.in_progress_format" = "В процессе · %@";
+"journey.state.locked" = "Закрыто";
+"journey.boss_level" = "БОСС-УРОВЕНЬ";
+"journey.reward_xp_format" = "+%d XP";
+"journey.reward_minutes_format" = "+%d мин";
+"journey.start" = "Старт";
+"journey.close" = "Закрыть";
+"journey.passive_explainer" = "Выполняй ежедневные тренировки — уровень завершится сам, когда цель будет достигнута.";
+"journey.go_to_workouts" = "К тренировкам";
+"journey.boss_defeated" = "Босс побеждён!";
+"journey.level_complete" = "Уровень пройден!";
+"journey.reward_xp_short_format" = "+%d";
+"journey.reward_minutes_short_format" = "+%d";
+"journey.reward_xp_caption" = "XP";
+"journey.reward_minutes_caption" = "мин бонус";
+"journey.new_badge" = "НОВЫЙ ЗНАЧОК";
+"journey.continue" = "Продолжить";
+"journey.badges" = "Значки";
+"journey.done" = "Готово";
+
+/* Paywall */
+"paywall.title" = "Открой FitScroll Premium";
+"paywall.subtitle" = "Двигайся и зарабатывай экранное время. 7 дней бесплатно.";
+"paywall.value_prop_1" = "Хватит терять день в бесконечной ленте";
+"paywall.value_prop_2" = "Автоматически блокируй любое приложение";
+"paywall.value_prop_3" = "Тренируйся и зарабатывай больше экранного времени";
+"paywall.value_prop_4" = "Следи за прогрессом с аналитикой";
+"paywall.cta_free_trial" = "Начать 7 дней бесплатно";
+"paywall.cta_buy_lifetime" = "Купить навсегда";
+"paywall.cta_subscribe" = "Оформить подписку";
+"paywall.restore_purchases" = "Восстановить покупки";
+"paywall.terms_of_use" = "Условия использования";
+"paywall.privacy_policy" = "Политика конфиденциальности";
+"paywall.legal_footer" = "7 дней бесплатно, затем автопродление по цене выше, пока не отмените. Отмена в любой момент: Настройки iOS → Apple ID → Подписки.";
+"paywall.best_value" = "ВЫГОДНЕЕ ВСЕГО";
+"paywall.plan.yearly" = "Год";
+"paywall.plan.monthly" = "Месяц";
+"paywall.plan.lifetime" = "Навсегда";
+"paywall.plan.yearly_subtitle" = "7 дней бесплатно, затем оплата за год";
+"paywall.plan.monthly_subtitle" = "7 дней бесплатно, затем оплата за месяц";
+"paywall.plan.lifetime_subtitle" = "Разовая покупка, твоё навсегда";
+"paywall.price.per_month_approx_format" = "≈ %@/мес";
+"paywall.price.per_month" = "в месяц";
+"paywall.price.one_time" = "разово";
+
+/* Errors */
+"errors.camera_permission_denied" = "Для отслеживания упражнений нужен доступ к камере";
+"errors.camera_recovery" = "Перейди в Настройки > FitScroll > Камера, чтобы включить доступ";
+"errors.screen_time_permission_denied" = "Для управления лимитами нужен доступ к экранному времени";
+"errors.screen_time_recovery" = "Перейди в Настройки > Экранное время, чтобы включить доступ";
+"errors.no_apps_selected" = "Выбери хотя бы одно приложение для ограничения";
+"errors.pose_not_detected" = "Не удаётся определить положение тела";
+"errors.pose_recovery" = "Убедись, что всё тело видно камере";
+"errors.low_light" = "Слишком мало света";
+"errors.light_recovery" = "Перейди в более освещённое место для точности";
+"errors.out_of_frame" = "Ты не полностью видишься в кадре";
+"errors.incomplete_motion" = "Движение не завершено";
+"errors.generic" = "Что-то пошло не так";
+"errors.try_again" = "Повторить";
+"errors.camera_denied_full" = "Доступ к камере запрещён. Включи в Настройках > FitScroll.";
+"errors.camera_denied_restricted" = "Доступ к камере запрещён. Включи в Настройках > FitScroll.";
+
+/* Exercise: Squat */
+"exercise.squat.name" = "Приседания";
+"exercise.squat.description" = "Поставь ноги на ширине плеч и опускайся, сгибая колени";
+
+/* Exercise: Push-up */
+"exercise.push_up.name" = "Отжимания";
+"exercise.push_up.description" = "Начни с упора лёжа, опусти грудь к полу и отожмись обратно";
+
+/* Notifications */
+"notifications.one_minute_warning.title" = "Осталась 1 минута";
+"notifications.one_minute_warning.body_singular" = "Открытое приложение заблокируется через 60 секунд. Заработать ещё времени?";
+"notifications.one_minute_warning.body_plural_format" = "%d открытых приложений заблокируются через 60 секунд. Заработать ещё времени?";
+"notifications.locked_again.title_singular" = "Приложение снова заблокировано";
+"notifications.locked_again.title_plural_format" = "%d приложений снова заблокированы";
+"notifications.locked_again.body_singular" = "Нажми, чтобы заработать больше времени быстрой тренировкой.";
+"notifications.locked_again.body_plural_format" = "%d приложений снова ограничены. Нажми, чтобы заработать больше времени.";
+
+/* Exercise: Jumping Jacks */
+"exercise.jumping_jacks.name" = "Прыжки «Джек»";
+"exercise.jumping_jacks.description" = "Прыгни, расставив ноги в стороны и подняв руки над головой, затем вернись в исходное положение";
+
+/* Exercise: Lunge */
+"exercise.lunge.name" = "Выпады";
+"exercise.lunge.description" = "Сделай шаг вперёд, сгибай оба колена, пока заднее почти не коснётся пола, затем оттолкнись назад";

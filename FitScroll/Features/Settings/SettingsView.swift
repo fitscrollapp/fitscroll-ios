@@ -6,7 +6,9 @@ struct SettingsView: View {
     @Query private var settings: [UserSettings]
     @Query private var rewardRules: [ExerciseRewardRule]
     @EnvironmentObject private var screenTimeService: ScreenTimeService
+    @ObservedObject private var purchases = PurchasesService.shared
     @State private var showResetConfirmation = false
+    @State private var showPaywall = false
 
     private var userSettings: UserSettings? {
         settings.first
@@ -16,6 +18,8 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 headerSection
+                leaderboardSection
+                    .listRowBackground(DS.Colors.cardBackground)
                 avatarSection
                 exerciseRewardsSection
                     .listRowBackground(DS.Colors.cardBackground)
@@ -30,19 +34,21 @@ struct SettingsView: View {
             }
             .scrollContentBackground(.hidden)
             .background(DS.Colors.background.ignoresSafeArea())
-            .navigationTitle(Strings.Settings.title)
-            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .navigationBar)
             .onAppear { seedMissingRewardRules() }
+            .sheet(isPresented: $showPaywall) {
+                PaywallView(dismissable: true)
+            }
         }
     }
 
     private var headerSection: some View {
         Section {
-            VStack(alignment: .leading, spacing: DS.Spacing.xs) {
-                Text("Settings")
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
+            VStack(alignment: .leading, spacing: 2) {
+                Text(Strings.Settings.headerTitle)
+                    .font(.system(size: 34, weight: .black, design: .rounded))
                     .foregroundColor(DS.Colors.textPrimary)
-                Text("Customize your experience.")
+                Text(Strings.Settings.headerSubtitle)
                     .font(.subheadline)
                     .foregroundColor(DS.Colors.textSecondary)
             }
@@ -88,11 +94,11 @@ struct SettingsView: View {
         Section(Strings.Settings.exerciseRewards) {
             ForEach(rewardRules, id: \.exerciseTypeRaw) { rule in
                 if let exercise = rule.exerciseType {
-                    HStack {
-                        ExerciseIconView(exerciseType: exercise, size: 22, color: DS.Colors.neon)
-                            .frame(width: 28)
+                    HStack(spacing: DS.Spacing.md) {
+                        DuoIconBadge(systemName: exercise.iconName, color: Duo.color(for: exercise), size: 38)
 
                         Text(exercise.displayName)
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
 
                         Spacer()
 
@@ -108,7 +114,7 @@ struct SettingsView: View {
                             in: 0.5...10.0,
                             step: 0.5
                         ) {
-                            Text(String(format: "%.1f min", rule.minutesPerRep))
+                            Text(String(format: Strings.Settings.minutesPerRepFormat, rule.minutesPerRep))
                                 .font(.subheadline)
                                 .monospacedDigit()
                         }
@@ -124,7 +130,7 @@ struct SettingsView: View {
                 Text(Strings.Settings.dailyMaxUnlock)
                 Spacer()
                 Stepper(
-                    "\(userSettings?.dailyMaxUnlockMinutes ?? 120) min",
+                    String(format: Strings.Settings.minutesValueFormat, userSettings?.dailyMaxUnlockMinutes ?? 120),
                     value: Binding(
                         get: { userSettings?.dailyMaxUnlockMinutes ?? 120 },
                         set: { newValue in
@@ -141,7 +147,7 @@ struct SettingsView: View {
                 Text(Strings.Settings.defaultLimit)
                 Spacer()
                 Stepper(
-                    "\(userSettings?.defaultDailyLimitMinutes ?? 30) min",
+                    String(format: Strings.Settings.minutesValueFormat, userSettings?.defaultDailyLimitMinutes ?? 30),
                     value: Binding(
                         get: { userSettings?.defaultDailyLimitMinutes ?? 30 },
                         set: { newValue in
@@ -165,7 +171,69 @@ struct SettingsView: View {
                     try? modelContext.save()
                 }
             ))
+
+            Toggle("Sound Effects", isOn: Binding(
+                get: { SoundManager.isEnabled },
+                set: { SoundManager.isEnabled = $0 }
+            ))
         }
+    }
+
+    private var leaderboardSection: some View {
+        Section("Account") {
+            HStack(spacing: DS.Spacing.md) {
+                DuoIconBadge(systemName: "person.fill", color: DS.Colors.neon, size: 38)
+                Text("Username")
+                Spacer()
+                Text(FitScrollAPI.shared.username ?? "Not set")
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .foregroundColor(FitScrollAPI.shared.username == nil ? DS.Colors.textSecondary : DS.Colors.neon)
+            }
+
+            // Tapping opens the paywall in dismissable mode — lets anyone
+            // (subscribers included) view the plans screen.
+            Button {
+                showPaywall = true
+            } label: {
+                HStack(spacing: DS.Spacing.md) {
+                    DuoIconBadge(systemName: "crown.fill", color: DS.Colors.accent, size: 38)
+                    Text("Premium")
+                        .foregroundColor(DS.Colors.textPrimary)
+                    Spacer()
+                    VStack(alignment: .trailing, spacing: 2) {
+                        Text(subscriptionStatusLabel)
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .foregroundColor(purchases.isSubscribed ? DS.Colors.neon : DS.Colors.textSecondary)
+                        if let detail = subscriptionDetail {
+                            Text(detail)
+                                .font(.caption2)
+                                .foregroundColor(DS.Colors.textSecondary)
+                        }
+                    }
+                    Image(systemName: "chevron.right")
+                        .font(.caption)
+                        .foregroundColor(DS.Colors.textSecondary)
+                }
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private var subscriptionStatusLabel: String {
+        if purchases.isTrialing { return "Trial ✓" }
+        if purchases.isSubscribed { return "Active ✓" }
+        return "Not subscribed"
+    }
+
+    /// e.g. "Renews Jul 30, 2026" / "Expires Jul 30, 2026" — nil for lifetime
+    /// or non-subscribers.
+    private var subscriptionDetail: String? {
+        guard purchases.isSubscribed,
+              let ent = purchases.customerInfo?.entitlements["premium"] else { return nil }
+        guard let exp = ent.expirationDate else { return "Lifetime" }
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        return (ent.willRenew ? "Renews " : "Expires ") + df.string(from: exp)
     }
 
     private var aboutSection: some View {
@@ -175,6 +243,20 @@ struct SettingsView: View {
                 Spacer()
                 Text("1.0.0")
                     .foregroundColor(.secondary)
+            }
+
+            Link(destination: ReviewManager.writeReviewURL) {
+                HStack {
+                    Image(systemName: "star.fill")
+                        .foregroundColor(DS.Colors.neon)
+                        .frame(width: 28)
+                    Text(Strings.Settings.rateApp)
+                        .foregroundColor(DS.Colors.textPrimary)
+                    Spacer()
+                    Image(systemName: "arrow.up.right")
+                        .font(.caption)
+                        .foregroundColor(DS.Colors.textSecondary)
+                }
             }
 
             Text(Strings.Settings.privacyNote)
@@ -191,12 +273,12 @@ struct SettingsView: View {
                 Label(Strings.Settings.resetAll, systemImage: "trash")
             }
         }
-        .confirmationDialog("Are you sure?", isPresented: $showResetConfirmation) {
-            Button("Reset All Data", role: .destructive) {
+        .confirmationDialog(Strings.Settings.resetConfirmTitle, isPresented: $showResetConfirmation) {
+            Button(Strings.Settings.resetConfirmButton, role: .destructive) {
                 resetAllData()
             }
         } message: {
-            Text("This will delete all workout sessions, settings, and unlock history.")
+            Text(Strings.Settings.resetConfirmMessage)
         }
     }
 

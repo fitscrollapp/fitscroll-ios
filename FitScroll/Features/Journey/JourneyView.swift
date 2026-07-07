@@ -38,7 +38,7 @@ struct JourneyView: View {
                 .padding(DS.Spacing.lg)
             }
             .background(DS.Colors.background.ignoresSafeArea())
-            .navigationTitle("Journey")
+            .navigationTitle(Strings.Journey.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -91,10 +91,10 @@ struct JourneyView: View {
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: DS.Spacing.xs) {
-            Text("Your Journey")
+            Text(Strings.Journey.headerTitle)
                 .font(.system(size: 28, weight: .bold, design: .rounded))
                 .foregroundColor(DS.Colors.textPrimary)
-            Text("Every rep brings you closer.")
+            Text(Strings.Journey.headerSubtitle)
                 .font(.subheadline)
                 .foregroundColor(DS.Colors.textSecondary)
         }
@@ -105,17 +105,17 @@ struct JourneyView: View {
     private var statsCard: some View {
         VStack(spacing: DS.Spacing.md) {
             HStack(spacing: 0) {
-                statColumn(icon: "flame.fill", value: "\(streak)", label: "day streak", color: DS.Colors.accent)
+                statColumn(icon: "flame.fill", value: "\(streak)", label: Strings.Journey.statDayStreak, color: DS.Colors.accent)
                 statDivider
-                statColumn(icon: "bolt.fill", value: "\(progress.totalXP)", label: "XP", color: DS.Colors.neon)
+                statColumn(icon: "bolt.fill", value: "\(progress.totalXP)", label: Strings.Journey.statXP, color: DS.Colors.neon)
                 statDivider
-                statColumn(icon: "checkmark.seal.fill", value: "\(levelNumber)", label: "Level", color: DS.Colors.secondary)
+                statColumn(icon: "checkmark.seal.fill", value: "\(levelNumber)", label: Strings.Journey.statLevel, color: DS.Colors.secondary)
             }
 
             VStack(spacing: DS.Spacing.xs) {
                 HStack {
                     Spacer()
-                    Text("\(progress.totalXP) / \(xpGoal) XP")
+                    Text(String(format: Strings.Journey.xpProgressFormat, progress.totalXP, xpGoal))
                         .font(.caption)
                         .foregroundColor(DS.Colors.textSecondary)
                         .monospacedDigit()
@@ -155,7 +155,7 @@ struct JourneyView: View {
 
     private var milestonesSection: some View {
         VStack(alignment: .leading, spacing: DS.Spacing.md) {
-            Text("Milestones")
+            Text(Strings.Journey.milestones)
                 .font(.headline)
                 .foregroundColor(DS.Colors.textPrimary)
 
@@ -266,10 +266,10 @@ struct JourneyView: View {
 
     private func subtitle(for st: MilestoneState, level: JourneyLevel) -> String {
         switch st {
-        case .completed: return "Completed"
-        case .current:   return "In progress · \(level.challenge.summary)"
+        case .completed: return Strings.Journey.stateCompleted
+        case .current:   return String(format: Strings.Journey.stateInProgressFormat, level.challenge.summary)
         case .upcoming:  return level.challenge.summary
-        case .locked:    return "Locked"
+        case .locked:    return Strings.Journey.stateLocked
         }
     }
 }
@@ -310,7 +310,7 @@ struct LevelDetailSheet: View {
 
                 VStack(spacing: DS.Spacing.xs) {
                     if level.isBoss {
-                        Text("BOSS LEVEL")
+                        Text(Strings.Journey.bossLevel)
                             .font(.caption)
                             .fontWeight(.black)
                             .foregroundColor(.yellow)
@@ -330,7 +330,7 @@ struct LevelDetailSheet: View {
                 Spacer()
 
                 if let exercise = primaryExercise() {
-                    PrimaryButton(title: "Start") {
+                    PrimaryButton(title: Strings.Journey.start) {
                         navigateToWorkout = exercise
                     }
                     .padding(.horizontal, DS.Spacing.lg)
@@ -339,7 +339,7 @@ struct LevelDetailSheet: View {
                         .padding(.horizontal, DS.Spacing.lg)
                 }
 
-                Button("Close") { dismiss() }
+                Button(Strings.Journey.close) { dismiss() }
                     .padding(.bottom, DS.Spacing.lg)
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -351,10 +351,10 @@ struct LevelDetailSheet: View {
 
     private var rewardRow: some View {
         HStack(spacing: DS.Spacing.lg) {
-            rewardPill(icon: "star.fill", label: "+\(level.rewardXP) XP", color: .yellow)
+            rewardPill(icon: "star.fill", label: String(format: Strings.Journey.rewardXPFormat, level.rewardXP), color: .yellow)
             rewardPill(
                 icon: "clock.fill",
-                label: "+\(level.rewardBonusMinutes) min",
+                label: String(format: Strings.Journey.rewardMinutesFormat, level.rewardBonusMinutes),
                 color: .orange
             )
             if let badgeId = level.badgeId, let badge = JourneyContent.badge(id: badgeId) {
@@ -376,11 +376,11 @@ struct LevelDetailSheet: View {
 
     private var passiveChallengeExplainer: some View {
         VStack(spacing: DS.Spacing.sm) {
-            Text("Do your daily workouts — this level completes on its own when the goal is met.")
+            Text(Strings.Journey.passiveExplainer)
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-            Button("Go to Workouts") {
+            Button(Strings.Journey.goToWorkouts) {
                 dismiss()
             }
             .buttonStyle(.borderedProminent)
@@ -450,7 +450,7 @@ struct JourneyCompletionSheet: View {
                             )
                         )
 
-                    Text(level.isBoss ? "Boss Defeated!" : "Level Complete!")
+                    Text(level.isBoss ? Strings.Journey.bossDefeated : Strings.Journey.levelComplete)
                         .font(.system(size: 32, weight: .black, design: .rounded))
                         .foregroundColor(.white)
 
@@ -461,21 +461,21 @@ struct JourneyCompletionSheet: View {
                     HStack(spacing: DS.Spacing.md) {
                         rewardCard(
                             icon: "star.fill",
-                            label: "+\(level.rewardXP)",
-                            caption: "XP",
+                            label: String(format: Strings.Journey.rewardXPShortFormat, level.rewardXP),
+                            caption: Strings.Journey.rewardXPCaption,
                             tint: .yellow
                         )
                         rewardCard(
                             icon: "clock.fill",
-                            label: "+\(level.rewardBonusMinutes)",
-                            caption: "min bonus",
+                            label: String(format: Strings.Journey.rewardMinutesShortFormat, level.rewardBonusMinutes),
+                            caption: Strings.Journey.rewardMinutesCaption,
                             tint: .orange
                         )
                     }
 
                     if let badge = badge {
                         VStack(spacing: DS.Spacing.sm) {
-                            Text("NEW BADGE")
+                            Text(Strings.Journey.newBadge)
                                 .font(.caption2)
                                 .fontWeight(.black)
                                 .foregroundColor(.yellow)
@@ -508,7 +508,7 @@ struct JourneyCompletionSheet: View {
 
                     Spacer()
 
-                    Button("Continue") {
+                    Button(Strings.Journey.continue) {
                         dismiss()
                     }
                     .font(.headline)
@@ -590,11 +590,11 @@ struct BadgesView: View {
                 }
                 .padding(DS.Spacing.lg)
             }
-            .navigationTitle("Badges")
+            .navigationTitle(Strings.Journey.badges)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") { dismiss() }
+                    Button(Strings.Journey.done) { dismiss() }
                 }
             }
         }

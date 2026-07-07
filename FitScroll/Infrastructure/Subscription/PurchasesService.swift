@@ -41,6 +41,13 @@ final class PurchasesService: ObservableObject {
         }
     }
 
+    /// Bridge the AppsFlyer install id into RevenueCat so subscription
+    /// events (trial, purchase, renewal) are forwarded to AppsFlyer → TikTok
+    /// against the same user. Call after AppsFlyer is configured.
+    func setAppsflyerID(_ id: String?) {
+        Purchases.shared.attribution.setAppsflyerID(id)
+    }
+
     /// Refreshes the current customer info from RevenueCat servers.
     func refreshCustomerInfo() async {
         do {

@@ -60,6 +60,9 @@
 "permissions.camera.description" = "FitScroll egzersizlerini takip etmek için kameranı kullanır. Tüm işlem cihazında gerçekleşir.";
 "permissions.grant_access" = "İzin Ver";
 "permissions.open_settings" = "Ayarları Aç";
+"permissions.title" = "İzinler";
+"permissions.subtitle" = "FitScroll'un çalışması için bu izinler gerekli";
+"permissions.continue" = "Devam";
 
 /* Dashboard */
 "dashboard.title" = "Ana Sayfa";
@@ -73,6 +76,17 @@
 "dashboard.status.unrestricted_message" = "Tüm uygulamalar erişilebilir";
 "dashboard.status.restricted_message" = "Seçili uygulamalar kilitli";
 "dashboard.status.temporarily_unlocked_message" = "Uygulamalar geçici olarak açık";
+"dashboard.hero.earn_time" = "Süre kazan.";
+"dashboard.hero.unlock_freedom" = "Özgürlüğü aç.";
+"dashboard.hero.subtitle" = "Vücudunu hareket ettir.\nSüreni aç.";
+"dashboard.ring.minutes_unit" = "dk";
+"dashboard.ring.earned_today" = "bugün kazanılan";
+"dashboard.chip.day_streak" = "gün serisi";
+"dashboard.chip.apps_protected" = "korunan uygulama";
+"dashboard.chip.level_format" = "Seviye %d";
+"dashboard.unlock_screen_time" = "Ekran Süresini Aç";
+"dashboard.see_all" = "Tümünü gör";
+"dashboard.reps_format" = "%d tekrar";
 
 /* App Selection */
 "app_selection.title" = "Kısıtlanacak Uygulamaları Seç";
@@ -82,6 +96,8 @@
 "app_selection.select_apps" = "Uygulama Seç";
 "app_selection.apps" = "Uygulama";
 "app_selection.categories" = "Kategori";
+"app_selection.locked_right_away" = "Anında kilitlenir";
+"app_selection.locked_right_away_body" = "Seçtiğin uygulamalar Kaydet'e basar basmaz kilitlenir. Bir egzersizi tamamlayarak geçici olarak aç — her tekrar sana ekran süresi dakikası kazandırır.";
 
 /* Limits */
 "limits.title" = "Kullanım Limiti Belirle";
@@ -100,6 +116,11 @@
 "unlock.section_stable" = "Stabil Egzersizler";
 "unlock.section_experimental" = "Deneysel";
 "unlock.close" = "Kapat";
+"unlock.header_title" = "Egzersizle Kilidi Aç";
+"unlock.header_subtitle" = "Bir egzersiz seç ve ekran süresi kazan.";
+"unlock.choose_exercise" = "Bir Egzersiz Seç";
+"unlock.reps_format" = "%d tekrar";
+"unlock.minutes_format" = "%d dk";
 
 /* Workout */
 "workout.reps" = "Tekrar";
@@ -114,6 +135,13 @@
 "workout.more_reps_format" = "%d tekrar daha, %d dakika daha kazan";
 "workout.preparing" = "Kamera hazırlanıyor...";
 "workout.simulator_mode" = "Simülatör Modu";
+"workout.minutes_earned_format" = "+%@ dk kazanıldı";
+"workout.open_settings" = "Ayarları Aç";
+"workout.close" = "Kapat";
+"workout.quit_title" = "Bu egzersizden çıkılsın mı?";
+"workout.quit_discard" = "Çık ve Sil";
+"workout.keep_going" = "Devam Et";
+"workout.quit_message" = "Şu ana kadarki tekrarların kaydedilmeyecek ve kamera duracak.";
 
 /* Summary */
 "summary.title" = "Oturum Tamamlandı!";
@@ -134,6 +162,12 @@
 "history.minutes" = "Dakika";
 "history.section_sessions" = "Oturumlar";
 "history.cancelled" = "İptal Edildi";
+"history.header_title" = "Egzersiz Geçmişi";
+"history.header_subtitle" = "Zaman içindeki ilerlemeni takip et.";
+"history.recent_workouts" = "Son Egzersizler";
+"history.see_all" = "Tümünü gör";
+"history.no_activity" = "Bu aralıkta henüz aktivite yok";
+"history.reps_format" = "%d tekrar";
 
 /* Settings */
 "settings.title" = "Ayarlar";
@@ -157,6 +191,66 @@
 "settings.reset_confirm_title" = "Emin misin?";
 "settings.reset_confirm_message" = "Bu işlem tüm egzersiz oturumlarını, ayarları ve açılım geçmişini silecek.";
 "settings.reset_confirm_button" = "Tüm Verileri Sıfırla";
+"settings.header_title" = "Ayarlar";
+"settings.header_subtitle" = "Deneyimini özelleştir.";
+"settings.minutes_per_rep_format" = "%.1f dk";
+"settings.minutes_value_format" = "%d dk";
+"settings.rate_app" = "FitScroll'u Puanla";
+
+/* Journey */
+"journey.title" = "Yolculuk";
+"journey.header_title" = "Yolculuğun";
+"journey.header_subtitle" = "Her tekrar seni hedefe yaklaştırır.";
+"journey.stat.day_streak" = "gün serisi";
+"journey.stat.xp" = "XP";
+"journey.stat.level" = "Seviye";
+"journey.xp_progress_format" = "%d / %d XP";
+"journey.milestones" = "Kilometre Taşları";
+"journey.state.completed" = "Tamamlandı";
+"journey.state.in_progress_format" = "Devam ediyor · %@";
+"journey.state.locked" = "Kilitli";
+"journey.boss_level" = "BOSS SEVİYESİ";
+"journey.reward_xp_format" = "+%d XP";
+"journey.reward_minutes_format" = "+%d dk";
+"journey.start" = "Başlat";
+"journey.close" = "Kapat";
+"journey.passive_explainer" = "Günlük egzersizlerini yap — hedefe ulaşıldığında bu seviye kendiliğinden tamamlanır.";
+"journey.go_to_workouts" = "Egzersizlere Git";
+"journey.boss_defeated" = "Boss Yenildi!";
+"journey.level_complete" = "Seviye Tamamlandı!";
+"journey.reward_xp_short_format" = "+%d";
+"journey.reward_minutes_short_format" = "+%d";
+"journey.reward_xp_caption" = "XP";
+"journey.reward_minutes_caption" = "dk bonus";
+"journey.new_badge" = "YENİ ROZET";
+"journey.continue" = "Devam";
+"journey.badges" = "Rozetler";
+"journey.done" = "Tamam";
+
+/* Paywall */
+"paywall.title" = "FitScroll Premium'u Aç";
+"paywall.subtitle" = "Hareket et, ekran süresi kazan. 7 gün ücretsiz başla.";
+"paywall.value_prop_1" = "Gününü çalan amaçsız scroll'a son ver";
+"paywall.value_prop_2" = "İstediğin uygulamayı otomatik kilitle";
+"paywall.value_prop_3" = "Egzersiz yaparak daha fazla ekran süresi kazan";
+"paywall.value_prop_4" = "İlerlemeni analizlerle takip et";
+"paywall.cta_free_trial" = "7 Günlük Ücretsiz Denemeyi Başlat";
+"paywall.cta_buy_lifetime" = "Ömür Boyu Satın Al";
+"paywall.cta_subscribe" = "Abone Ol";
+"paywall.restore_purchases" = "Satın Alımları Geri Yükle";
+"paywall.terms_of_use" = "Kullanım Şartları";
+"paywall.privacy_policy" = "Gizlilik Politikası";
+"paywall.legal_footer" = "7 günlük ücretsiz deneme, ardından sen iptal edene kadar yukarıdaki fiyattan otomatik yenilenir. İstediğin zaman iOS Ayarlar → Apple Kimliği → Abonelikler bölümünden iptal edebilirsin.";
+"paywall.best_value" = "EN AVANTAJLI";
+"paywall.plan.yearly" = "Yıllık";
+"paywall.plan.monthly" = "Aylık";
+"paywall.plan.lifetime" = "Ömür Boyu";
+"paywall.plan.yearly_subtitle" = "7 gün ücretsiz, ardından yıllık faturalanır";
+"paywall.plan.monthly_subtitle" = "7 gün ücretsiz, ardından aylık faturalanır";
+"paywall.plan.lifetime_subtitle" = "Tek seferlik satın alım, sonsuza dek senin";
+"paywall.price.per_month_approx_format" = "≈ %@/ay";
+"paywall.price.per_month" = "aylık";
+"paywall.price.one_time" = "tek seferlik";
 
 /* Errors */
 "errors.camera_permission_denied" = "Egzersizleri takip etmek için kamera erişimi gereklidir";

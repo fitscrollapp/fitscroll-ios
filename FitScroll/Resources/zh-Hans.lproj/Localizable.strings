@@ -1,0 +1,295 @@
+/* App */
+"app.name" = "FitScroll";
+"app.tagline" = "运动解锁";
+
+/* Onboarding */
+"onboarding.welcome.title" = "欢迎使用 FitScroll";
+"onboarding.welcome.subtitle" = "通过运动来掌控你的屏幕使用时间";
+"onboarding.step1.title" = "选择应用";
+"onboarding.step1.description" = "选择你想限制使用的应用";
+"onboarding.step2.title" = "设置限额";
+"onboarding.step2.description" = "为所选应用设定每日使用限额";
+"onboarding.step3.title" = "运动解锁";
+"onboarding.step3.description" = "通过运动赚取额外的屏幕使用时间";
+"onboarding.get_started" = "开始使用";
+"onboarding.next" = "下一步";
+"onboarding.skip" = "跳过";
+"onboarding.back" = "返回";
+"onboarding.continue" = "继续";
+
+/* Onboarding — Hook */
+"onboarding.hook.title" = "运动解锁";
+"onboarding.hook.subtitle" = "把刷屏时间变成健身时间，每一次动作都为你赚回分钟。";
+
+/* Onboarding — Transformation (Before/After) */
+"onboarding.transform.title" = "重新掌控";
+"onboarding.transform.before" = "现在";
+"onboarding.transform.after" = "用 FitScroll 后";
+"onboarding.transform.before1" = "无尽刷屏";
+"onboarding.transform.before2" = "时间流逝";
+"onboarding.transform.before3" = "毫无掌控";
+"onboarding.transform.after1" = "应用自动锁定";
+"onboarding.transform.after2" = "运动赚时间";
+"onboarding.transform.after3" = "你说了算";
+
+/* Onboarding — Privacy framing */
+"onboarding.privacy.title" = "隐私至上";
+"onboarding.privacy.subtitle" = "在请求权限之前，先告诉你我们会如何使用它们。";
+"onboarding.privacy.screen_time.title" = "屏幕使用时间";
+"onboarding.privacy.screen_time.body" = "用于锁定和解锁你选择的应用。我们永远看不到你在里面做什么。";
+"onboarding.privacy.camera.title" = "摄像头";
+"onboarding.privacy.camera.body" = "仅用于计数动作。所有处理都在你的设备上完成，不录制任何视频。";
+
+/* Onboarding — Permissions */
+"onboarding.screen_time.title" = "允许屏幕使用时间";
+"onboarding.screen_time.body" = "FitScroll 需要此权限来锁定你的应用，并在你运动后解锁它们。";
+"onboarding.screen_time.cta" = "允许屏幕使用时间";
+"onboarding.screen_time.later" = "稍后再说";
+
+"onboarding.camera.title" = "摄像头权限";
+"onboarding.camera.body" = "FitScroll 使用摄像头来计数你的动作。全部在设备上完成，不录制任何内容。";
+"onboarding.camera.cta" = "允许摄像头";
+"onboarding.camera.later" = "稍后再说";
+
+"onboarding.finish" = "开始使用 FitScroll";
+
+/* Permissions */
+"permissions.screen_time.title" = "屏幕使用时间权限";
+"permissions.screen_time.description" = "FitScroll 需要屏幕使用时间权限来管理应用限额";
+"permissions.camera.title" = "摄像头权限";
+"permissions.camera.description" = "FitScroll 使用摄像头来追踪你的运动。所有处理都在设备上完成。";
+"permissions.grant_access" = "授予权限";
+"permissions.open_settings" = "打开设置";
+"permissions.title" = "权限";
+"permissions.subtitle" = "FitScroll 需要这些权限才能正常运行";
+"permissions.continue" = "继续";
+
+/* Dashboard */
+"dashboard.title" = "主页";
+"dashboard.active_limits" = "生效中的限额";
+"dashboard.today_earned" = "今日赚取的时间";
+"dashboard.locked_apps" = "受保护的应用";
+"dashboard.recent_sessions" = "最近的训练";
+"dashboard.unlock_now" = "运动解锁";
+"dashboard.no_limits_set" = "尚未设置限额";
+"dashboard.no_sessions_yet" = "还没有训练记录，开始运动吧！";
+"dashboard.status.unrestricted_message" = "所有应用均可访问";
+"dashboard.status.restricted_message" = "所选应用已锁定";
+"dashboard.status.temporarily_unlocked_message" = "应用已临时解锁";
+"dashboard.hero.earn_time" = "赚取时间。";
+"dashboard.hero.unlock_freedom" = "解锁自由。";
+"dashboard.hero.subtitle" = "动起来。\n解锁你的时间。";
+"dashboard.ring.minutes_unit" = "分钟";
+"dashboard.ring.earned_today" = "今日赚取";
+"dashboard.chip.day_streak" = "天连续";
+"dashboard.chip.apps_protected" = "个应用受保护";
+"dashboard.chip.level_format" = "等级 %d";
+"dashboard.unlock_screen_time" = "解锁屏幕时间";
+"dashboard.see_all" = "查看全部";
+"dashboard.reps_format" = "%d 次";
+
+/* App Selection */
+"app_selection.title" = "选择要限制的应用";
+"app_selection.subtitle" = "选择你想限制使用的应用";
+"app_selection.done" = "完成";
+"app_selection.no_apps_selected" = "未选择应用";
+"app_selection.select_apps" = "选择应用";
+"app_selection.apps" = "应用";
+"app_selection.categories" = "类别";
+"app_selection.locked_right_away" = "立即锁定";
+"app_selection.locked_right_away_body" = "你选择的应用会在点击保存后立即锁定。完成一次训练即可临时解锁——每一次动作都为你赚取屏幕使用分钟。";
+
+/* Limits */
+"limits.title" = "设置使用限额";
+"limits.daily_limit" = "每日限额";
+"limits.minutes" = "分钟";
+"limits.save" = "保存";
+"limits.done" = "完成";
+
+/* Unlock */
+"unlock.title" = "运动解锁";
+"unlock.subtitle" = "选择一项运动来赚取屏幕使用时间";
+"unlock.minutes_per_rep_format" = "%.1f 分钟/次";
+"unlock.stable_label" = "稳定";
+"unlock.experimental_label" = "测试版";
+"unlock.start_session" = "开始训练";
+"unlock.section_stable" = "稳定运动";
+"unlock.section_experimental" = "实验性";
+"unlock.close" = "关闭";
+"unlock.header_title" = "运动解锁";
+"unlock.header_subtitle" = "选择一项训练，赚取屏幕使用时间。";
+"unlock.choose_exercise" = "选择运动";
+"unlock.reps_format" = "%d 次";
+"unlock.minutes_format" = "%d 分钟";
+
+/* Workout */
+"workout.reps" = "次数";
+"workout.minutes" = "赚取的分钟";
+"workout.start" = "开始";
+"workout.pause" = "暂停";
+"workout.resume" = "继续";
+"workout.finish" = "结束";
+"workout.adjust_position" = "调整位置，让全身完整出现在画面中";
+"workout.move_better_light" = "移动到光线更好的地方";
+"workout.great_form" = "动作很标准！继续保持！";
+"workout.more_reps_format" = "再做 %d 次，多赚 %d 分钟";
+"workout.preparing" = "正在准备摄像头…";
+"workout.simulator_mode" = "模拟器模式";
+"workout.minutes_earned_format" = "+%@ 分钟已赚取";
+"workout.open_settings" = "打开设置";
+"workout.close" = "关闭";
+"workout.quit_title" = "退出本次训练？";
+"workout.quit_discard" = "退出并放弃";
+"workout.keep_going" = "继续训练";
+"workout.quit_message" = "目前完成的次数将不会被保存，摄像头也会关闭。";
+
+/* Summary */
+"summary.title" = "训练完成！";
+"summary.total_reps" = "总次数";
+"summary.earned_minutes" = "赚取的分钟";
+"summary.avg_confidence" = "平均准确度";
+"summary.duration" = "时长";
+"summary.unlock_message_format" = "干得漂亮！你赚取了 %d 分钟屏幕使用时间！";
+"summary.apply_unlock" = "解锁应用";
+"summary.back_to_dashboard" = "返回主页";
+
+/* History */
+"history.title" = "训练历史";
+"history.no_sessions" = "还没有训练记录";
+"history.total_all_time" = "历史统计";
+"history.sessions" = "训练";
+"history.reps" = "次数";
+"history.minutes" = "分钟";
+"history.section_sessions" = "训练记录";
+"history.cancelled" = "已取消";
+"history.header_title" = "训练历史";
+"history.header_subtitle" = "追踪你的长期进步。";
+"history.recent_workouts" = "最近的训练";
+"history.see_all" = "查看全部";
+"history.no_activity" = "此时间段还没有活动";
+"history.reps_format" = "%d 次";
+
+/* Settings */
+"settings.title" = "设置";
+"settings.exercise_rewards" = "运动奖励";
+"settings.minutes_per_rep_label" = "每次动作的分钟";
+"settings.daily_max_unlock" = "每日最大解锁";
+"settings.default_limit" = "默认每日限额";
+"settings.haptic_feedback" = "触感反馈";
+"settings.debug_mode" = "调试模式";
+"settings.debug_section" = "调试工具";
+"settings.simulate_reps" = "模拟动作";
+"settings.fake_unlock" = "测试解锁";
+"settings.reset_all" = "重置所有数据";
+"settings.about" = "关于";
+"settings.version" = "版本";
+"settings.privacy_note" = "所有运动数据都在设备上处理。不会录制或传输任何视频。";
+"settings.preferences" = "偏好设置";
+"settings.character_style" = "角色";
+"character.woman" = "女性";
+"character.man" = "男性";
+"settings.reset_confirm_title" = "确定吗？";
+"settings.reset_confirm_message" = "这将删除所有训练记录、设置和解锁历史。";
+"settings.reset_confirm_button" = "重置所有数据";
+"settings.header_title" = "设置";
+"settings.header_subtitle" = "自定义你的体验。";
+"settings.minutes_per_rep_format" = "%.1f 分钟";
+"settings.minutes_value_format" = "%d 分钟";
+"settings.rate_app" = "为 FitScroll 评分";
+
+/* Journey */
+"journey.title" = "旅程";
+"journey.header_title" = "你的旅程";
+"journey.header_subtitle" = "每一次动作都让你更近一步。";
+"journey.stat.day_streak" = "天连续";
+"journey.stat.xp" = "经验值";
+"journey.stat.level" = "等级";
+"journey.xp_progress_format" = "%d / %d 经验值";
+"journey.milestones" = "里程碑";
+"journey.state.completed" = "已完成";
+"journey.state.in_progress_format" = "进行中 · %@";
+"journey.state.locked" = "未解锁";
+"journey.boss_level" = "BOSS 关卡";
+"journey.reward_xp_format" = "+%d 经验值";
+"journey.reward_minutes_format" = "+%d 分钟";
+"journey.start" = "开始";
+"journey.close" = "关闭";
+"journey.passive_explainer" = "完成你的每日训练——达成目标后，本关卡会自动完成。";
+"journey.go_to_workouts" = "前往训练";
+"journey.boss_defeated" = "击败 BOSS！";
+"journey.level_complete" = "关卡完成！";
+"journey.reward_xp_short_format" = "+%d";
+"journey.reward_minutes_short_format" = "+%d";
+"journey.reward_xp_caption" = "经验值";
+"journey.reward_minutes_caption" = "分钟奖励";
+"journey.new_badge" = "新徽章";
+"journey.continue" = "继续";
+"journey.badges" = "徽章";
+"journey.done" = "完成";
+
+/* Paywall */
+"paywall.title" = "解锁 FitScroll 高级版";
+"paywall.subtitle" = "运动赚取屏幕使用时间。先免费试用 7 天。";
+"paywall.value_prop_1" = "别让刷屏偷走你的一天";
+"paywall.value_prop_2" = "自动锁定任意应用";
+"paywall.value_prop_3" = "运动赚取更多屏幕使用时间";
+"paywall.value_prop_4" = "用数据分析追踪进步";
+"paywall.cta_free_trial" = "开始 7 天免费试用";
+"paywall.cta_buy_lifetime" = "购买终身版";
+"paywall.cta_subscribe" = "订阅";
+"paywall.restore_purchases" = "恢复购买";
+"paywall.terms_of_use" = "使用条款";
+"paywall.privacy_policy" = "隐私政策";
+"paywall.legal_footer" = "7 天免费试用，之后将按上述价格自动续订，直到你取消。可随时在 iOS 设置 → Apple ID → 订阅 中取消。";
+"paywall.best_value" = "最超值";
+"paywall.plan.yearly" = "年付";
+"paywall.plan.monthly" = "月付";
+"paywall.plan.lifetime" = "终身";
+"paywall.plan.yearly_subtitle" = "免费 7 天，之后按年扣费";
+"paywall.plan.monthly_subtitle" = "免费 7 天，之后按月扣费";
+"paywall.plan.lifetime_subtitle" = "一次性购买，永久拥有";
+"paywall.price.per_month_approx_format" = "≈ %@/月";
+"paywall.price.per_month" = "每月";
+"paywall.price.one_time" = "一次性";
+
+/* Errors */
+"errors.camera_permission_denied" = "追踪运动需要摄像头权限";
+"errors.camera_recovery" = "前往 设置 > FitScroll > 摄像头 开启权限";
+"errors.screen_time_permission_denied" = "管理应用限额需要屏幕使用时间权限";
+"errors.screen_time_recovery" = "前往 设置 > 屏幕使用时间 开启权限";
+"errors.no_apps_selected" = "请至少选择一个要限制的应用";
+"errors.pose_not_detected" = "无法检测到你的身体姿势";
+"errors.pose_recovery" = "请确保全身都出现在摄像头画面中";
+"errors.low_light" = "光线太暗";
+"errors.light_recovery" = "移动到更明亮的地方以获得更好的检测效果";
+"errors.out_of_frame" = "你没有完整出现在摄像头画面中";
+"errors.incomplete_motion" = "动作未完成";
+"errors.generic" = "出了点问题";
+"errors.try_again" = "重试";
+"errors.camera_denied_full" = "摄像头权限被拒绝。请在 设置 > FitScroll 中开启。";
+"errors.camera_denied_restricted" = "摄像头权限被拒绝。请在 设置 > FitScroll 中开启。";
+
+/* Exercise: Squat */
+"exercise.squat.name" = "深蹲";
+"exercise.squat.description" = "双脚与肩同宽站立，屈膝下蹲降低身体";
+
+/* Exercise: Push-up */
+"exercise.push_up.name" = "俯卧撑";
+"exercise.push_up.description" = "从平板支撑姿势开始，将胸部下降至接近地面，再撑起身体";
+
+/* Notifications */
+"notifications.one_minute_warning.title" = "还剩 1 分钟";
+"notifications.one_minute_warning.body_singular" = "已解锁的应用将在 60 秒后锁定。再赚点时间？";
+"notifications.one_minute_warning.body_plural_format" = "%d 个已解锁的应用将在 60 秒后锁定。再赚点时间？";
+"notifications.locked_again.title_singular" = "应用已重新锁定";
+"notifications.locked_again.title_plural_format" = "%d 个应用已重新锁定";
+"notifications.locked_again.body_singular" = "轻点，通过一次快速训练赚取更多屏幕使用时间。";
+"notifications.locked_again.body_plural_format" = "%d 个应用已重新受限。轻点以赚取更多时间。";
+
+/* Exercise: Jumping Jacks */
+"exercise.jumping_jacks.name" = "开合跳";
+"exercise.jumping_jacks.description" = "跳起时双脚向两侧分开、双臂举过头顶，再跳回起始姿势";
+
+/* Exercise: Lunge */
+"exercise.lunge.name" = "弓步蹲";
+"exercise.lunge.description" = "一脚向前迈出，弯曲双膝直到后膝几乎触地，再撑起身体";

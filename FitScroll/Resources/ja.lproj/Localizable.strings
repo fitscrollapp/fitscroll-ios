@@ -1,0 +1,295 @@
+/* App */
+"app.name" = "FitScroll";
+"app.tagline" = "動いてロック解除";
+
+/* Onboarding */
+"onboarding.welcome.title" = "FitScrollへようこそ";
+"onboarding.welcome.subtitle" = "運動でスクリーンタイムをコントロール";
+"onboarding.step1.title" = "アプリを選ぶ";
+"onboarding.step1.description" = "制限したいアプリを選びましょう";
+"onboarding.step2.title" = "上限を設定";
+"onboarding.step2.description" = "選んだアプリの1日の利用上限を設定します";
+"onboarding.step3.title" = "運動でロック解除";
+"onboarding.step3.description" = "運動して追加のスクリーンタイムを獲得";
+"onboarding.get_started" = "はじめる";
+"onboarding.next" = "次へ";
+"onboarding.skip" = "スキップ";
+"onboarding.back" = "戻る";
+"onboarding.continue" = "続ける";
+
+/* Onboarding — Hook */
+"onboarding.hook.title" = "動いてロック解除";
+"onboarding.hook.subtitle" = "スクロール時間をフィットネス時間に。1回ごとに時間を取り戻そう。";
+
+/* Onboarding — Transformation (Before/After) */
+"onboarding.transform.title" = "主導権を取り戻す";
+"onboarding.transform.before" = "今のあなた";
+"onboarding.transform.after" = "FitScrollなら";
+"onboarding.transform.before1" = "終わらないスクロール";
+"onboarding.transform.before2" = "失われる時間";
+"onboarding.transform.before3" = "コントロール不能";
+"onboarding.transform.after1" = "アプリを自動ロック";
+"onboarding.transform.after2" = "運動で時間を獲得";
+"onboarding.transform.after3" = "主導権はあなたに";
+
+/* Onboarding — Privacy framing */
+"onboarding.privacy.title" = "設計から守るプライバシー";
+"onboarding.privacy.subtitle" = "権限をお願いする前に、何にどう使うかをはっきりお伝えします。";
+"onboarding.privacy.screen_time.title" = "スクリーンタイム";
+"onboarding.privacy.screen_time.body" = "選んだアプリのロックと解除に使います。中での操作は見ません。";
+"onboarding.privacy.camera.title" = "カメラ";
+"onboarding.privacy.camera.body" = "回数のカウントだけに使用。処理はすべて端末内で完結し、録画はしません。";
+
+/* Onboarding — Permissions */
+"onboarding.screen_time.title" = "スクリーンタイムを許可";
+"onboarding.screen_time.body" = "アプリをロックし、運動後に解除するためにこの許可が必要です。";
+"onboarding.screen_time.cta" = "スクリーンタイムを許可";
+"onboarding.screen_time.later" = "あとで設定する";
+
+"onboarding.camera.title" = "カメラへのアクセス";
+"onboarding.camera.body" = "FitScrollは回数のカウントにカメラを使います。すべて端末内で処理し、録画はしません。";
+"onboarding.camera.cta" = "カメラを許可";
+"onboarding.camera.later" = "あとで設定する";
+
+"onboarding.finish" = "FitScrollを始める";
+
+/* Permissions */
+"permissions.screen_time.title" = "スクリーンタイムへのアクセス";
+"permissions.screen_time.description" = "アプリ制限の管理にスクリーンタイムへのアクセスが必要です";
+"permissions.camera.title" = "カメラへのアクセス";
+"permissions.camera.description" = "FitScrollは運動の記録にカメラを使います。処理はすべて端末内で完結します。";
+"permissions.grant_access" = "アクセスを許可";
+"permissions.open_settings" = "設定を開く";
+"permissions.title" = "アクセス許可";
+"permissions.subtitle" = "FitScrollの利用にはこれらの許可が必要です";
+"permissions.continue" = "続ける";
+
+/* Dashboard */
+"dashboard.title" = "ホーム";
+"dashboard.active_limits" = "有効な制限";
+"dashboard.today_earned" = "今日の獲得時間";
+"dashboard.locked_apps" = "保護中のアプリ";
+"dashboard.recent_sessions" = "最近のセッション";
+"dashboard.unlock_now" = "運動でロック解除";
+"dashboard.no_limits_set" = "まだ制限がありません";
+"dashboard.no_sessions_yet" = "まだセッションがありません。運動を始めよう！";
+"dashboard.status.unrestricted_message" = "すべてのアプリが利用可能です";
+"dashboard.status.restricted_message" = "選んだアプリはロック中です";
+"dashboard.status.temporarily_unlocked_message" = "アプリは一時的に解除中です";
+"dashboard.hero.earn_time" = "時間を稼ごう。";
+"dashboard.hero.unlock_freedom" = "自由を手にしよう。";
+"dashboard.hero.subtitle" = "体を動かそう。\n時間を取り戻そう。";
+"dashboard.ring.minutes_unit" = "分";
+"dashboard.ring.earned_today" = "今日の獲得";
+"dashboard.chip.day_streak" = "日連続";
+"dashboard.chip.apps_protected" = "個を保護中";
+"dashboard.chip.level_format" = "レベル %d";
+"dashboard.unlock_screen_time" = "スクリーンタイムを解除";
+"dashboard.see_all" = "すべて表示";
+"dashboard.reps_format" = "%d回";
+
+/* App Selection */
+"app_selection.title" = "制限するアプリを選ぶ";
+"app_selection.subtitle" = "制限したいアプリを選びましょう";
+"app_selection.done" = "完了";
+"app_selection.no_apps_selected" = "アプリが選ばれていません";
+"app_selection.select_apps" = "アプリを選ぶ";
+"app_selection.apps" = "アプリ";
+"app_selection.categories" = "カテゴリ";
+"app_selection.locked_right_away" = "すぐにロック";
+"app_selection.locked_right_away_body" = "選んだアプリは保存と同時にロックされます。運動を終えれば一時的に解除でき、1回ごとにスクリーンタイムを獲得できます。";
+
+/* Limits */
+"limits.title" = "利用上限を設定";
+"limits.daily_limit" = "1日の上限";
+"limits.minutes" = "分";
+"limits.save" = "保存";
+"limits.done" = "完了";
+
+/* Unlock */
+"unlock.title" = "運動でロック解除";
+"unlock.subtitle" = "スクリーンタイムを稼ぐ運動を選びましょう";
+"unlock.minutes_per_rep_format" = "%.1f分/回";
+"unlock.stable_label" = "安定";
+"unlock.experimental_label" = "ベータ";
+"unlock.start_session" = "セッション開始";
+"unlock.section_stable" = "安定した運動";
+"unlock.section_experimental" = "実験的";
+"unlock.close" = "閉じる";
+"unlock.header_title" = "運動でロック解除";
+"unlock.header_subtitle" = "運動を選んでスクリーンタイムを獲得。";
+"unlock.choose_exercise" = "運動を選ぶ";
+"unlock.reps_format" = "%d回";
+"unlock.minutes_format" = "%d分";
+
+/* Workout */
+"workout.reps" = "回数";
+"workout.minutes" = "獲得した時間";
+"workout.start" = "開始";
+"workout.pause" = "一時停止";
+"workout.resume" = "再開";
+"workout.finish" = "終了";
+"workout.adjust_position" = "全身が映るように位置を調整してください";
+"workout.move_better_light" = "もっと明るい場所へ移動してください";
+"workout.great_form" = "いいフォーム！その調子！";
+"workout.more_reps_format" = "あと%d回で%d分追加";
+"workout.preparing" = "カメラを準備中…";
+"workout.simulator_mode" = "シミュレータモード";
+"workout.minutes_earned_format" = "+%@分 獲得";
+"workout.open_settings" = "設定を開く";
+"workout.close" = "閉じる";
+"workout.quit_title" = "この運動をやめますか？";
+"workout.quit_discard" = "やめて破棄";
+"workout.keep_going" = "続ける";
+"workout.quit_message" = "これまでの回数は保存されず、カメラは停止します。";
+
+/* Summary */
+"summary.title" = "セッション完了！";
+"summary.total_reps" = "合計回数";
+"summary.earned_minutes" = "獲得した時間";
+"summary.avg_confidence" = "平均精度";
+"summary.duration" = "所要時間";
+"summary.unlock_message_format" = "お見事！スクリーンタイムを%d分獲得しました！";
+"summary.apply_unlock" = "アプリを解除";
+"summary.back_to_dashboard" = "ホームに戻る";
+
+/* History */
+"history.title" = "運動履歴";
+"history.no_sessions" = "まだ運動セッションがありません";
+"history.total_all_time" = "累計の記録";
+"history.sessions" = "セッション";
+"history.reps" = "回数";
+"history.minutes" = "分";
+"history.section_sessions" = "セッション";
+"history.cancelled" = "キャンセル済み";
+"history.header_title" = "運動履歴";
+"history.header_subtitle" = "あなたの成長を記録しよう。";
+"history.recent_workouts" = "最近の運動";
+"history.see_all" = "すべて表示";
+"history.no_activity" = "この期間の記録はまだありません";
+"history.reps_format" = "%d回";
+
+/* Settings */
+"settings.title" = "設定";
+"settings.exercise_rewards" = "運動の報酬";
+"settings.minutes_per_rep_label" = "1回あたりの分数";
+"settings.daily_max_unlock" = "1日の最大解除時間";
+"settings.default_limit" = "標準の1日上限";
+"settings.haptic_feedback" = "触覚フィードバック";
+"settings.debug_mode" = "デバッグモード";
+"settings.debug_section" = "デバッグツール";
+"settings.simulate_reps" = "回数をシミュレート";
+"settings.fake_unlock" = "解除テスト";
+"settings.reset_all" = "すべてのデータをリセット";
+"settings.about" = "アプリについて";
+"settings.version" = "バージョン";
+"settings.privacy_note" = "運動データはすべて端末内で処理されます。録画や送信は行いません。";
+"settings.preferences" = "環境設定";
+"settings.character_style" = "キャラクター";
+"character.woman" = "女性";
+"character.man" = "男性";
+"settings.reset_confirm_title" = "本当によろしいですか？";
+"settings.reset_confirm_message" = "すべての運動セッション、設定、解除履歴が削除されます。";
+"settings.reset_confirm_button" = "すべてのデータをリセット";
+"settings.header_title" = "設定";
+"settings.header_subtitle" = "あなた好みにカスタマイズ。";
+"settings.minutes_per_rep_format" = "%.1f分";
+"settings.minutes_value_format" = "%d分";
+"settings.rate_app" = "FitScrollを評価";
+
+/* Journey */
+"journey.title" = "ジャーニー";
+"journey.header_title" = "あなたのジャーニー";
+"journey.header_subtitle" = "1回ごとにゴールへ近づく。";
+"journey.stat.day_streak" = "日連続";
+"journey.stat.xp" = "XP";
+"journey.stat.level" = "レベル";
+"journey.xp_progress_format" = "%d / %d XP";
+"journey.milestones" = "マイルストーン";
+"journey.state.completed" = "完了";
+"journey.state.in_progress_format" = "進行中 · %@";
+"journey.state.locked" = "ロック中";
+"journey.boss_level" = "ボスレベル";
+"journey.reward_xp_format" = "+%d XP";
+"journey.reward_minutes_format" = "+%d分";
+"journey.start" = "開始";
+"journey.close" = "閉じる";
+"journey.passive_explainer" = "毎日の運動を続けよう。目標を達成するとこのレベルは自動で完了します。";
+"journey.go_to_workouts" = "運動へ";
+"journey.boss_defeated" = "ボス撃破！";
+"journey.level_complete" = "レベルクリア！";
+"journey.reward_xp_short_format" = "+%d";
+"journey.reward_minutes_short_format" = "+%d";
+"journey.reward_xp_caption" = "XP";
+"journey.reward_minutes_caption" = "分ボーナス";
+"journey.new_badge" = "新バッジ";
+"journey.continue" = "続ける";
+"journey.badges" = "バッジ";
+"journey.done" = "完了";
+
+/* Paywall */
+"paywall.title" = "FitScroll Premiumを解除";
+"paywall.subtitle" = "動いてスクリーンタイムを獲得。7日間無料で始めよう。";
+"paywall.value_prop_1" = "1日を奪うダラダラ視聴に終止符を";
+"paywall.value_prop_2" = "どんなアプリも自動でロック";
+"paywall.value_prop_3" = "運動でさらにスクリーンタイムを獲得";
+"paywall.value_prop_4" = "分析で成長を記録";
+"paywall.cta_free_trial" = "7日間の無料体験を始める";
+"paywall.cta_buy_lifetime" = "買い切りを購入";
+"paywall.cta_subscribe" = "登録する";
+"paywall.restore_purchases" = "購入を復元";
+"paywall.terms_of_use" = "利用規約";
+"paywall.privacy_policy" = "プライバシーポリシー";
+"paywall.legal_footer" = "7日間の無料体験後、解約するまで上記の料金で自動更新されます。解約はiOSの設定 → Apple ID → サブスクリプションからいつでも可能です。";
+"paywall.best_value" = "一番お得";
+"paywall.plan.yearly" = "年額";
+"paywall.plan.monthly" = "月額";
+"paywall.plan.lifetime" = "買い切り";
+"paywall.plan.yearly_subtitle" = "7日間無料、その後は年額課金";
+"paywall.plan.monthly_subtitle" = "7日間無料、その後は月額課金";
+"paywall.plan.lifetime_subtitle" = "一度の購入でずっと使えます";
+"paywall.price.per_month_approx_format" = "≈ %@/月";
+"paywall.price.per_month" = "月あたり";
+"paywall.price.one_time" = "買い切り";
+
+/* Errors */
+"errors.camera_permission_denied" = "運動を記録するにはカメラへのアクセスが必要です";
+"errors.camera_recovery" = "設定 > FitScroll > カメラ からアクセスを有効にしてください";
+"errors.screen_time_permission_denied" = "アプリ制限の管理にはスクリーンタイムへのアクセスが必要です";
+"errors.screen_time_recovery" = "設定 > スクリーンタイム からアクセスを有効にしてください";
+"errors.no_apps_selected" = "制限するアプリを1つ以上選んでください";
+"errors.pose_not_detected" = "体の位置を検出できません";
+"errors.pose_recovery" = "全身がカメラに映っていることを確認してください";
+"errors.low_light" = "明るさが足りません";
+"errors.light_recovery" = "検出しやすいよう明るい場所へ移動してください";
+"errors.out_of_frame" = "カメラに全身が映っていません";
+"errors.incomplete_motion" = "動作が完了しませんでした";
+"errors.generic" = "問題が発生しました";
+"errors.try_again" = "もう一度";
+"errors.camera_denied_full" = "カメラの利用が拒否されました。設定 > FitScroll で有効にしてください。";
+"errors.camera_denied_restricted" = "カメラへのアクセスが拒否されました。設定 > FitScroll で有効にしてください。";
+
+/* Exercise: Squat */
+"exercise.squat.name" = "スクワット";
+"exercise.squat.description" = "足を肩幅に開いて立ち、膝を曲げて腰を落とします";
+
+/* Exercise: Push-up */
+"exercise.push_up.name" = "腕立て伏せ";
+"exercise.push_up.description" = "プランクの姿勢から胸を床に近づけ、押し戻します";
+
+/* Notifications */
+"notifications.one_minute_warning.title" = "残り1分";
+"notifications.one_minute_warning.body_singular" = "解除中のアプリが60秒後にロックされます。時間を追加しますか？";
+"notifications.one_minute_warning.body_plural_format" = "解除中の%d個のアプリが60秒後にロックされます。時間を追加しますか？";
+"notifications.locked_again.title_singular" = "アプリが再びロックされました";
+"notifications.locked_again.title_plural_format" = "%d個のアプリが再びロックされました";
+"notifications.locked_again.body_singular" = "タップして、さっと運動でスクリーンタイムを追加しましょう。";
+"notifications.locked_again.body_plural_format" = "%d個のアプリが再び制限されました。タップして時間を追加しましょう。";
+
+/* Exercise: Jumping Jacks */
+"exercise.jumping_jacks.name" = "ジャンピングジャック";
+"exercise.jumping_jacks.description" = "ジャンプして足を横に開き腕を頭上に上げ、もとの姿勢に戻ります";
+
+/* Exercise: Lunge */
+"exercise.lunge.name" = "ランジ";
+"exercise.lunge.description" = "片足を前に踏み出し、後ろの膝が床に着きそうになるまで両膝を曲げ、押し戻して立ち上がります";

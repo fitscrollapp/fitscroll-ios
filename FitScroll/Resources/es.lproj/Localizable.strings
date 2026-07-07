@@ -1,0 +1,295 @@
+/* App */
+"app.name" = "FitScroll";
+"app.tagline" = "Muévete para desbloquear";
+
+/* Onboarding */
+"onboarding.welcome.title" = "Te damos la bienvenida a FitScroll";
+"onboarding.welcome.subtitle" = "Toma el control de tu tiempo de pantalla con actividad física";
+"onboarding.step1.title" = "Selecciona apps";
+"onboarding.step1.description" = "Elige las apps que quieres limitar";
+"onboarding.step2.title" = "Pon límites";
+"onboarding.step2.description" = "Define límites de uso diario para las apps seleccionadas";
+"onboarding.step3.title" = "Haz ejercicio para desbloquear";
+"onboarding.step3.description" = "Haz ejercicio para ganar tiempo de pantalla extra";
+"onboarding.get_started" = "Empezar";
+"onboarding.next" = "Siguiente";
+"onboarding.skip" = "Saltar";
+"onboarding.back" = "Atrás";
+"onboarding.continue" = "Continuar";
+
+/* Onboarding — Hook */
+"onboarding.hook.title" = "Muévete para desbloquear";
+"onboarding.hook.subtitle" = "Convierte el tiempo de scroll en tiempo de ejercicio. Cada repetición te devuelve minutos.";
+
+/* Onboarding — Transformation (Before/After) */
+"onboarding.transform.title" = "Recupera el control";
+"onboarding.transform.before" = "Ahora mismo";
+"onboarding.transform.after" = "Con FitScroll";
+"onboarding.transform.before1" = "Scroll sin fin";
+"onboarding.transform.before2" = "Horas perdidas";
+"onboarding.transform.before3" = "Sin control";
+"onboarding.transform.after1" = "Apps autobloqueadas";
+"onboarding.transform.after2" = "El ejercicio da tiempo";
+"onboarding.transform.after3" = "Tú mandas";
+
+/* Onboarding — Privacy framing */
+"onboarding.privacy.title" = "Privacidad por diseño";
+"onboarding.privacy.subtitle" = "Antes de pedirte permisos, te explicamos exactamente para qué los usamos.";
+"onboarding.privacy.screen_time.title" = "Tiempo de uso";
+"onboarding.privacy.screen_time.body" = "Sirve para bloquear y desbloquear las apps que elijas. Nunca vemos lo que haces dentro de ellas.";
+"onboarding.privacy.camera.title" = "Cámara";
+"onboarding.privacy.camera.body" = "Solo se usa para contar repeticiones. Todo el procesamiento ocurre en tu dispositivo. No se graba ningún vídeo.";
+
+/* Onboarding — Permissions */
+"onboarding.screen_time.title" = "Permitir Tiempo de uso";
+"onboarding.screen_time.body" = "FitScroll necesita esto para bloquear tus apps y desbloquearlas tras hacer ejercicio.";
+"onboarding.screen_time.cta" = "Permitir Tiempo de uso";
+"onboarding.screen_time.later" = "Lo haré más tarde";
+
+"onboarding.camera.title" = "Acceso a la cámara";
+"onboarding.camera.body" = "FitScroll usa la cámara para contar tus repeticiones. Todo en el dispositivo, sin grabar nada.";
+"onboarding.camera.cta" = "Permitir cámara";
+"onboarding.camera.later" = "Lo haré más tarde";
+
+"onboarding.finish" = "Empezar a usar FitScroll";
+
+/* Permissions */
+"permissions.screen_time.title" = "Acceso a Tiempo de uso";
+"permissions.screen_time.description" = "FitScroll necesita acceso a Tiempo de uso para gestionar los límites de apps";
+"permissions.camera.title" = "Acceso a la cámara";
+"permissions.camera.description" = "FitScroll usa tu cámara para registrar los ejercicios. Todo el procesamiento ocurre en el dispositivo.";
+"permissions.grant_access" = "Conceder acceso";
+"permissions.open_settings" = "Abrir Ajustes";
+"permissions.title" = "Permisos";
+"permissions.subtitle" = "FitScroll necesita estos permisos para funcionar";
+"permissions.continue" = "Continuar";
+
+/* Dashboard */
+"dashboard.title" = "Inicio";
+"dashboard.active_limits" = "Límites activos";
+"dashboard.today_earned" = "Tiempo ganado hoy";
+"dashboard.locked_apps" = "Apps protegidas";
+"dashboard.recent_sessions" = "Sesiones recientes";
+"dashboard.unlock_now" = "Desbloquear con ejercicio";
+"dashboard.no_limits_set" = "Aún no hay límites";
+"dashboard.no_sessions_yet" = "Aún no hay sesiones. ¡Empieza a entrenar!";
+"dashboard.status.unrestricted_message" = "Todas las apps están accesibles";
+"dashboard.status.restricted_message" = "Las apps seleccionadas están bloqueadas";
+"dashboard.status.temporarily_unlocked_message" = "Apps desbloqueadas temporalmente";
+"dashboard.hero.earn_time" = "Gana tiempo.";
+"dashboard.hero.unlock_freedom" = "Desbloquea tu libertad.";
+"dashboard.hero.subtitle" = "Mueve tu cuerpo.\nDesbloquea tu tiempo.";
+"dashboard.ring.minutes_unit" = "min";
+"dashboard.ring.earned_today" = "ganados hoy";
+"dashboard.chip.day_streak" = "días de racha";
+"dashboard.chip.apps_protected" = "apps protegidas";
+"dashboard.chip.level_format" = "Nivel %d";
+"dashboard.unlock_screen_time" = "Desbloquear tiempo de pantalla";
+"dashboard.see_all" = "Ver todo";
+"dashboard.reps_format" = "%d reps";
+
+/* App Selection */
+"app_selection.title" = "Selecciona apps a restringir";
+"app_selection.subtitle" = "Elige las apps que quieres limitar";
+"app_selection.done" = "Hecho";
+"app_selection.no_apps_selected" = "No hay apps seleccionadas";
+"app_selection.select_apps" = "Seleccionar apps";
+"app_selection.apps" = "Apps";
+"app_selection.categories" = "Categorías";
+"app_selection.locked_right_away" = "Se bloquean al instante";
+"app_selection.locked_right_away_body" = "Las apps que elijas se bloquean en cuanto pulsas Guardar. Desbloquéalas temporalmente completando un entrenamiento: cada repetición te da minutos de tiempo de pantalla.";
+
+/* Limits */
+"limits.title" = "Define límites de uso";
+"limits.daily_limit" = "Límite diario";
+"limits.minutes" = "minutos";
+"limits.save" = "Guardar";
+"limits.done" = "Hecho";
+
+/* Unlock */
+"unlock.title" = "Desbloquear con ejercicio";
+"unlock.subtitle" = "Elige un ejercicio para ganar tiempo de pantalla";
+"unlock.minutes_per_rep_format" = "%.1f min/rep";
+"unlock.stable_label" = "Fiable";
+"unlock.experimental_label" = "Beta";
+"unlock.start_session" = "Iniciar sesión";
+"unlock.section_stable" = "Ejercicios estables";
+"unlock.section_experimental" = "Experimental";
+"unlock.close" = "Cerrar";
+"unlock.header_title" = "Desbloquear con ejercicio";
+"unlock.header_subtitle" = "Elige un entrenamiento y gana tiempo de pantalla.";
+"unlock.choose_exercise" = "Elige un ejercicio";
+"unlock.reps_format" = "%d reps";
+"unlock.minutes_format" = "%d min";
+
+/* Workout */
+"workout.reps" = "Reps";
+"workout.minutes" = "Minutos ganados";
+"workout.start" = "Empezar";
+"workout.pause" = "Pausar";
+"workout.resume" = "Reanudar";
+"workout.finish" = "Finalizar";
+"workout.adjust_position" = "Ajusta tu posición para que se te vea entero";
+"workout.move_better_light" = "Ve a una zona mejor iluminada";
+"workout.great_form" = "¡Buena técnica! ¡Sigue así!";
+"workout.more_reps_format" = "%d reps más para ganar %d minutos más";
+"workout.preparing" = "Preparando la cámara...";
+"workout.simulator_mode" = "Modo simulador";
+"workout.minutes_earned_format" = "+%@ min ganados";
+"workout.open_settings" = "Abrir Ajustes";
+"workout.close" = "Cerrar";
+"workout.quit_title" = "¿Salir de este entrenamiento?";
+"workout.quit_discard" = "Salir y descartar";
+"workout.keep_going" = "Seguir";
+"workout.quit_message" = "Tus repeticiones hasta ahora no se guardarán y la cámara se detendrá.";
+
+/* Summary */
+"summary.title" = "¡Sesión completada!";
+"summary.total_reps" = "Repeticiones totales";
+"summary.earned_minutes" = "Minutos ganados";
+"summary.avg_confidence" = "Precisión media";
+"summary.duration" = "Duración";
+"summary.unlock_message_format" = "¡Buen trabajo! ¡Has ganado %d minutos de tiempo de pantalla!";
+"summary.apply_unlock" = "Desbloquear apps";
+"summary.back_to_dashboard" = "Volver al inicio";
+
+/* History */
+"history.title" = "Historial de entrenamientos";
+"history.no_sessions" = "Aún no hay sesiones de entrenamiento";
+"history.total_all_time" = "Estadísticas totales";
+"history.sessions" = "Sesiones";
+"history.reps" = "Reps";
+"history.minutes" = "Minutos";
+"history.section_sessions" = "Sesiones";
+"history.cancelled" = "Cancelada";
+"history.header_title" = "Historial de entrenamientos";
+"history.header_subtitle" = "Sigue tu progreso a lo largo del tiempo.";
+"history.recent_workouts" = "Entrenamientos recientes";
+"history.see_all" = "Ver todo";
+"history.no_activity" = "Aún no hay actividad en este periodo";
+"history.reps_format" = "%d reps";
+
+/* Settings */
+"settings.title" = "Ajustes";
+"settings.exercise_rewards" = "Recompensas por ejercicio";
+"settings.minutes_per_rep_label" = "Minutos por repetición";
+"settings.daily_max_unlock" = "Desbloqueo máximo diario";
+"settings.default_limit" = "Límite diario predeterminado";
+"settings.haptic_feedback" = "Respuesta háptica";
+"settings.debug_mode" = "Modo de depuración";
+"settings.debug_section" = "Herramientas de depuración";
+"settings.simulate_reps" = "Simular repeticiones";
+"settings.fake_unlock" = "Desbloqueo de prueba";
+"settings.reset_all" = "Restablecer todos los datos";
+"settings.about" = "Acerca de";
+"settings.version" = "Versión";
+"settings.privacy_note" = "Todos los datos de ejercicio se procesan en el dispositivo. No se graba ni se transmite ningún vídeo.";
+"settings.preferences" = "Preferencias";
+"settings.character_style" = "Personaje";
+"character.woman" = "Mujer";
+"character.man" = "Hombre";
+"settings.reset_confirm_title" = "¿Seguro?";
+"settings.reset_confirm_message" = "Esto eliminará todas las sesiones de entrenamiento, los ajustes y el historial de desbloqueos.";
+"settings.reset_confirm_button" = "Restablecer todos los datos";
+"settings.header_title" = "Ajustes";
+"settings.header_subtitle" = "Personaliza tu experiencia.";
+"settings.minutes_per_rep_format" = "%.1f min";
+"settings.minutes_value_format" = "%d min";
+"settings.rate_app" = "Valorar FitScroll";
+
+/* Journey */
+"journey.title" = "Trayecto";
+"journey.header_title" = "Tu trayecto";
+"journey.header_subtitle" = "Cada repetición te acerca más.";
+"journey.stat.day_streak" = "días de racha";
+"journey.stat.xp" = "XP";
+"journey.stat.level" = "Nivel";
+"journey.xp_progress_format" = "%d / %d XP";
+"journey.milestones" = "Hitos";
+"journey.state.completed" = "Completado";
+"journey.state.in_progress_format" = "En curso · %@";
+"journey.state.locked" = "Bloqueado";
+"journey.boss_level" = "NIVEL JEFE";
+"journey.reward_xp_format" = "+%d XP";
+"journey.reward_minutes_format" = "+%d min";
+"journey.start" = "Empezar";
+"journey.close" = "Cerrar";
+"journey.passive_explainer" = "Haz tus entrenamientos diarios: este nivel se completa solo cuando alcances el objetivo.";
+"journey.go_to_workouts" = "Ir a entrenamientos";
+"journey.boss_defeated" = "¡Jefe derrotado!";
+"journey.level_complete" = "¡Nivel completado!";
+"journey.reward_xp_short_format" = "+%d";
+"journey.reward_minutes_short_format" = "+%d";
+"journey.reward_xp_caption" = "XP";
+"journey.reward_minutes_caption" = "min extra";
+"journey.new_badge" = "NUEVA INSIGNIA";
+"journey.continue" = "Continuar";
+"journey.badges" = "Insignias";
+"journey.done" = "Hecho";
+
+/* Paywall */
+"paywall.title" = "Desbloquea FitScroll Premium";
+"paywall.subtitle" = "Muévete para ganar tiempo de pantalla. Empieza con 7 días gratis.";
+"paywall.value_prop_1" = "Acaba con el scroll que te roba el día";
+"paywall.value_prop_2" = "Bloquea cualquier app automáticamente";
+"paywall.value_prop_3" = "Haz ejercicio para ganar más tiempo de pantalla";
+"paywall.value_prop_4" = "Sigue tu progreso con analíticas";
+"paywall.cta_free_trial" = "Iniciar prueba gratis de 7 días";
+"paywall.cta_buy_lifetime" = "Comprar de por vida";
+"paywall.cta_subscribe" = "Suscribirse";
+"paywall.restore_purchases" = "Restaurar compras";
+"paywall.terms_of_use" = "Términos de uso";
+"paywall.privacy_policy" = "Política de privacidad";
+"paywall.legal_footer" = "7 días de prueba gratis y, después, se renueva automáticamente al precio indicado hasta que canceles. Cancela cuando quieras en Ajustes de iOS → Apple ID → Suscripciones.";
+"paywall.best_value" = "MEJOR VALOR";
+"paywall.plan.yearly" = "Anual";
+"paywall.plan.monthly" = "Mensual";
+"paywall.plan.lifetime" = "De por vida";
+"paywall.plan.yearly_subtitle" = "7 días gratis y luego facturación anual";
+"paywall.plan.monthly_subtitle" = "7 días gratis y luego facturación mensual";
+"paywall.plan.lifetime_subtitle" = "Pago único, tuyo para siempre";
+"paywall.price.per_month_approx_format" = "≈ %@/mes";
+"paywall.price.per_month" = "al mes";
+"paywall.price.one_time" = "pago único";
+
+/* Errors */
+"errors.camera_permission_denied" = "Se necesita acceso a la cámara para registrar los ejercicios";
+"errors.camera_recovery" = "Ve a Ajustes > FitScroll > Cámara para activar el acceso";
+"errors.screen_time_permission_denied" = "Se necesita acceso a Tiempo de uso para gestionar los límites de apps";
+"errors.screen_time_recovery" = "Ve a Ajustes > Tiempo de uso para activar el acceso";
+"errors.no_apps_selected" = "Selecciona al menos una app para restringir";
+"errors.pose_not_detected" = "No se puede detectar la posición de tu cuerpo";
+"errors.pose_recovery" = "Asegúrate de que la cámara vea tu cuerpo entero";
+"errors.low_light" = "Hay muy poca luz";
+"errors.light_recovery" = "Ve a una zona más iluminada para mejorar la detección";
+"errors.out_of_frame" = "No se te ve entero en la cámara";
+"errors.incomplete_motion" = "El movimiento no se completó";
+"errors.generic" = "Algo salió mal";
+"errors.try_again" = "Reintentar";
+"errors.camera_denied_full" = "Permiso de cámara denegado. Actívalo en Ajustes > FitScroll.";
+"errors.camera_denied_restricted" = "Acceso a la cámara denegado. Actívalo en Ajustes > FitScroll.";
+
+/* Exercise: Squat */
+"exercise.squat.name" = "Sentadilla";
+"exercise.squat.description" = "Ponte de pie con los pies a la anchura de los hombros y baja el cuerpo flexionando las rodillas";
+
+/* Exercise: Push-up */
+"exercise.push_up.name" = "Flexión";
+"exercise.push_up.description" = "Empieza en posición de plancha, baja el pecho hasta el suelo y empuja hacia arriba";
+
+/* Notifications */
+"notifications.one_minute_warning.title" = "Queda 1 minuto";
+"notifications.one_minute_warning.body_singular" = "Tu app desbloqueada se bloquea en 60 segundos. ¿Ganas más tiempo?";
+"notifications.one_minute_warning.body_plural_format" = "%d apps desbloqueadas se bloquean en 60 segundos. ¿Ganas más tiempo?";
+"notifications.locked_again.title_singular" = "App bloqueada de nuevo";
+"notifications.locked_again.title_plural_format" = "%d apps bloqueadas de nuevo";
+"notifications.locked_again.body_singular" = "Toca para ganar más tiempo de pantalla con un entrenamiento rápido.";
+"notifications.locked_again.body_plural_format" = "%d apps vuelven a estar restringidas. Toca para ganar más tiempo.";
+
+/* Exercise: Jumping Jacks */
+"exercise.jumping_jacks.name" = "Saltos de tijera";
+"exercise.jumping_jacks.description" = "Salta abriendo los pies mientras levantas los brazos por encima de la cabeza y vuelve al inicio";
+
+/* Exercise: Lunge */
+"exercise.lunge.name" = "Zancadas";
+"exercise.lunge.description" = "Da un paso adelante, flexiona ambas rodillas hasta que la de atrás casi toque el suelo y empuja hacia arriba";

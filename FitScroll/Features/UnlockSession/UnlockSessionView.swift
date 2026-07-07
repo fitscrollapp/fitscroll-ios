@@ -34,7 +34,7 @@ struct UnlockSessionView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Close") { dismiss() }
+                    Button(Strings.Unlock.close) { dismiss() }
                 }
             }
         }
@@ -42,10 +42,10 @@ struct UnlockSessionView: View {
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: DS.Spacing.xs) {
-            Text("Unlock with Exercise")
+            Text(Strings.Unlock.headerTitle)
                 .font(.system(size: 26, weight: .bold, design: .rounded))
                 .foregroundColor(DS.Colors.textPrimary)
-            Text("Choose a workout and earn screen time.")
+            Text(Strings.Unlock.headerSubtitle)
                 .font(.subheadline)
                 .foregroundColor(DS.Colors.textSecondary)
         }
@@ -65,28 +65,28 @@ struct UnlockSessionView: View {
 
     private func conversionPill(reps: Int, minutes: Int, highlighted: Bool) -> some View {
         VStack(spacing: 2) {
-            Text("\(reps) reps")
-                .font(.caption2)
+            Text(String(format: Strings.Unlock.repsFormat, reps))
+                .font(.system(size: 12, weight: .semibold, design: .rounded))
                 .foregroundColor(DS.Colors.textSecondary)
-            Text("\(minutes) min")
-                .font(.headline)
-                .foregroundColor(highlighted ? DS.Colors.primary : DS.Colors.textPrimary)
+            Text(String(format: Strings.Unlock.minutesFormat, minutes))
+                .font(.system(size: 17, weight: .heavy, design: .rounded))
+                .foregroundColor(highlighted ? DS.Colors.neon : DS.Colors.textPrimary)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, DS.Spacing.sm)
         .background(
-            RoundedRectangle(cornerRadius: DS.Corner.medium, style: .continuous)
-                .fill(highlighted ? DS.Colors.primary.opacity(0.15) : Color.clear)
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .fill(highlighted ? DS.Colors.neon.opacity(0.12) : Color.clear)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: DS.Corner.medium, style: .continuous)
-                .stroke(highlighted ? DS.Colors.primary : Color.clear, lineWidth: 1.5)
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(highlighted ? DS.Colors.neon : Color.clear, lineWidth: 2)
         )
     }
 
     private var exerciseList: some View {
         VStack(alignment: .leading, spacing: DS.Spacing.md) {
-            Text("Choose an Exercise")
+            Text(Strings.Unlock.chooseExercise)
                 .font(.headline)
                 .foregroundColor(DS.Colors.textPrimary)
             ForEach(enabledExercises, id: \.0) { exercise, minutes in

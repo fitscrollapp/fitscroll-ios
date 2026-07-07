@@ -25,6 +25,12 @@ enum HapticManager {
         generator.notificationOccurred(.error)
     }
 
+    static func heavy() {
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.prepare()
+        generator.impactOccurred()
+    }
+
     static func light() {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()

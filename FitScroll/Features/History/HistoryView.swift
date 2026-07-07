@@ -13,8 +13,8 @@ struct HistoryView: View {
         var id: String { rawValue }
         var label: String {
             switch self {
-            case .minutes: return "Minutes"
-            case .reps: return "Reps"
+            case .minutes: return Strings.History.minutes
+            case .reps: return Strings.History.reps
             }
         }
     }
@@ -102,46 +102,59 @@ struct HistoryView: View {
                 .padding(DS.Spacing.lg)
             }
             .background(DS.Colors.background.ignoresSafeArea())
-            .navigationTitle(Strings.History.title)
-            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .navigationBar)
         }
     }
 
     private var headerSection: some View {
-        VStack(alignment: .leading, spacing: DS.Spacing.xs) {
-            Text("Workout History")
-                .font(.system(size: 28, weight: .bold, design: .rounded))
-                .foregroundColor(DS.Colors.textPrimary)
-            Text("Track your progress over time.")
-                .font(.subheadline)
-                .foregroundColor(DS.Colors.textSecondary)
+        HStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(Strings.History.headerTitle)
+                    .font(.system(size: 34, weight: .black, design: .rounded))
+                    .foregroundColor(DS.Colors.textPrimary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
+                Text(Strings.History.headerSubtitle)
+                    .font(.subheadline)
+                    .foregroundColor(DS.Colors.textSecondary)
+            }
+            Spacer()
+            HStack(spacing: 4) {
+                Image(systemName: "clock.fill")
+                    .font(.caption2)
+                Text(TimeFormatter.formatMinutes(totalMinutes))
+                    .font(.caption2).fontWeight(.bold)
+                    .monospacedDigit()
+            }
+            .foregroundColor(DS.Colors.neon)
+            .padding(.horizontal, DS.Spacing.sm)
+            .padding(.vertical, 6)
+            .background(Capsule().fill(DS.Colors.neon.opacity(0.12)))
+            .overlay(Capsule().stroke(DS.Colors.neon.opacity(0.4), lineWidth: 1))
+            .padding(.top, 8)
         }
     }
 
     private var statsCard: some View {
         HStack(spacing: 0) {
-            statColumn(icon: "flame.fill", value: "\(totalSessions)", label: "Sessions", color: DS.Colors.accent)
+            statColumn(icon: "flame.fill", value: "\(totalSessions)", label: Strings.History.sessions, color: DS.Colors.accent)
             statDivider
-            statColumn(icon: "repeat", value: "\(totalReps)", label: "Reps", color: DS.Colors.neon)
+            statColumn(icon: "repeat", value: "\(totalReps)", label: Strings.History.reps, color: DS.Colors.neon)
             statDivider
-            statColumn(icon: "clock.fill", value: TimeFormatter.formatMinutes(totalMinutes), label: "Minutes", color: DS.Colors.secondary)
+            statColumn(icon: "clock.fill", value: TimeFormatter.formatMinutes(totalMinutes), label: Strings.History.minutes, color: DS.Colors.secondary)
         }
         .padding(DS.Spacing.md)
         .dsCard()
     }
 
     private func statColumn(icon: String, value: String, label: String, color: Color) -> some View {
-        VStack(spacing: 4) {
-            HStack(spacing: 4) {
-                Image(systemName: icon)
-                    .foregroundColor(color)
-                    .font(.subheadline)
-                Text(value)
-                    .font(.system(size: 20, weight: .bold, design: .rounded))
-                    .foregroundColor(DS.Colors.textPrimary)
-            }
+        VStack(spacing: 6) {
+            DuoIconBadge(systemName: icon, color: color, size: 36)
+            Text(value)
+                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .foregroundColor(DS.Colors.textPrimary)
             Text(label)
-                .font(.caption2)
+                .font(.system(size: 12, weight: .semibold, design: .rounded))
                 .foregroundColor(DS.Colors.textSecondary)
         }
         .frame(maxWidth: .infinity)
@@ -174,11 +187,11 @@ struct HistoryView: View {
     private var recentWorkoutsSection: some View {
         VStack(alignment: .leading, spacing: DS.Spacing.md) {
             HStack {
-                Text("Recent Workouts")
+                Text(Strings.History.recentWorkouts)
                     .font(.headline)
                     .foregroundColor(DS.Colors.textPrimary)
                 Spacer()
-                Text("See all")
+                Text(Strings.History.seeAll)
                     .font(.subheadline)
                     .foregroundColor(DS.Colors.neon)
             }
@@ -224,7 +237,7 @@ struct HistoryView: View {
             .id(chartMetric.rawValue + chartRange.rawValue)
 
             if totalForCurrentMetric == 0 {
-                Text("No activity in this range yet")
+                Text(Strings.History.noActivity)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -278,19 +291,17 @@ struct HistoryView: View {
 
     @ViewBuilder
     private func sessionCell(_ session: WorkoutSession) -> some View {
-        HStack {
+        HStack(spacing: DS.Spacing.md) {
             if let exercise = session.exerciseType {
-                ExerciseIconView(exerciseType: exercise, size: 24, color: DS.Colors.neon)
-                    .frame(width: 36)
+                DuoIconBadge(systemName: exercise.iconName, color: Duo.color(for: exercise), size: 44)
 
                 VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text(exercise.displayName)
-                            .font(.subheadline)
-                            .fontWeight(.medium)
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
                             .foregroundColor(DS.Colors.textPrimary)
                         if session.statusRaw == SessionStatus.cancelled.rawValue {
-                            Text("Cancelled")
+                            Text(Strings.History.cancelled)
                                 .font(.caption2)
                                 .foregroundColor(DS.Colors.error)
                                 .padding(.horizontal, 4)
@@ -308,17 +319,17 @@ struct HistoryView: View {
             Spacer()
 
             VStack(alignment: .trailing, spacing: 2) {
-                Text("\(session.repCount) reps")
-                    .font(.subheadline)
+                Text(String(format: Strings.History.repsFormat, session.repCount))
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(DS.Colors.textPrimary)
                 if session.earnedMinutes > 0 {
                     Text("+\(TimeFormatter.formatMinutes(session.earnedMinutes))")
-                        .font(.caption)
+                        .font(.system(size: 13, weight: .bold, design: .rounded))
                         .foregroundColor(DS.Colors.neon)
                 }
             }
         }
         .padding(DS.Spacing.md)
-        .dsCard(cornerRadius: DS.Corner.medium)
+        .dsCard(cornerRadius: DS.Corner.large)
     }
 }

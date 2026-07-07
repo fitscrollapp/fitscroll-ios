@@ -78,6 +78,9 @@ enum Strings {
         static var cameraDescription: String { localized("permissions.camera.description") }
         static var grantAccess: String { localized("permissions.grant_access") }
         static var openSettings: String { localized("permissions.open_settings") }
+        static var title: String { localized("permissions.title") }
+        static var subtitle: String { localized("permissions.subtitle") }
+        static var `continue`: String { localized("permissions.continue") }
     }
 
     enum Dashboard {
@@ -92,6 +95,17 @@ enum Strings {
         static var statusUnrestrictedMessage: String { localized("dashboard.status.unrestricted_message") }
         static var statusRestrictedMessage: String { localized("dashboard.status.restricted_message") }
         static var statusTemporarilyUnlockedMessage: String { localized("dashboard.status.temporarily_unlocked_message") }
+        static var heroEarnTime: String { localized("dashboard.hero.earn_time") }
+        static var heroUnlockFreedom: String { localized("dashboard.hero.unlock_freedom") }
+        static var heroSubtitle: String { localized("dashboard.hero.subtitle") }
+        static var ringMinutesUnit: String { localized("dashboard.ring.minutes_unit") }
+        static var ringEarnedToday: String { localized("dashboard.ring.earned_today") }
+        static var chipDayStreak: String { localized("dashboard.chip.day_streak") }
+        static var chipAppsProtected: String { localized("dashboard.chip.apps_protected") }
+        static var chipLevelFormat: String { localized("dashboard.chip.level_format") }
+        static var unlockScreenTime: String { localized("dashboard.unlock_screen_time") }
+        static var seeAll: String { localized("dashboard.see_all") }
+        static var repsFormat: String { localized("dashboard.reps_format") }
     }
 
     enum AppSelection {
@@ -102,6 +116,8 @@ enum Strings {
         static var selectApps: String { localized("app_selection.select_apps") }
         static var apps: String { localized("app_selection.apps") }
         static var categories: String { localized("app_selection.categories") }
+        static var lockedRightAway: String { localized("app_selection.locked_right_away") }
+        static var lockedRightAwayBody: String { localized("app_selection.locked_right_away_body") }
     }
 
     enum Limits {
@@ -122,6 +138,11 @@ enum Strings {
         static var sectionStable: String { localized("unlock.section_stable") }
         static var sectionExperimental: String { localized("unlock.section_experimental") }
         static var close: String { localized("unlock.close") }
+        static var headerTitle: String { localized("unlock.header_title") }
+        static var headerSubtitle: String { localized("unlock.header_subtitle") }
+        static var chooseExercise: String { localized("unlock.choose_exercise") }
+        static var repsFormat: String { localized("unlock.reps_format") }
+        static var minutesFormat: String { localized("unlock.minutes_format") }
     }
 
     enum Workout {
@@ -137,6 +158,13 @@ enum Strings {
         static var moreRepsFormat: String { localized("workout.more_reps_format") }
         static var preparing: String { localized("workout.preparing") }
         static var simulatorMode: String { localized("workout.simulator_mode") }
+        static var minutesEarnedFormat: String { localized("workout.minutes_earned_format") }
+        static var openSettings: String { localized("workout.open_settings") }
+        static var close: String { localized("workout.close") }
+        static var quitTitle: String { localized("workout.quit_title") }
+        static var quitDiscard: String { localized("workout.quit_discard") }
+        static var keepGoing: String { localized("workout.keep_going") }
+        static var quitMessage: String { localized("workout.quit_message") }
     }
 
     enum Summary {
@@ -159,6 +187,12 @@ enum Strings {
         static var minutes: String { localized("history.minutes") }
         static var sectionSessions: String { localized("history.section_sessions") }
         static var cancelled: String { localized("history.cancelled") }
+        static var headerTitle: String { localized("history.header_title") }
+        static var headerSubtitle: String { localized("history.header_subtitle") }
+        static var recentWorkouts: String { localized("history.recent_workouts") }
+        static var seeAll: String { localized("history.see_all") }
+        static var noActivity: String { localized("history.no_activity") }
+        static var repsFormat: String { localized("history.reps_format") }
     }
 
     enum Settings {
@@ -181,6 +215,68 @@ enum Strings {
         static var resetConfirmTitle: String { localized("settings.reset_confirm_title") }
         static var resetConfirmMessage: String { localized("settings.reset_confirm_message") }
         static var resetConfirmButton: String { localized("settings.reset_confirm_button") }
+        static var headerTitle: String { localized("settings.header_title") }
+        static var headerSubtitle: String { localized("settings.header_subtitle") }
+        static var minutesPerRepFormat: String { localized("settings.minutes_per_rep_format") }
+        static var minutesValueFormat: String { localized("settings.minutes_value_format") }
+        static var rateApp: String { localized("settings.rate_app") }
+    }
+
+    enum Journey {
+        static var title: String { localized("journey.title") }
+        static var headerTitle: String { localized("journey.header_title") }
+        static var headerSubtitle: String { localized("journey.header_subtitle") }
+        static var statDayStreak: String { localized("journey.stat.day_streak") }
+        static var statXP: String { localized("journey.stat.xp") }
+        static var statLevel: String { localized("journey.stat.level") }
+        static var xpProgressFormat: String { localized("journey.xp_progress_format") }
+        static var milestones: String { localized("journey.milestones") }
+        static var stateCompleted: String { localized("journey.state.completed") }
+        static var stateInProgressFormat: String { localized("journey.state.in_progress_format") }
+        static var stateLocked: String { localized("journey.state.locked") }
+        static var bossLevel: String { localized("journey.boss_level") }
+        static var rewardXPFormat: String { localized("journey.reward_xp_format") }
+        static var rewardMinutesFormat: String { localized("journey.reward_minutes_format") }
+        static var start: String { localized("journey.start") }
+        static var close: String { localized("journey.close") }
+        static var passiveExplainer: String { localized("journey.passive_explainer") }
+        static var goToWorkouts: String { localized("journey.go_to_workouts") }
+        static var bossDefeated: String { localized("journey.boss_defeated") }
+        static var levelComplete: String { localized("journey.level_complete") }
+        static var rewardXPShortFormat: String { localized("journey.reward_xp_short_format") }
+        static var rewardMinutesShortFormat: String { localized("journey.reward_minutes_short_format") }
+        static var rewardXPCaption: String { localized("journey.reward_xp_caption") }
+        static var rewardMinutesCaption: String { localized("journey.reward_minutes_caption") }
+        static var newBadge: String { localized("journey.new_badge") }
+        static var `continue`: String { localized("journey.continue") }
+        static var badges: String { localized("journey.badges") }
+        static var done: String { localized("journey.done") }
+    }
+
+    enum Paywall {
+        static var title: String { localized("paywall.title") }
+        static var subtitle: String { localized("paywall.subtitle") }
+        static var valueProp1: String { localized("paywall.value_prop_1") }
+        static var valueProp2: String { localized("paywall.value_prop_2") }
+        static var valueProp3: String { localized("paywall.value_prop_3") }
+        static var valueProp4: String { localized("paywall.value_prop_4") }
+        static var ctaFreeTrial: String { localized("paywall.cta_free_trial") }
+        static var ctaBuyLifetime: String { localized("paywall.cta_buy_lifetime") }
+        static var ctaSubscribe: String { localized("paywall.cta_subscribe") }
+        static var restorePurchases: String { localized("paywall.restore_purchases") }
+        static var termsOfUse: String { localized("paywall.terms_of_use") }
+        static var privacyPolicy: String { localized("paywall.privacy_policy") }
+        static var legalFooter: String { localized("paywall.legal_footer") }
+        static var bestValue: String { localized("paywall.best_value") }
+        static var planYearly: String { localized("paywall.plan.yearly") }
+        static var planMonthly: String { localized("paywall.plan.monthly") }
+        static var planLifetime: String { localized("paywall.plan.lifetime") }
+        static var planYearlySubtitle: String { localized("paywall.plan.yearly_subtitle") }
+        static var planMonthlySubtitle: String { localized("paywall.plan.monthly_subtitle") }
+        static var planLifetimeSubtitle: String { localized("paywall.plan.lifetime_subtitle") }
+        static var pricePerMonthApproxFormat: String { localized("paywall.price.per_month_approx_format") }
+        static var pricePerMonth: String { localized("paywall.price.per_month") }
+        static var priceOneTime: String { localized("paywall.price.one_time") }
     }
 
     enum Notifications {

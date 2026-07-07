@@ -1,0 +1,295 @@
+/* App */
+"app.name" = "FitScroll";
+"app.tagline" = "움직여서 잠금 해제";
+
+/* Onboarding */
+"onboarding.welcome.title" = "FitScroll에 오신 것을 환영합니다";
+"onboarding.welcome.subtitle" = "운동으로 화면 시간을 직접 관리하세요";
+"onboarding.step1.title" = "앱 선택";
+"onboarding.step1.description" = "제한할 앱을 선택하세요";
+"onboarding.step2.title" = "제한 설정";
+"onboarding.step2.description" = "선택한 앱의 일일 사용 한도를 정하세요";
+"onboarding.step3.title" = "운동으로 잠금 해제";
+"onboarding.step3.description" = "운동하고 추가 화면 시간을 얻으세요";
+"onboarding.get_started" = "시작하기";
+"onboarding.next" = "다음";
+"onboarding.skip" = "건너뛰기";
+"onboarding.back" = "뒤로";
+"onboarding.continue" = "계속";
+
+/* Onboarding — Hook */
+"onboarding.hook.title" = "움직여서 잠금 해제";
+"onboarding.hook.subtitle" = "스크롤 시간을 운동 시간으로 바꾸세요. 한 번씩 할 때마다 시간을 돌려받습니다.";
+
+/* Onboarding — Transformation (Before/After) */
+"onboarding.transform.title" = "다시 주도권을 잡으세요";
+"onboarding.transform.before" = "지금";
+"onboarding.transform.after" = "FitScroll과 함께";
+"onboarding.transform.before1" = "끝없는 스크롤";
+"onboarding.transform.before2" = "사라진 시간";
+"onboarding.transform.before3" = "통제 불능";
+"onboarding.transform.after1" = "앱 자동 잠금";
+"onboarding.transform.after2" = "운동으로 시간 획득";
+"onboarding.transform.after3" = "당신이 주도";
+
+/* Onboarding — Privacy framing */
+"onboarding.privacy.title" = "설계부터 프라이버시 우선";
+"onboarding.privacy.subtitle" = "권한을 요청하기 전에, 어디에 어떻게 사용하는지 정확히 알려드릴게요.";
+"onboarding.privacy.screen_time.title" = "스크린 타임";
+"onboarding.privacy.screen_time.body" = "선택한 앱을 잠그고 해제하는 데만 사용됩니다. 앱 안에서 무엇을 하는지는 보지 않습니다.";
+"onboarding.privacy.camera.title" = "카메라";
+"onboarding.privacy.camera.body" = "운동 횟수를 세는 데만 사용됩니다. 모든 처리는 기기 내에서 이루어지며 영상은 녹화되지 않습니다.";
+
+/* Onboarding — Permissions */
+"onboarding.screen_time.title" = "스크린 타임 허용";
+"onboarding.screen_time.body" = "FitScroll이 앱을 잠그고 운동 후 다시 해제하려면 이 권한이 필요합니다.";
+"onboarding.screen_time.cta" = "스크린 타임 허용";
+"onboarding.screen_time.later" = "나중에 하기";
+
+"onboarding.camera.title" = "카메라 접근";
+"onboarding.camera.body" = "FitScroll은 운동 횟수를 세기 위해 카메라를 사용합니다. 모두 기기 내에서 처리되며 녹화는 없습니다.";
+"onboarding.camera.cta" = "카메라 허용";
+"onboarding.camera.later" = "나중에 하기";
+
+"onboarding.finish" = "FitScroll 시작하기";
+
+/* Permissions */
+"permissions.screen_time.title" = "스크린 타임 접근";
+"permissions.screen_time.description" = "FitScroll이 앱 제한을 관리하려면 스크린 타임 접근 권한이 필요합니다";
+"permissions.camera.title" = "카메라 접근";
+"permissions.camera.description" = "FitScroll은 운동을 추적하기 위해 카메라를 사용합니다. 모든 처리는 기기 내에서 이루어집니다.";
+"permissions.grant_access" = "접근 허용";
+"permissions.open_settings" = "설정 열기";
+"permissions.title" = "권한";
+"permissions.subtitle" = "FitScroll이 작동하려면 이 권한이 필요합니다";
+"permissions.continue" = "계속";
+
+/* Dashboard */
+"dashboard.title" = "대시보드";
+"dashboard.active_limits" = "활성 제한";
+"dashboard.today_earned" = "오늘 획득한 시간";
+"dashboard.locked_apps" = "보호 중인 앱";
+"dashboard.recent_sessions" = "최근 세션";
+"dashboard.unlock_now" = "운동으로 잠금 해제";
+"dashboard.no_limits_set" = "아직 설정된 제한이 없습니다";
+"dashboard.no_sessions_yet" = "아직 세션이 없습니다. 운동을 시작하세요!";
+"dashboard.status.unrestricted_message" = "모든 앱을 사용할 수 있습니다";
+"dashboard.status.restricted_message" = "선택한 앱이 잠겨 있습니다";
+"dashboard.status.temporarily_unlocked_message" = "앱이 일시적으로 해제되었습니다";
+"dashboard.hero.earn_time" = "시간을 얻으세요.";
+"dashboard.hero.unlock_freedom" = "자유를 여세요.";
+"dashboard.hero.subtitle" = "몸을 움직이세요.\n시간을 여세요.";
+"dashboard.ring.minutes_unit" = "분";
+"dashboard.ring.earned_today" = "오늘 획득";
+"dashboard.chip.day_streak" = "일 연속";
+"dashboard.chip.apps_protected" = "개 앱 보호 중";
+"dashboard.chip.level_format" = "레벨 %d";
+"dashboard.unlock_screen_time" = "화면 시간 잠금 해제";
+"dashboard.see_all" = "모두 보기";
+"dashboard.reps_format" = "%d회";
+
+/* App Selection */
+"app_selection.title" = "제한할 앱 선택";
+"app_selection.subtitle" = "제한하고 싶은 앱을 선택하세요";
+"app_selection.done" = "완료";
+"app_selection.no_apps_selected" = "선택된 앱 없음";
+"app_selection.select_apps" = "앱 선택";
+"app_selection.apps" = "앱";
+"app_selection.categories" = "카테고리";
+"app_selection.locked_right_away" = "즉시 잠김";
+"app_selection.locked_right_away_body" = "선택한 앱은 저장을 누르는 즉시 잠깁니다. 운동을 완료하면 일시적으로 해제됩니다 — 운동 한 번마다 화면 시간이 적립됩니다.";
+
+/* Limits */
+"limits.title" = "사용 제한 설정";
+"limits.daily_limit" = "일일 제한";
+"limits.minutes" = "분";
+"limits.save" = "저장";
+"limits.done" = "완료";
+
+/* Unlock */
+"unlock.title" = "운동으로 잠금 해제";
+"unlock.subtitle" = "화면 시간을 얻을 운동을 선택하세요";
+"unlock.minutes_per_rep_format" = "%.1f분/회";
+"unlock.stable_label" = "안정";
+"unlock.experimental_label" = "베타";
+"unlock.start_session" = "세션 시작";
+"unlock.section_stable" = "안정 운동";
+"unlock.section_experimental" = "실험적";
+"unlock.close" = "닫기";
+"unlock.header_title" = "운동으로 잠금 해제";
+"unlock.header_subtitle" = "운동을 선택하고 화면 시간을 얻으세요.";
+"unlock.choose_exercise" = "운동 선택";
+"unlock.reps_format" = "%d회";
+"unlock.minutes_format" = "%d분";
+
+/* Workout */
+"workout.reps" = "횟수";
+"workout.minutes" = "획득한 시간";
+"workout.start" = "시작";
+"workout.pause" = "일시정지";
+"workout.resume" = "재개";
+"workout.finish" = "완료";
+"workout.adjust_position" = "온몸이 보이도록 자세를 조정하세요";
+"workout.move_better_light" = "더 밝은 곳으로 이동하세요";
+"workout.great_form" = "자세 좋아요! 계속하세요!";
+"workout.more_reps_format" = "%d회 더 하면 %d분을 더 얻습니다";
+"workout.preparing" = "카메라 준비 중...";
+"workout.simulator_mode" = "시뮬레이터 모드";
+"workout.minutes_earned_format" = "+%@분 획득";
+"workout.open_settings" = "설정 열기";
+"workout.close" = "닫기";
+"workout.quit_title" = "이 운동을 종료할까요?";
+"workout.quit_discard" = "종료 및 삭제";
+"workout.keep_going" = "계속하기";
+"workout.quit_message" = "지금까지의 횟수는 저장되지 않으며 카메라가 꺼집니다.";
+
+/* Summary */
+"summary.title" = "세션 완료!";
+"summary.total_reps" = "총 횟수";
+"summary.earned_minutes" = "획득한 시간";
+"summary.avg_confidence" = "평균 정확도";
+"summary.duration" = "소요 시간";
+"summary.unlock_message_format" = "잘하셨어요! 화면 시간 %d분을 얻었습니다!";
+"summary.apply_unlock" = "앱 잠금 해제";
+"summary.back_to_dashboard" = "대시보드로 돌아가기";
+
+/* History */
+"history.title" = "운동 기록";
+"history.no_sessions" = "아직 운동 세션이 없습니다";
+"history.total_all_time" = "전체 통계";
+"history.sessions" = "세션";
+"history.reps" = "횟수";
+"history.minutes" = "분";
+"history.section_sessions" = "세션";
+"history.cancelled" = "취소됨";
+"history.header_title" = "운동 기록";
+"history.header_subtitle" = "시간에 따른 진행 상황을 확인하세요.";
+"history.recent_workouts" = "최근 운동";
+"history.see_all" = "모두 보기";
+"history.no_activity" = "이 기간에는 아직 활동이 없습니다";
+"history.reps_format" = "%d회";
+
+/* Settings */
+"settings.title" = "설정";
+"settings.exercise_rewards" = "운동 보상";
+"settings.minutes_per_rep_label" = "운동 1회당 분";
+"settings.daily_max_unlock" = "일일 최대 해제 시간";
+"settings.default_limit" = "기본 일일 제한";
+"settings.haptic_feedback" = "햅틱 피드백";
+"settings.debug_mode" = "디버그 모드";
+"settings.debug_section" = "디버그 도구";
+"settings.simulate_reps" = "횟수 시뮬레이션";
+"settings.fake_unlock" = "잠금 해제 테스트";
+"settings.reset_all" = "모든 데이터 초기화";
+"settings.about" = "정보";
+"settings.version" = "버전";
+"settings.privacy_note" = "모든 운동 데이터는 기기 내에서 처리됩니다. 영상은 녹화되거나 전송되지 않습니다.";
+"settings.preferences" = "환경설정";
+"settings.character_style" = "캐릭터";
+"character.woman" = "여성";
+"character.man" = "남성";
+"settings.reset_confirm_title" = "정말 초기화할까요?";
+"settings.reset_confirm_message" = "모든 운동 세션, 설정, 잠금 해제 기록이 삭제됩니다.";
+"settings.reset_confirm_button" = "모든 데이터 초기화";
+"settings.header_title" = "설정";
+"settings.header_subtitle" = "경험을 맞춤 설정하세요.";
+"settings.minutes_per_rep_format" = "%.1f분";
+"settings.minutes_value_format" = "%d분";
+"settings.rate_app" = "FitScroll 평가하기";
+
+/* Journey */
+"journey.title" = "여정";
+"journey.header_title" = "나의 여정";
+"journey.header_subtitle" = "한 번 한 번이 목표에 더 가까워집니다.";
+"journey.stat.day_streak" = "일 연속";
+"journey.stat.xp" = "XP";
+"journey.stat.level" = "레벨";
+"journey.xp_progress_format" = "%d / %d XP";
+"journey.milestones" = "마일스톤";
+"journey.state.completed" = "완료됨";
+"journey.state.in_progress_format" = "진행 중 · %@";
+"journey.state.locked" = "잠김";
+"journey.boss_level" = "보스 레벨";
+"journey.reward_xp_format" = "+%d XP";
+"journey.reward_minutes_format" = "+%d분";
+"journey.start" = "시작";
+"journey.close" = "닫기";
+"journey.passive_explainer" = "매일 운동하세요 — 목표를 달성하면 이 레벨은 자동으로 완료됩니다.";
+"journey.go_to_workouts" = "운동으로 이동";
+"journey.boss_defeated" = "보스 격파!";
+"journey.level_complete" = "레벨 완료!";
+"journey.reward_xp_short_format" = "+%d";
+"journey.reward_minutes_short_format" = "+%d";
+"journey.reward_xp_caption" = "XP";
+"journey.reward_minutes_caption" = "분 보너스";
+"journey.new_badge" = "새 배지";
+"journey.continue" = "계속";
+"journey.badges" = "배지";
+"journey.done" = "완료";
+
+/* Paywall */
+"paywall.title" = "FitScroll 프리미엄 잠금 해제";
+"paywall.subtitle" = "움직여서 화면 시간을 얻으세요. 7일 무료로 시작하세요.";
+"paywall.value_prop_1" = "하루를 빼앗는 무한 스크롤을 멈추세요";
+"paywall.value_prop_2" = "어떤 앱이든 자동으로 잠그세요";
+"paywall.value_prop_3" = "운동으로 화면 시간을 더 얻으세요";
+"paywall.value_prop_4" = "분석으로 진행 상황을 추적하세요";
+"paywall.cta_free_trial" = "7일 무료 체험 시작";
+"paywall.cta_buy_lifetime" = "평생 이용권 구매";
+"paywall.cta_subscribe" = "구독하기";
+"paywall.restore_purchases" = "구매 복원";
+"paywall.terms_of_use" = "이용약관";
+"paywall.privacy_policy" = "개인정보 처리방침";
+"paywall.legal_footer" = "7일 무료 체험 후, 취소하기 전까지 위 가격으로 자동 갱신됩니다. iOS 설정 → Apple ID → 구독에서 언제든지 취소할 수 있습니다.";
+"paywall.best_value" = "최고 혜택";
+"paywall.plan.yearly" = "연간";
+"paywall.plan.monthly" = "월간";
+"paywall.plan.lifetime" = "평생";
+"paywall.plan.yearly_subtitle" = "7일 무료, 이후 연간 결제";
+"paywall.plan.monthly_subtitle" = "7일 무료, 이후 월간 결제";
+"paywall.plan.lifetime_subtitle" = "한 번 구매로 평생 이용";
+"paywall.price.per_month_approx_format" = "≈ %@/월";
+"paywall.price.per_month" = "월";
+"paywall.price.one_time" = "1회 결제";
+
+/* Errors */
+"errors.camera_permission_denied" = "운동을 추적하려면 카메라 접근 권한이 필요합니다";
+"errors.camera_recovery" = "설정 > FitScroll > 카메라에서 접근을 허용하세요";
+"errors.screen_time_permission_denied" = "앱 제한을 관리하려면 스크린 타임 접근 권한이 필요합니다";
+"errors.screen_time_recovery" = "설정 > 스크린 타임에서 접근을 허용하세요";
+"errors.no_apps_selected" = "제한할 앱을 하나 이상 선택하세요";
+"errors.pose_not_detected" = "신체 자세를 감지할 수 없습니다";
+"errors.pose_recovery" = "온몸이 카메라에 보이도록 하세요";
+"errors.low_light" = "조명이 너무 어둡습니다";
+"errors.light_recovery" = "더 밝은 곳으로 이동하면 인식이 잘 됩니다";
+"errors.out_of_frame" = "카메라에 온몸이 보이지 않습니다";
+"errors.incomplete_motion" = "동작이 완료되지 않았습니다";
+"errors.generic" = "문제가 발생했습니다";
+"errors.try_again" = "다시 시도";
+"errors.camera_denied_full" = "카메라 권한이 거부되었습니다. 설정 > FitScroll에서 활성화하세요.";
+"errors.camera_denied_restricted" = "카메라 접근이 거부되었습니다. 설정 > FitScroll에서 활성화하세요.";
+
+/* Exercise: Squat */
+"exercise.squat.name" = "스쿼트";
+"exercise.squat.description" = "발을 어깨너비로 벌리고 서서 무릎을 굽혀 몸을 낮추세요";
+
+/* Exercise: Push-up */
+"exercise.push_up.name" = "푸시업";
+"exercise.push_up.description" = "플랭크 자세에서 시작해 가슴을 바닥까지 내린 뒤 다시 밀어 올리세요";
+
+/* Notifications */
+"notifications.one_minute_warning.title" = "1분 남음";
+"notifications.one_minute_warning.body_singular" = "해제한 앱이 60초 후에 잠깁니다. 시간을 더 얻을까요?";
+"notifications.one_minute_warning.body_plural_format" = "해제한 앱 %d개가 60초 후에 잠깁니다. 시간을 더 얻을까요?";
+"notifications.locked_again.title_singular" = "앱이 다시 잠김";
+"notifications.locked_again.title_plural_format" = "앱 %d개가 다시 잠김";
+"notifications.locked_again.body_singular" = "간단한 운동으로 화면 시간을 더 얻으려면 탭하세요.";
+"notifications.locked_again.body_plural_format" = "앱 %d개가 다시 제한되었습니다. 시간을 더 얻으려면 탭하세요.";
+
+/* Exercise: Jumping Jacks */
+"exercise.jumping_jacks.name" = "점핑잭";
+"exercise.jumping_jacks.description" = "점프하며 발을 양옆으로 벌리고 팔을 머리 위로 올린 뒤, 다시 시작 자세로 점프하세요";
+
+/* Exercise: Lunge */
+"exercise.lunge.name" = "런지";
+"exercise.lunge.description" = "한 발을 앞으로 내딛고 뒤쪽 무릎이 바닥에 거의 닿을 때까지 양 무릎을 굽힌 뒤, 다시 밀어 올리세요";

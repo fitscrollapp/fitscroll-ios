@@ -9,11 +9,11 @@ struct PermissionsView: View {
 
     var body: some View {
         VStack(spacing: DS.Spacing.xl) {
-            Text("Permissions")
+            Text(Strings.Permissions.title)
                 .font(.largeTitle)
                 .fontWeight(.bold)
 
-            Text("FitScroll needs these permissions to work")
+            Text(Strings.Permissions.subtitle)
                 .foregroundColor(.secondary)
 
             Spacer()
@@ -39,7 +39,7 @@ struct PermissionsView: View {
             Spacer()
 
             if screenTimeService.isAuthorized && cameraAuthorized {
-                PrimaryButton(title: "Continue", action: onComplete)
+                PrimaryButton(title: Strings.Permissions.continue, action: onComplete)
             }
 
             if showError {

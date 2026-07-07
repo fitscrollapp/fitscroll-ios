@@ -1,9 +1,11 @@
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct SessionSummaryView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.requestReview) private var requestReview
     @EnvironmentObject private var screenTimeService: ScreenTimeService
     @Query private var journeyProgress: [UserJourneyProgress]
     @Query private var earnedBadges: [EarnedBadge]
@@ -38,60 +40,73 @@ struct SessionSummaryView: View {
             VStack(spacing: DS.Spacing.xl) {
                 Spacer()
 
-                // Success icon
-                Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: 80))
-                    .foregroundColor(DS.Colors.success)
-                    .scaleEffect(animateStats ? 1.0 : 0.5)
-                    .animation(DS.Animation.spring, value: animateStats)
+                // Success icon — a neutral state when no reps were counted,
+                // so the copy never congratulates an empty session.
+                DuoIconBadge(
+                    systemName: didEarnReps ? "checkmark" : "camera.metering.unknown",
+                    color: didEarnReps ? DS.Colors.success : DS.Colors.accent,
+                    size: 110
+                )
+                .scaleEffect(animateStats ? 1.0 : 0.5)
+                .animation(DS.Animation.spring, value: animateStats)
 
-                Text(Strings.Summary.title)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                Text(didEarnReps ? Strings.Summary.title : "No Reps Counted")
+                    .font(.system(size: 34, weight: .black, design: .rounded))
 
                 // Stats
-                HStack(spacing: DS.Spacing.lg) {
-                    StatCard(
-                        title: Strings.Summary.totalReps,
+                HStack(spacing: DS.Spacing.md) {
+                    DuoStatTile(
                         value: "\(session.repCount)",
-                        icon: "repeat",
+                        title: Strings.Summary.totalReps,
+                        systemName: "repeat",
                         color: DS.Colors.primary
                     )
-                    StatCard(
-                        title: Strings.Summary.earnedMinutes,
+                    DuoStatTile(
                         value: TimeFormatter.formatMinutes(session.earnedMinutes),
-                        icon: "clock.fill",
+                        title: Strings.Summary.earnedMinutes,
+                        systemName: "clock.fill",
                         color: DS.Colors.accent
                     )
                 }
 
-                HStack(spacing: DS.Spacing.lg) {
-                    StatCard(
-                        title: Strings.Summary.avgConfidence,
+                HStack(spacing: DS.Spacing.md) {
+                    DuoStatTile(
                         value: String(format: "%.0f%%", session.averageConfidence * 100),
-                        icon: "target",
+                        title: Strings.Summary.avgConfidence,
+                        systemName: "target",
                         color: DS.Colors.success
                     )
-                    StatCard(
-                        title: Strings.Summary.duration,
+                    DuoStatTile(
                         value: durationText,
-                        icon: "timer",
+                        title: Strings.Summary.duration,
+                        systemName: "timer",
                         color: DS.Colors.secondary
                     )
                 }
 
-                // Motivational message
-                Text(String(format: Strings.Summary.unlockMessage, Int(session.earnedMinutes)))
-                    .font(.headline)
-                    .foregroundColor(DS.Colors.accent)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
+                // Motivational message — "great job, you earned X minutes"
+                // only makes sense when something was actually earned.
+                if didEarnReps {
+                    Text(String(format: Strings.Summary.unlockMessage, Int(session.earnedMinutes)))
+                        .font(.headline)
+                        .foregroundColor(DS.Colors.accent)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                } else {
+                    Text("The camera couldn't count any reps. Make sure your full body is in frame and give it another go! 💪")
+                        .font(.headline)
+                        .foregroundColor(DS.Colors.textSecondary)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.horizontal)
+                }
 
                 Spacer()
 
                 VStack(spacing: DS.Spacing.md) {
                     if session.earnedMinutes > 0 {
                         PrimaryButton(title: Strings.Summary.applyUnlock) {
+                            SoundManager.unlockBonus()
                             Task {
                                 await screenTimeService.applyTemporaryUnlock(durationMinutes: session.earnedMinutes)
                                 dismiss()
@@ -105,13 +120,12 @@ struct SessionSummaryView: View {
                         onFinish()
                     } label: {
                         Text(Strings.Summary.backToDashboard)
-                            .font(.headline)
-                            .fontWeight(.semibold)
+                            .font(.system(size: 17, weight: .heavy, design: .rounded))
                             .foregroundColor(DS.Colors.primary)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, DS.Spacing.md)
                             .background(DS.Colors.primary.opacity(0.12))
-                            .cornerRadius(DS.Corner.medium)
+                            .cornerRadius(18)
                     }
                     .buttonStyle(.plain)
                 }
@@ -124,8 +138,22 @@ struct SessionSummaryView: View {
                     animateStats = true
                 }
                 if didEarnReps {
-                    SoundManager.sessionVictory()
+                    SoundManager.workoutDone()
+                    ReviewManager.recordSuccessfulSession()
+                    AppsFlyerService.shared.logEvent("workout_completed", [
+                        "reps": session.repCount,
+                        "earned_minutes": Int(session.earnedMinutes),
+                        "af_content_id": session.exerciseTypeRaw,
+                    ])
                     checkJourneyProgress()
+                    // Ask for a review at this high point, but let the
+                    // confetti settle first and skip if a Journey level
+                    // completion sheet is taking over the screen.
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                        if completedLevel == nil {
+                            ReviewManager.requestReviewIfAppropriate(requestReview)
+                        }
+                    }
                 }
             }
             .sheet(item: $completedLevel) { level in
@@ -172,8 +200,15 @@ struct SessionSummaryView: View {
             modelContext: modelContext
         )
         completedLevel = result.levelCompleted
+        AppsFlyerService.shared.logEvent("af_achievement_unlocked", [
+            "af_description": currentLevel.title,
+        ])
         if let badgeId = result.newlyAwardedBadgeId {
             awardedBadge = JourneyContent.badge(id: badgeId)
+            // "Achievement Unlock" fanfare for the new badge.
+            SoundManager.badgeEarned()
+        } else if completedLevel != nil {
+            SoundManager.levelComplete()
         }
     }
 

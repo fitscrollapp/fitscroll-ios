@@ -60,6 +60,9 @@
 "permissions.camera.description" = "FitScroll uses your camera to track exercises. All processing happens on-device.";
 "permissions.grant_access" = "Grant Access";
 "permissions.open_settings" = "Open Settings";
+"permissions.title" = "Permissions";
+"permissions.subtitle" = "FitScroll needs these permissions to work";
+"permissions.continue" = "Continue";
 
 /* Dashboard */
 "dashboard.title" = "Dashboard";
@@ -73,6 +76,17 @@
 "dashboard.status.unrestricted_message" = "All apps are accessible";
 "dashboard.status.restricted_message" = "Selected apps are locked";
 "dashboard.status.temporarily_unlocked_message" = "Apps temporarily unlocked";
+"dashboard.hero.earn_time" = "Earn time.";
+"dashboard.hero.unlock_freedom" = "Unlock freedom.";
+"dashboard.hero.subtitle" = "Move your body.\nUnlock your time.";
+"dashboard.ring.minutes_unit" = "min";
+"dashboard.ring.earned_today" = "earned today";
+"dashboard.chip.day_streak" = "day streak";
+"dashboard.chip.apps_protected" = "apps protected";
+"dashboard.chip.level_format" = "Level %d";
+"dashboard.unlock_screen_time" = "Unlock Screen Time";
+"dashboard.see_all" = "See all";
+"dashboard.reps_format" = "%d reps";
 
 /* App Selection */
 "app_selection.title" = "Select Apps to Restrict";
@@ -82,6 +96,8 @@
 "app_selection.select_apps" = "Select Apps";
 "app_selection.apps" = "Apps";
 "app_selection.categories" = "Categories";
+"app_selection.locked_right_away" = "Locked right away";
+"app_selection.locked_right_away_body" = "The apps you pick are locked as soon as you hit Save. Unlock them temporarily by finishing a workout — every rep earns minutes of screen time.";
 
 /* Limits */
 "limits.title" = "Set Usage Limits";
@@ -100,6 +116,11 @@
 "unlock.section_stable" = "Stable Exercises";
 "unlock.section_experimental" = "Experimental";
 "unlock.close" = "Close";
+"unlock.header_title" = "Unlock with Exercise";
+"unlock.header_subtitle" = "Choose a workout and earn screen time.";
+"unlock.choose_exercise" = "Choose an Exercise";
+"unlock.reps_format" = "%d reps";
+"unlock.minutes_format" = "%d min";
 
 /* Workout */
 "workout.reps" = "Reps";
@@ -114,6 +135,13 @@
 "workout.more_reps_format" = "%d more reps, earn %d more minutes";
 "workout.preparing" = "Preparing camera...";
 "workout.simulator_mode" = "Simulator Mode";
+"workout.minutes_earned_format" = "+%@ min earned";
+"workout.open_settings" = "Open Settings";
+"workout.close" = "Close";
+"workout.quit_title" = "Quit this workout?";
+"workout.quit_discard" = "Quit & Discard";
+"workout.keep_going" = "Keep Going";
+"workout.quit_message" = "Your reps so far won't be saved and the camera will stop.";
 
 /* Summary */
 "summary.title" = "Session Complete!";
@@ -134,6 +162,12 @@
 "history.minutes" = "Minutes";
 "history.section_sessions" = "Sessions";
 "history.cancelled" = "Cancelled";
+"history.header_title" = "Workout History";
+"history.header_subtitle" = "Track your progress over time.";
+"history.recent_workouts" = "Recent Workouts";
+"history.see_all" = "See all";
+"history.no_activity" = "No activity in this range yet";
+"history.reps_format" = "%d reps";
 
 /* Settings */
 "settings.title" = "Settings";
@@ -157,6 +191,66 @@
 "settings.reset_confirm_title" = "Are you sure?";
 "settings.reset_confirm_message" = "This will delete all workout sessions, settings, and unlock history.";
 "settings.reset_confirm_button" = "Reset All Data";
+"settings.header_title" = "Settings";
+"settings.header_subtitle" = "Customize your experience.";
+"settings.minutes_per_rep_format" = "%.1f min";
+"settings.minutes_value_format" = "%d min";
+"settings.rate_app" = "Rate FitScroll";
+
+/* Journey */
+"journey.title" = "Journey";
+"journey.header_title" = "Your Journey";
+"journey.header_subtitle" = "Every rep brings you closer.";
+"journey.stat.day_streak" = "day streak";
+"journey.stat.xp" = "XP";
+"journey.stat.level" = "Level";
+"journey.xp_progress_format" = "%d / %d XP";
+"journey.milestones" = "Milestones";
+"journey.state.completed" = "Completed";
+"journey.state.in_progress_format" = "In progress · %@";
+"journey.state.locked" = "Locked";
+"journey.boss_level" = "BOSS LEVEL";
+"journey.reward_xp_format" = "+%d XP";
+"journey.reward_minutes_format" = "+%d min";
+"journey.start" = "Start";
+"journey.close" = "Close";
+"journey.passive_explainer" = "Do your daily workouts — this level completes on its own when the goal is met.";
+"journey.go_to_workouts" = "Go to Workouts";
+"journey.boss_defeated" = "Boss Defeated!";
+"journey.level_complete" = "Level Complete!";
+"journey.reward_xp_short_format" = "+%d";
+"journey.reward_minutes_short_format" = "+%d";
+"journey.reward_xp_caption" = "XP";
+"journey.reward_minutes_caption" = "min bonus";
+"journey.new_badge" = "NEW BADGE";
+"journey.continue" = "Continue";
+"journey.badges" = "Badges";
+"journey.done" = "Done";
+
+/* Paywall */
+"paywall.title" = "Unlock FitScroll Premium";
+"paywall.subtitle" = "Move to earn screen time. Start with 7 days free.";
+"paywall.value_prop_1" = "Stop doomscrolling stealing your day";
+"paywall.value_prop_2" = "Lock any app automatically";
+"paywall.value_prop_3" = "Exercise to earn more screen time";
+"paywall.value_prop_4" = "Track progress with analytics";
+"paywall.cta_free_trial" = "Start 7-Day Free Trial";
+"paywall.cta_buy_lifetime" = "Buy Lifetime";
+"paywall.cta_subscribe" = "Subscribe";
+"paywall.restore_purchases" = "Restore Purchases";
+"paywall.terms_of_use" = "Terms of Use";
+"paywall.privacy_policy" = "Privacy Policy";
+"paywall.legal_footer" = "7-day free trial, then auto-renews at the price above until you cancel. Cancel anytime in iOS Settings → Apple ID → Subscriptions.";
+"paywall.best_value" = "BEST VALUE";
+"paywall.plan.yearly" = "Yearly";
+"paywall.plan.monthly" = "Monthly";
+"paywall.plan.lifetime" = "Lifetime";
+"paywall.plan.yearly_subtitle" = "7 days free, then billed yearly";
+"paywall.plan.monthly_subtitle" = "7 days free, then billed monthly";
+"paywall.plan.lifetime_subtitle" = "One-time purchase, yours forever";
+"paywall.price.per_month_approx_format" = "≈ %@/mo";
+"paywall.price.per_month" = "per month";
+"paywall.price.one_time" = "one-time";
 
 /* Errors */
 "errors.camera_permission_denied" = "Camera access is required to track exercises";

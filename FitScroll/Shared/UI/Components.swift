@@ -6,21 +6,18 @@ struct PrimaryButton: View {
     var isLoading: Bool = false
 
     var body: some View {
-        Button(action: action) {
+        // Duolingo-style candy button: every primary CTA across the app
+        // (onboarding, permissions, summary, challenge) shares this look.
+        DuoButton(fill: DS.Colors.neon, foreground: DS.Colors.background) {
+            action()
+        } label: {
             HStack(spacing: DS.Spacing.sm) {
                 if isLoading {
                     ProgressView()
-                        .tint(.white)
+                        .tint(DS.Colors.background)
                 }
                 Text(title)
-                    .fontWeight(.semibold)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, DS.Spacing.md)
-            .background(DS.Gradients.primaryButton)
-            .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: DS.Corner.large, style: .continuous))
-            .shadow(color: DS.Colors.primary.opacity(0.35), radius: 12, y: 4)
         }
         .disabled(isLoading)
     }
@@ -59,6 +56,10 @@ struct ExerciseRow: View {
     let action: () -> Void
 
     var body: some View {
+        // Duolingo-style exercise card: the animated character sits on the
+        // exercise's own colour, the rate is a matching pill, and the card
+        // gets chunky corners + a coloured hairline.
+        let tint = Duo.color(for: exercise)
         Button(action: action) {
             HStack(spacing: DS.Spacing.md) {
                 AnimatedExerciseIcon(
@@ -67,13 +68,13 @@ struct ExerciseRow: View {
                 )
                 .frame(width: 52, height: 64)
                 .padding(4)
-                .background(DS.Colors.primary.opacity(0.08))
-                .cornerRadius(DS.Corner.small)
+                .background(tint.opacity(0.16))
+                .cornerRadius(14)
 
                 VStack(alignment: .leading, spacing: DS.Spacing.xs) {
                     HStack {
                         Text(exercise.displayName)
-                            .font(.headline)
+                            .font(.system(size: 17, weight: .heavy, design: .rounded))
                             .foregroundColor(DS.Colors.textPrimary)
                         if exercise.stability == .experimental {
                             Text(Strings.Unlock.experimentalLabel)
@@ -92,19 +93,24 @@ struct ExerciseRow: View {
 
                 Spacer()
 
-                VStack(alignment: .trailing) {
-                    Text(String(format: Strings.Unlock.minutesPerRep, minutesPerRep))
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .foregroundColor(DS.Colors.accent)
-                }
+                Text(String(format: Strings.Unlock.minutesPerRep, minutesPerRep))
+                    .font(.system(size: 13, weight: .bold, design: .rounded))
+                    .foregroundColor(tint)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(Capsule().fill(tint.opacity(0.15)))
 
                 Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .heavy))
                     .foregroundColor(.secondary)
             }
             .padding(DS.Spacing.md)
             .background(DS.Colors.cardBackground)
-            .cornerRadius(DS.Corner.medium)
+            .clipShape(RoundedRectangle(cornerRadius: DS.Corner.xl, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: DS.Corner.xl, style: .continuous)
+                    .stroke(tint.opacity(0.35), lineWidth: 1.5)
+            )
         }
         .buttonStyle(.plain)
     }

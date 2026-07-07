@@ -61,12 +61,12 @@ struct AppSelectionView: View {
             HStack(spacing: DS.Spacing.sm) {
                 Image(systemName: "lock.fill")
                     .foregroundColor(DS.Colors.accent)
-                Text("Locked right away")
+                Text(Strings.AppSelection.lockedRightAway)
                     .font(.headline)
                 Spacer()
             }
 
-            Text("The apps you pick are locked as soon as you hit Save. Unlock them temporarily by finishing a workout — every rep earns minutes of screen time.")
+            Text(Strings.AppSelection.lockedRightAwayBody)
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .fixedSize(horizontal: false, vertical: true)

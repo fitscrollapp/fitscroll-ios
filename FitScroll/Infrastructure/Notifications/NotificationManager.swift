@@ -4,6 +4,11 @@ import UIKit
 
 extension Notification.Name {
     static let fitscrollOpenUnlock = Notification.Name("fitscroll.openUnlock")
+    /// Posted when a challenge push is tapped; object = backend code String.
+    static let fitscrollOpenChallenge = Notification.Name("fitscroll.openChallenge")
+    /// Posted when a challenge push arrives while the app is foregrounded —
+    /// listeners refresh the bell/inbox immediately.
+    static let fitscrollInboxRefresh = Notification.Name("fitscroll.inboxRefresh")
 }
 
 /// Handles local notifications for the temporary unlock countdown:
@@ -154,6 +159,11 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
+        // Foreground challenge push → update the bell right away.
+        let info = notification.request.content.userInfo
+        if let type = info["type"] as? String, type == "challenge" {
+            NotificationCenter.default.post(name: .fitscrollInboxRefresh, object: nil)
+        }
         // Show the banner + play sound even if the app is in the foreground.
         completionHandler([.banner, .sound, .list])
     }
@@ -163,10 +173,23 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-        let dest = response.notification.request.content.userInfo[UserInfoKey.destination] as? String
+        let userInfo = response.notification.request.content.userInfo
+        let dest = userInfo[UserInfoKey.destination] as? String
         if dest == Destination.unlock {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .fitscrollOpenUnlock, object: nil)
+            }
+        }
+        // Remote (FCM) pushes from the backend: challenge sent / responded.
+        // data payload: {"type":"challenge"|"challenge_response","id":"CODE"}
+        if let type = userInfo["type"] as? String,
+           type == "challenge" || type == "challenge_response",
+           let code = userInfo["id"] as? String {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(
+                    name: .fitscrollOpenChallenge,
+                    object: code
+                )
             }
         }
         completionHandler()
