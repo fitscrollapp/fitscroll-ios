@@ -57,8 +57,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScroll/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll
-        MARKETING_VERSION: "1.1.2"
-        CURRENT_PROJECT_VERSION: "44"
+        MARKETING_VERSION: "1.2.0"
+        CURRENT_PROJECT_VERSION: "45"
         TARGETED_DEVICE_FAMILY: "1"
         GENERATE_INFOPLIST_FILE: false
         DEVELOPMENT_TEAM: MHJ33CJD79
@@ -71,8 +71,8 @@ targets:
       properties:
         CFBundleName: FitScroll
         CFBundleDisplayName: FitScroll
-        CFBundleShortVersionString: "1.1.0"
-        CFBundleVersion: "42"
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         CFBundlePackageType: APPL
         CFBundleExecutable: FitScroll
         CFBundleIdentifier: com.huseyinbabal.fitscroll
@@ -118,8 +118,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScrollShieldConfiguration/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll.ShieldConfiguration
-        MARKETING_VERSION: "1.1.2"
-        CURRENT_PROJECT_VERSION: "44"
+        MARKETING_VERSION: "1.2.0"
+        CURRENT_PROJECT_VERSION: "45"
         DEVELOPMENT_TEAM: MHJ33CJD79
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: FitScrollShieldConfiguration/ShieldConfiguration.entitlements
@@ -129,8 +129,8 @@ targets:
       properties:
         CFBundleDisplayName: "Shield Configuration"
         CFBundleName: FitScrollShieldConfiguration
-        CFBundleShortVersionString: "1.1.0"
-        CFBundleVersion: "42"
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         CFBundlePackageType: XPC!
         CFBundleExecutable: $(EXECUTABLE_NAME)
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
@@ -150,8 +150,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScrollShieldAction/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll.ShieldAction
-        MARKETING_VERSION: "1.1.2"
-        CURRENT_PROJECT_VERSION: "44"
+        MARKETING_VERSION: "1.2.0"
+        CURRENT_PROJECT_VERSION: "45"
         DEVELOPMENT_TEAM: MHJ33CJD79
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: FitScrollShieldAction/ShieldAction.entitlements
@@ -161,8 +161,8 @@ targets:
       properties:
         CFBundleDisplayName: "Shield Action"
         CFBundleName: FitScrollShieldAction
-        CFBundleShortVersionString: "1.1.0"
-        CFBundleVersion: "42"
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         CFBundlePackageType: XPC!
         CFBundleExecutable: $(EXECUTABLE_NAME)
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
@@ -183,8 +183,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScrollDeviceActivityMonitor/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll.DeviceActivityMonitor
-        MARKETING_VERSION: "1.1.2"
-        CURRENT_PROJECT_VERSION: "44"
+        MARKETING_VERSION: "1.2.0"
+        CURRENT_PROJECT_VERSION: "45"
         DEVELOPMENT_TEAM: MHJ33CJD79
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: FitScrollDeviceActivityMonitor/DeviceActivityMonitor.entitlements
@@ -194,8 +194,8 @@ targets:
       properties:
         CFBundleDisplayName: "Device Activity Monitor"
         CFBundleName: FitScrollDeviceActivityMonitor
-        CFBundleShortVersionString: "1.1.0"
-        CFBundleVersion: "42"
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         CFBundlePackageType: XPC!
         CFBundleExecutable: $(EXECUTABLE_NAME)
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)

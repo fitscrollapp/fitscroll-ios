@@ -1302,7 +1302,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollDeviceActivityMonitor/DeviceActivityMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollDeviceActivityMonitor/Info.plist;
@@ -1311,7 +1311,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.DeviceActivityMonitor;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1323,7 +1323,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldConfiguration/ShieldConfiguration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldConfiguration/Info.plist;
@@ -1332,7 +1332,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.ShieldConfiguration;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1436,7 +1436,7 @@
 				CODE_SIGN_ENTITLEMENTS = FitScroll/Resources/FitScroll.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScroll/Info.plist;
@@ -1444,7 +1444,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1491,7 +1491,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldAction/ShieldAction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldAction/Info.plist;
@@ -1500,7 +1500,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.ShieldAction;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1512,7 +1512,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollDeviceActivityMonitor/DeviceActivityMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollDeviceActivityMonitor/Info.plist;
@@ -1521,7 +1521,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.DeviceActivityMonitor;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1533,7 +1533,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldAction/ShieldAction.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldAction/Info.plist;
@@ -1542,7 +1542,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.ShieldAction;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1554,7 +1554,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FitScrollShieldConfiguration/ShieldConfiguration.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScrollShieldConfiguration/Info.plist;
@@ -1563,7 +1563,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll.ShieldConfiguration;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1640,7 +1640,7 @@
 				CODE_SIGN_ENTITLEMENTS = FitScroll/Resources/FitScroll.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = MHJ33CJD79;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitScroll/Info.plist;
@@ -1648,7 +1648,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.huseyinbabal.fitscroll;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
