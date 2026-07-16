@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "Ausfallschritte";
 "exercise.lunge.description" = "Setze einen Fuß nach vorn, beuge beide Knie, bis das hintere Knie fast den Boden berührt, dann drücke dich zurück hoch";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "Willkommen zurück, Champ!";
+"winback.subtitle" = "Die Rangliste war ohne dich in Bewegung. Mach genau da weiter, wo du aufgehört hast.";
+"winback.badge" = "NUR FÜR DICH";
+"winback.cta_claim" = "Angebot sichern";
+"winback.see_all_plans" = "Alle Pläne ansehen";
+"winback.first_month_format" = "%@ für deinen ersten Monat";
+"winback.first_year_format" = "%@ für dein erstes Jahr";
+"winback.then_price_format" = "danach %@";
+"winback.cancel_anytime" = "Jederzeit kündbar.";
+"settings.manage_subscription" = "Abo verwalten";

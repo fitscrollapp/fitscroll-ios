@@ -49,14 +49,16 @@ targets:
         product: FirebaseMessaging
       - package: RevenueCat
         product: RevenueCat
+      - package: RevenueCat
+        product: RevenueCatUI
       - package: AppsFlyerFramework
         product: AppsFlyerLib
     settings:
       base:
         INFOPLIST_FILE: FitScroll/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll
-        MARKETING_VERSION: "1.1.0"
-        CURRENT_PROJECT_VERSION: "42"
+        MARKETING_VERSION: "1.1.2"
+        CURRENT_PROJECT_VERSION: "44"
         TARGETED_DEVICE_FAMILY: "1"
         GENERATE_INFOPLIST_FILE: false
         DEVELOPMENT_TEAM: MHJ33CJD79
@@ -116,8 +118,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScrollShieldConfiguration/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll.ShieldConfiguration
-        MARKETING_VERSION: "1.1.0"
-        CURRENT_PROJECT_VERSION: "42"
+        MARKETING_VERSION: "1.1.2"
+        CURRENT_PROJECT_VERSION: "44"
         DEVELOPMENT_TEAM: MHJ33CJD79
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: FitScrollShieldConfiguration/ShieldConfiguration.entitlements
@@ -148,8 +150,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScrollShieldAction/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll.ShieldAction
-        MARKETING_VERSION: "1.1.0"
-        CURRENT_PROJECT_VERSION: "42"
+        MARKETING_VERSION: "1.1.2"
+        CURRENT_PROJECT_VERSION: "44"
         DEVELOPMENT_TEAM: MHJ33CJD79
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: FitScrollShieldAction/ShieldAction.entitlements
@@ -181,8 +183,8 @@ targets:
       base:
         INFOPLIST_FILE: FitScrollDeviceActivityMonitor/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.huseyinbabal.fitscroll.DeviceActivityMonitor
-        MARKETING_VERSION: "1.1.0"
-        CURRENT_PROJECT_VERSION: "42"
+        MARKETING_VERSION: "1.1.2"
+        CURRENT_PROJECT_VERSION: "44"
         DEVELOPMENT_TEAM: MHJ33CJD79
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: FitScrollDeviceActivityMonitor/DeviceActivityMonitor.entitlements

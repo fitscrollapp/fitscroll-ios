@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "Zancadas";
 "exercise.lunge.description" = "Da un paso adelante, flexiona ambas rodillas hasta que la de atrás casi toque el suelo y empuja hacia arriba";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "¡Bienvenido de nuevo, campeón!";
+"winback.subtitle" = "La clasificación siguió moviéndose sin ti. Retoma justo donde lo dejaste.";
+"winback.badge" = "SOLO PARA TI";
+"winback.cta_claim" = "Aprovechar oferta";
+"winback.see_all_plans" = "Ver todos los planes";
+"winback.first_month_format" = "%@ tu primer mes";
+"winback.first_year_format" = "%@ tu primer año";
+"winback.then_price_format" = "después %@";
+"winback.cancel_anytime" = "Cancela cuando quieras.";
+"settings.manage_subscription" = "Gestionar suscripción";

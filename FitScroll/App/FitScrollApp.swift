@@ -35,6 +35,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // Bridge the AppsFlyer id into RevenueCat so subscription revenue
         // events flow to AppsFlyer → TikTok for the same install.
         PurchasesService.shared.setAppsflyerID(AppsFlyerService.shared.appsFlyerUID)
+        // Attach the backend identity so RevenueCat webhook events can be
+        // joined against the leaderboard user (win-back pushes etc.).
+        PurchasesService.shared.setBackendIdentity(
+            deviceID: FitScrollAPI.shared.deviceID,
+            username: FitScrollAPI.shared.username
+        )
 
         // Install the local-notification delegate so taps on scheduled
         // unlock notifications route through our NotificationManager.

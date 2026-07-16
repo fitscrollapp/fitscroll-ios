@@ -10,6 +10,9 @@ struct RootView: View {
     @State private var challengeInvite: ChallengeInvite?
     /// Animated launch splash — covers the UI for the first ~1.6s.
     @State private var showSplash = true
+    /// Lapsed subscriber tapped "see all plans" on the win-back screen —
+    /// fall back to the regular paywall for the rest of this launch.
+    @State private var winBackDeclined = false
 
     private var userSettings: UserSettings? {
         settings.first
@@ -35,7 +38,16 @@ struct RootView: View {
                 if !uiTestBypass && userSettings?.hasCompletedOnboarding != true {
                     OnboardingView()
                 } else if !uiTestBypass && !purchases.isSubscribed {
-                    PaywallView(dismissable: false)
+                    // Returning lapsed subscribers get the one-tap win-back
+                    // offer (iOS 18+, App Store eligibility permitting)
+                    // instead of the full-price paywall.
+                    if !winBackDeclined, let winBack = purchases.winBack {
+                        WinBackView(package: winBack.package, offer: winBack.offer) {
+                            winBackDeclined = true
+                        }
+                    } else {
+                        PaywallView(dismissable: false)
+                    }
                 } else {
                     MainTabView(showUnlock: $deepLinkUnlock)
                 }
@@ -64,6 +76,11 @@ struct RootView: View {
             #if DEBUG
             DemoDataSeeder.seedIfRequested(context: modelContext)
             #endif
+        }
+        // Win-back eligibility depends on both customer info and offerings,
+        // which arrive asynchronously after launch — re-check as they land.
+        .onReceive(purchases.$customerInfo) { _ in
+            Task { await purchases.refreshWinBackOffers() }
         }
         .onReceive(NotificationCenter.default.publisher(for: .fitscrollOpenUnlock)) { _ in
             deepLinkUnlock = true

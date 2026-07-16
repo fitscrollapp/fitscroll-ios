@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "ランジ";
 "exercise.lunge.description" = "片足を前に踏み出し、後ろの膝が床に着きそうになるまで両膝を曲げ、押し戻して立ち上がります";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "おかえりなさい、チャンプ！";
+"winback.subtitle" = "あなたがいない間もリーダーボードは動いていました。中断したところから再開しましょう。";
+"winback.badge" = "あなただけの特典";
+"winback.cta_claim" = "オファーを利用する";
+"winback.see_all_plans" = "すべてのプランを見る";
+"winback.first_month_format" = "初月 %@";
+"winback.first_year_format" = "初年度 %@";
+"winback.then_price_format" = "以降 %@";
+"winback.cancel_anytime" = "いつでもキャンセルできます。";
+"settings.manage_subscription" = "サブスクリプションを管理";

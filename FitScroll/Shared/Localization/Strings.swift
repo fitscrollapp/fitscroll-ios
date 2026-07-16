@@ -216,6 +216,7 @@ enum Strings {
         static var resetConfirmMessage: String { localized("settings.reset_confirm_message") }
         static var resetConfirmButton: String { localized("settings.reset_confirm_button") }
         static var headerTitle: String { localized("settings.header_title") }
+        static var manageSubscription: String { localized("settings.manage_subscription") }
         static var headerSubtitle: String { localized("settings.header_subtitle") }
         static var minutesPerRepFormat: String { localized("settings.minutes_per_rep_format") }
         static var minutesValueFormat: String { localized("settings.minutes_value_format") }
@@ -277,6 +278,18 @@ enum Strings {
         static var pricePerMonthApproxFormat: String { localized("paywall.price.per_month_approx_format") }
         static var pricePerMonth: String { localized("paywall.price.per_month") }
         static var priceOneTime: String { localized("paywall.price.one_time") }
+    }
+
+    enum WinBack {
+        static var title: String { localized("winback.title") }
+        static var subtitle: String { localized("winback.subtitle") }
+        static var badge: String { localized("winback.badge") }
+        static var ctaClaim: String { localized("winback.cta_claim") }
+        static var seeAllPlans: String { localized("winback.see_all_plans") }
+        static var firstMonthFormat: String { localized("winback.first_month_format") }
+        static var firstYearFormat: String { localized("winback.first_year_format") }
+        static var thenPriceFormat: String { localized("winback.then_price_format") }
+        static var cancelAnytime: String { localized("winback.cancel_anytime") }
     }
 
     enum Notifications {

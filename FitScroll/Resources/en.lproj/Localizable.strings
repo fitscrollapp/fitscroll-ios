@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "Lunges";
 "exercise.lunge.description" = "Step one foot forward, bend both knees until the back knee almost touches the floor, then push back up";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "Welcome back, champ!";
+"winback.subtitle" = "The leaderboard kept moving while you were away. Pick up right where you left off.";
+"winback.badge" = "JUST FOR YOU";
+"winback.cta_claim" = "Claim Your Offer";
+"winback.see_all_plans" = "See all plans";
+"winback.first_month_format" = "%@ for your first month";
+"winback.first_year_format" = "%@ for your first year";
+"winback.then_price_format" = "then %@";
+"winback.cancel_anytime" = "Cancel anytime.";
+"settings.manage_subscription" = "Manage Subscription";

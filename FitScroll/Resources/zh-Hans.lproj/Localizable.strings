@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "弓步蹲";
 "exercise.lunge.description" = "一脚向前迈出，弯曲双膝直到后膝几乎触地，再撑起身体";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "欢迎回来，冠军！";
+"winback.subtitle" = "你不在的时候排行榜一直在变动。从上次停下的地方继续吧。";
+"winback.badge" = "专属优惠";
+"winback.cta_claim" = "领取优惠";
+"winback.see_all_plans" = "查看所有方案";
+"winback.first_month_format" = "首月 %@";
+"winback.first_year_format" = "首年 %@";
+"winback.then_price_format" = "之后 %@";
+"winback.cancel_anytime" = "随时可取消。";
+"settings.manage_subscription" = "管理订阅";

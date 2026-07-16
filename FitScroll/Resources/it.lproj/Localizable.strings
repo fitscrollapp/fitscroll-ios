@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "Affondi";
 "exercise.lunge.description" = "Fai un passo avanti con un piede, piega entrambe le ginocchia finché quella posteriore quasi tocca il pavimento, poi spingi indietro";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "Bentornato, campione!";
+"winback.subtitle" = "La classifica non si è fermata mentre eri via. Riprendi da dove avevi lasciato.";
+"winback.badge" = "SOLO PER TE";
+"winback.cta_claim" = "Riscatta l'offerta";
+"winback.see_all_plans" = "Vedi tutti i piani";
+"winback.first_month_format" = "%@ per il primo mese";
+"winback.first_year_format" = "%@ per il primo anno";
+"winback.then_price_format" = "poi %@";
+"winback.cancel_anytime" = "Disdici quando vuoi.";
+"settings.manage_subscription" = "Gestisci abbonamento";

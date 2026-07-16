@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "Hamle";
 "exercise.lunge.description" = "Bir ayağını öne at, arka dizin yere değer gibi her iki dizini bük, sonra geri doğrul";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "Tekrar hoş geldin şampiyon!";
+"winback.subtitle" = "Sen yokken liderlik tablosu hareketlendi. Kaldığın yerden devam et.";
+"winback.badge" = "SANA ÖZEL";
+"winback.cta_claim" = "Teklifi Kullan";
+"winback.see_all_plans" = "Tüm planları gör";
+"winback.first_month_format" = "İlk ayın %@";
+"winback.first_year_format" = "İlk yılın %@";
+"winback.then_price_format" = "sonrası %@";
+"winback.cancel_anytime" = "İstediğin zaman iptal edebilirsin.";
+"settings.manage_subscription" = "Aboneliği Yönet";

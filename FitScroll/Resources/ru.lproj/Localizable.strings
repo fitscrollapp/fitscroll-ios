@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "Выпады";
 "exercise.lunge.description" = "Сделай шаг вперёд, сгибай оба колена, пока заднее почти не коснётся пола, затем оттолкнись назад";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "С возвращением, чемпион!";
+"winback.subtitle" = "Пока тебя не было, таблица лидеров не стояла на месте. Продолжай с того места, где остановился.";
+"winback.badge" = "ТОЛЬКО ДЛЯ ТЕБЯ";
+"winback.cta_claim" = "Воспользоваться предложением";
+"winback.see_all_plans" = "Все планы";
+"winback.first_month_format" = "%@ за первый месяц";
+"winback.first_year_format" = "%@ за первый год";
+"winback.then_price_format" = "далее %@";
+"winback.cancel_anytime" = "Отменить можно в любой момент.";
+"settings.manage_subscription" = "Управление подпиской";

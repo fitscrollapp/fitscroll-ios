@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "런지";
 "exercise.lunge.description" = "한 발을 앞으로 내딛고 뒤쪽 무릎이 바닥에 거의 닿을 때까지 양 무릎을 굽힌 뒤, 다시 밀어 올리세요";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "다시 만나서 반가워요, 챔피언!";
+"winback.subtitle" = "당신이 없는 동안에도 리더보드는 계속 움직였어요. 멈춘 곳에서 바로 이어가세요.";
+"winback.badge" = "당신만을 위한 혜택";
+"winback.cta_claim" = "혜택 받기";
+"winback.see_all_plans" = "모든 플랜 보기";
+"winback.first_month_format" = "첫 달 %@";
+"winback.first_year_format" = "첫 해 %@";
+"winback.then_price_format" = "이후 %@";
+"winback.cancel_anytime" = "언제든지 해지할 수 있어요.";
+"settings.manage_subscription" = "구독 관리";

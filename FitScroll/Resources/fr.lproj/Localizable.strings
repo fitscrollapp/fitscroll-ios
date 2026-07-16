@@ -293,3 +293,15 @@
 /* Exercise: Lunge */
 "exercise.lunge.name" = "Fentes";
 "exercise.lunge.description" = "Avancez un pied, pliez les deux genoux jusqu'à ce que le genou arrière touche presque le sol, puis remontez";
+
+/* Win-back (lapsed subscriber) screen */
+"winback.title" = "Bon retour, champion !";
+"winback.subtitle" = "Le classement a continué de bouger sans toi. Reprends exactement où tu t'étais arrêté.";
+"winback.badge" = "RIEN QUE POUR TOI";
+"winback.cta_claim" = "Profiter de l'offre";
+"winback.see_all_plans" = "Voir tous les forfaits";
+"winback.first_month_format" = "%@ le premier mois";
+"winback.first_year_format" = "%@ la première année";
+"winback.then_price_format" = "puis %@";
+"winback.cancel_anytime" = "Annulable à tout moment.";
+"settings.manage_subscription" = "Gérer l'abonnement";

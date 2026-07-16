@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import RevenueCatUI
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
@@ -9,6 +10,7 @@ struct SettingsView: View {
     @ObservedObject private var purchases = PurchasesService.shared
     @State private var showResetConfirmation = false
     @State private var showPaywall = false
+    @State private var showCustomerCenter = false
 
     private var userSettings: UserSettings? {
         settings.first
@@ -216,6 +218,29 @@ struct SettingsView: View {
                 }
             }
             .buttonStyle(.plain)
+
+            // RevenueCat Customer Center: manage/cancel flow with exit
+            // survey — the reason data feeds churn analysis.
+            if purchases.customerInfo?.entitlements
+                .all[PurchasesService.premiumEntitlement] != nil {
+                Button {
+                    showCustomerCenter = true
+                } label: {
+                    HStack(spacing: DS.Spacing.md) {
+                        DuoIconBadge(systemName: "person.text.rectangle", color: DS.Colors.primary, size: 38)
+                        Text(Strings.Settings.manageSubscription)
+                            .foregroundColor(DS.Colors.textPrimary)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundColor(DS.Colors.textSecondary)
+                    }
+                }
+                .buttonStyle(.plain)
+                .sheet(isPresented: $showCustomerCenter) {
+                    CustomerCenterView()
+                }
+            }
         }
     }
 

@@ -260,16 +260,18 @@ struct PaywallView: View {
     }
 
     private var ctaTitle: String {
-        guard let pkg = selectedPackage else { return Strings.Paywall.ctaFreeTrial }
+        guard let pkg = selectedPackage else { return Strings.Paywall.ctaSubscribe }
         switch pkg.packageType {
         case .lifetime:
             return Strings.Paywall.ctaBuyLifetime
         case .annual, .monthly:
-            // Always show the trial CTA for auto-renewable subs. StoreKit
-            // sometimes returns `introductoryDiscount == nil` in sandbox
-            // until Apple finishes reviewing the intro offer, but our ASC
-            // config always attaches a 7-day free trial to both products.
-            return Strings.Paywall.ctaFreeTrial
+            // Only promise the free trial when the store will actually grant
+            // it. Intro offers can be region-limited or already consumed —
+            // promising a trial and then charging immediately is exactly the
+            // kind of thing that earns refunds and 1-star reviews.
+            return purchases.isEligibleForTrial(pkg)
+                ? Strings.Paywall.ctaFreeTrial
+                : Strings.Paywall.ctaSubscribe
         default:
             return Strings.Paywall.ctaSubscribe
         }

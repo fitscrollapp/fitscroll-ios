@@ -23,7 +23,7 @@
 		19DF03734F4A591F01020082 /* DemoDataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B576F385E3F7F60F2227F5E /* DemoDataSeeder.swift */; };
 		19E8A63E69B007B27DE8CCFC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A6C2B25CFF11DAB648BA8F /* OnboardingView.swift */; };
 		1CB9629286085E387F329E95 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950B11CC42985D459457E567 /* SettingsView.swift */; };
-		1EBDB6C22C6857B47EBE4ADA /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = E5C90A7BE5DC22FDAB81EE95 /* AppsFlyerLib */; };
+		1EBDB6C22C6857B47EBE4ADA /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = F1133A9396CBF1B467E105EF /* RevenueCatUI */; };
 		233839C5F137D992A49CA8ED /* DuoKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCB0476CD7C835404881CF /* DuoKit.swift */; };
 		234E7EBCE8BC86F0ECDD7372 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B55F3A568F2D8FB5FE495AC3 /* InfoPlist.strings */; };
 		23F3E0A3C0470A1F2B49D50A /* PersistenceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B73204404B8439BF06B826 /* PersistenceConfiguration.swift */; };
@@ -41,6 +41,7 @@
 		4132C31FA984D4930F573B17 /* sfx_levelup_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE6D649F861332F0A43FA739 /* sfx_levelup_2.mp3 */; };
 		44864C68D96F26FCD0D83354 /* sfx_level_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 792D780F9AD98A0DD8B4F585 /* sfx_level_complete.mp3 */; };
 		44A33C24304D1D70F6EC19E8 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D92829FDED34DF25FBADE6 /* TimeFormatter.swift */; };
+		4549B9A95F50D99743516830 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = E5C90A7BE5DC22FDAB81EE95 /* AppsFlyerLib */; };
 		47D439435F759BEFCF9EF3E5 /* MockScreenTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5375B7E3DD6EB85AC22D76C9 /* MockScreenTimeService.swift */; };
 		4B6B4505E18290C3456F78F6 /* sfx_workout_done.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 98595E954D6E1A098024D99E /* sfx_workout_done.mp3 */; };
 		4DC92782569A1E377AC50C75 /* UsageLimitRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C1C62D27B4D6DC0F4AB533 /* UsageLimitRule.swift */; };
@@ -62,6 +63,7 @@
 		746FEC4D1083D51A9ECD5284 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E9AF2A8CEE87977317A015 /* RootView.swift */; };
 		75BD79EC4AFE152476DAF780 /* RepDetectionEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2D402A7EFC575A4D662D1 /* RepDetectionEngineTests.swift */; };
 		76EAE1DCC5A8808549FE2D41 /* CameraWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC449E09B2BD6940DB104F15 /* CameraWorkoutView.swift */; };
+		770AE99CDC5B7BFF558E0946 /* WinBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD288113805ABDBE3F6408E /* WinBackView.swift */; };
 		77BD84C39D43D0867A221780 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 67A40F5D51740EB1618E34BA /* FirebaseMessaging */; };
 		793511FBAB639B71B9B23832 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C15956D36AD71F75612E78A /* BadgeView.swift */; };
 		7A3DC311A18B20C7883E2465 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BB88E0E407718D05AC3741 /* SoundManager.swift */; };
@@ -229,6 +231,7 @@
 		54D45197313FD684095AD31D /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		570C05F91007EC5199CAE803 /* sfx_goal_ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sfx_goal_ring.mp3; sourceTree = "<group>"; };
 		5B29FECAF02FD390D32D5C1B /* UnlockWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockWindow.swift; sourceTree = "<group>"; };
+		5BD288113805ABDBE3F6408E /* WinBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinBackView.swift; sourceTree = "<group>"; };
 		61486D9AAD9FFD5B28F885B0 /* WorkoutCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCharacterView.swift; sourceTree = "<group>"; };
 		62A20352F308B26A0C566494 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		644E557F4A5EA8FECAA68C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -335,7 +338,8 @@
 				AEDE99FF993B64569368720A /* FirebaseCrashlytics in Frameworks */,
 				77BD84C39D43D0867A221780 /* FirebaseMessaging in Frameworks */,
 				30108F4606A67C1EB6BB90BF /* RevenueCat in Frameworks */,
-				1EBDB6C22C6857B47EBE4ADA /* AppsFlyerLib in Frameworks */,
+				1EBDB6C22C6857B47EBE4ADA /* RevenueCatUI in Frameworks */,
+				4549B9A95F50D99743516830 /* AppsFlyerLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				0BFED65903140C490BF8E28E /* PaywallView.swift */,
+				5BD288113805ABDBE3F6408E /* WinBackView.swift */,
 			);
 			path = Paywall;
 			sourceTree = "<group>";
@@ -917,6 +922,7 @@
 				B2B17212BCA339CD0CE2FF6B /* FirebaseCrashlytics */,
 				67A40F5D51740EB1618E34BA /* FirebaseMessaging */,
 				BBA30A59E66423B660FDBD3F /* RevenueCat */,
+				F1133A9396CBF1B467E105EF /* RevenueCatUI */,
 				E5C90A7BE5DC22FDAB81EE95 /* AppsFlyerLib */,
 			);
 			productName = FitScroll;
@@ -1214,6 +1220,7 @@
 				711BCEFF6BAFB77522FCB1A4 /* UserSettings.swift in Sources */,
 				5E69A532B4011C0200C9D389 /* UsernameGateView.swift in Sources */,
 				DDF7DE9A73969049D4928ECB /* VisionPoseProvider.swift in Sources */,
+				770AE99CDC5B7BFF558E0946 /* WinBackView.swift in Sources */,
 				CD2C3BB5A70004513B77263E /* WorkoutCharacterView.swift in Sources */,
 				CA41F0B7A599B13FC5E11D74 /* WorkoutRepEvent.swift in Sources */,
 				7F51B0F196EF88FB1105DA5A /* WorkoutSession.swift in Sources */,
@@ -1769,6 +1776,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C2E63E623A485592CFAE1AEB /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
 			productName = AppsFlyerLib;
+		};
+		F1133A9396CBF1B467E105EF /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2426C8A0AE0B41D275568A65 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
