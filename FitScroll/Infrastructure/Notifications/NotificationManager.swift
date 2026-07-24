@@ -47,8 +47,51 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         switch settings.authorizationStatus {
         case .notDetermined:
             _ = try? await center.requestAuthorization(options: [.alert, .sound, .badge])
+            // The user just answered the prompt — record the verdict server-side.
+            await reportPushState()
         default:
             break
+        }
+    }
+
+    // MARK: - Push permission reporting
+
+    /// An FCM token exists even when the user denied notifications, so the
+    /// backend needs the real permission state alongside the token to know
+    /// whether a push would actually be shown.
+
+    private static let tokenKey = "fitscroll.fcm.token"
+    private static let lastAuthKey = "fitscroll.push.lastReportedAuth"
+
+    private var isAuthorized: Bool {
+        get async {
+            switch await center.notificationSettings().authorizationStatus {
+            case .authorized, .provisional, .ephemeral: return true
+            default: return false
+            }
+        }
+    }
+
+    /// Uploads the FCM token together with the current permission state and
+    /// remembers what was reported. Called on token arrival and after the
+    /// permission prompt.
+    func reportPushState(token: String? = nil) async {
+        if let token { UserDefaults.standard.set(token, forKey: Self.tokenKey) }
+        guard let token = token ?? UserDefaults.standard.string(forKey: Self.tokenKey) else { return }
+        let authorized = await isAuthorized
+        await FitScrollAPI.shared.setFCMToken(token, authorized: authorized)
+        UserDefaults.standard.set(authorized, forKey: Self.lastAuthKey)
+    }
+
+    /// Re-reports only when the permission flipped since the last report —
+    /// the user may have toggled notifications in iOS Settings while the
+    /// app was backgrounded.
+    func syncPushAuthorizationIfChanged() async {
+        guard UserDefaults.standard.string(forKey: Self.tokenKey) != nil else { return }
+        let authorized = await isAuthorized
+        let last = UserDefaults.standard.object(forKey: Self.lastAuthKey) as? Bool
+        if last != authorized {
+            await reportPushState()
         }
     }
 

@@ -246,13 +246,16 @@ final class FitScrollAPI {
     // MARK: - Push token
 
     /// Upload the FCM registration token so the backend can push challenge
-    /// notifications to this device.
-    func setFCMToken(_ token: String) async {
+    /// notifications to this device. `authorized` carries the real
+    /// notification-permission state (tokens exist even when denied).
+    func setFCMToken(_ token: String, authorized: Bool? = nil) async {
         struct Ack: Decodable { let ok: Bool? }
+        var body: [String: Any] = ["token": token]
+        if let authorized { body["authorized"] = authorized }
         do {
             try? await identify()
             let _: Ack = try await request(
-                "POST", "/v1/me/fcm-token", body: ["token": token]
+                "POST", "/v1/me/fcm-token", body: body
             )
         } catch {
             Logger.log("fcm token upload failed: \(error.localizedDescription)", level: .warning)

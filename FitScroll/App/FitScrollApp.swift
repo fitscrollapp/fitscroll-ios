@@ -86,9 +86,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         guard let fcmToken else { return }
-        // Ship the token to the backend so challenge pushes reach this device.
+        // Ship the token + real permission state to the backend so challenge
+        // pushes reach this device (and we know whether they'd be shown).
         Task.detached {
-            await FitScrollAPI.shared.setFCMToken(fcmToken)
+            await NotificationManager.shared.reportPushState(token: fcmToken)
         }
     }
 }

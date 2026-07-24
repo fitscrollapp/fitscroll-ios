@@ -4,6 +4,7 @@ import SwiftData
 struct RootView: View {
     @Query private var settings: [UserSettings]
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var screenTimeService: ScreenTimeService
     @StateObject private var purchases = PurchasesService.shared
     @State private var deepLinkUnlock: Bool = false
@@ -81,6 +82,13 @@ struct RootView: View {
         // which arrive asynchronously after launch — re-check as they land.
         .onReceive(purchases.$customerInfo) { _ in
             Task { await purchases.refreshWinBackOffers() }
+        }
+        // The user may flip notification permission in iOS Settings while
+        // we're backgrounded — re-report to the backend when it changed.
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                Task { await NotificationManager.shared.syncPushAuthorizationIfChanged() }
+            }
         }
         .onReceive(NotificationCenter.default.publisher(for: .fitscrollOpenUnlock)) { _ in
             deepLinkUnlock = true
